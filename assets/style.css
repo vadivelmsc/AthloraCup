@@ -891,14 +891,6 @@ section {
   border-color: rgba(242, 106, 30, 0.45);
 }
 .surface.potm:hover { border-color: var(--orange); box-shadow: 0 18px 40px rgba(242, 106, 30, 0.18); }
-.surface.feature-gold {
-  background: linear-gradient(150deg, rgba(233, 180, 76, 0.12), rgba(233, 180, 76, 0.02));
-  border-color: rgba(233, 180, 76, 0.35);
-}
-.surface.feature-orange {
-  background: linear-gradient(150deg, rgba(242, 106, 30, 0.14), rgba(242, 106, 30, 0.02));
-  border-color: rgba(242, 106, 30, 0.4);
-}
 
 /* Lightweight mini tile (app features / pricing) */
 .tile {
@@ -915,63 +907,104 @@ section {
 .tile .t-name { font-weight: 700; font-size: 15px; color: var(--ink); }
 .tile .t-sub { font-size: 13px; color: var(--muted); margin-top: 4px; }
 
-/* Small numbered token (interview list) */
-.token {
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
+/* ============ Ch08 Fan Zone ============
+   One surface, hairline dividers. The content is a list, a table and a
+   statement — none of those want to be boxes inside a box. */
+.fz-panel {
+  width: 100%;
+  max-width: 1020px;
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  padding: 28px 30px;
   background: var(--card-bg);
   border: 1px solid var(--glass-border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 800;
-  font-size: 13px;
-  color: var(--orange);
-  flex-shrink: 0;
+  border-radius: 18px;
+  box-shadow: 0 18px 44px var(--shadow);
 }
-.list-row {
+.fz-cols {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.fz-col { padding: 0 28px; }
+.fz-col:first-child { padding-left: 0; }
+.fz-col:last-child { padding-right: 0; }
+.fz-col + .fz-col { border-left: 1px solid var(--line); }
+
+.fz-head {
   display: flex;
   align-items: center;
-  gap: 12px;
-  background: rgba(242, 106, 30, 0.06);
-  border-radius: 10px;
-  padding: 10px 14px;
+  gap: 9px;
+  margin: 5px 0 12px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: 22px;
+  letter-spacing: 0.3px;
+  color: var(--ink);
+}
+.fz-icon { width: 19px; height: 19px; flex-shrink: 0; color: var(--orange); }
+.fz-head.gold .fz-icon { color: var(--gold); }
+
+.fz-list { list-style: none; margin: 0; padding: 0; }
+.fz-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 0;
   font-size: 14px;
   font-weight: 600;
   color: var(--ink);
 }
-.stat-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10px;
-  background: var(--card-bg);
-  border-radius: 10px;
-  padding: 11px 15px;
+.fz-list li + li { border-top: 1px solid var(--line); }
+.fz-num {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: 13px;
+  color: var(--orange);
+  min-width: 17px;
 }
-.stat-name {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--ink);
-}
-.row-icon {
-  width: 17px;
-  height: 17px;
-  flex-shrink: 0;
-  color: var(--gold);
-}
-.stat-metric {
+.fz-row-icon { width: 17px; height: 17px; flex-shrink: 0; color: var(--gold); }
+.fz-metric {
+  margin-left: auto;
   font-size: 11px;
   letter-spacing: 1px;
   text-transform: uppercase;
   color: var(--gold);
   font-weight: 700;
-  flex-shrink: 0;
+}
+.fz-quote {
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--muted);
+  margin: 0;
+}
+.fz-quote strong { color: var(--ink); font-weight: 700; }
+
+.fz-perks {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid var(--line);
+  padding-top: 18px;
+}
+.fz-perk { display: flex; align-items: center; gap: 12px; padding: 0 28px; }
+.fz-perk:first-child { padding-left: 0; }
+.fz-perk + .fz-perk { border-left: 1px solid var(--line); }
+.fz-perk-name { display: block; font-size: 14px; font-weight: 700; color: var(--ink); }
+.fz-perk-sub { display: block; font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+/* stack the columns; dividers turn horizontal */
+@media (max-width: 900px) {
+  .fz-panel { padding: 22px; gap: 18px; }
+  .fz-cols { grid-template-columns: 1fr; }
+  .fz-col { padding: 16px 0; }
+  .fz-col:first-child { padding-top: 0; }
+  .fz-col:last-child { padding-bottom: 0; }
+  .fz-col + .fz-col { border-left: none; border-top: 1px solid var(--line); }
+  .fz-perks { grid-template-columns: 1fr; }
+  .fz-perk { padding: 0; }
+  .fz-perk + .fz-perk { border-left: none; border-top: 1px solid var(--line); padding-top: 14px; margin-top: 14px; }
 }
 
 /* ============ Glassmorphism utility (Apple-style frosted depth) ============ */
