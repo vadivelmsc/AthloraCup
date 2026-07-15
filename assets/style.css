@@ -911,12 +911,13 @@ section {
    One surface, hairline dividers. The content is a list, a table and a
    statement — none of those want to be boxes inside a box. */
 /* No card — the copy sits on the scrim so the crowd carries the slide */
-/* Info band runs the full width along the bottom (broadcast lower-third),
-   so the crowd owns the whole top and the columns get real size */
+/* Content sits at its natural height under the title; the space below it is
+   filled by the crowd itself rather than by empty columns or dead scrim */
 .fz-content {
   width: 100%;
-  margin-top: auto;
-  padding-top: 26px;
+  flex: none;
+  margin-top: 24px;
+  padding-top: 24px;
   border-top: 1px solid var(--line);
   position: relative;
   z-index: 5;
@@ -929,18 +930,19 @@ section {
   z-index: 2;
   pointer-events: none;
   background:
-    /* bed for the bottom info band + footer */
+    /* keep the footer legible where it crosses the floodlit pitch */
     linear-gradient(to top,
       var(--bg) 0%,
-      var(--bg) 34%,
-      rgba(var(--bg-rgb), 0.72) 46%,
-      rgba(var(--bg-rgb), 0.22) 60%,
-      transparent 74%),
-    /* bed for the title only — radial so it doesn't wash the whole left side */
-    radial-gradient(ellipse 820px 360px at 6% 14%,
+      rgba(var(--bg-rgb), 0.9) 9%,
+      rgba(var(--bg-rgb), 0.4) 16%,
+      transparent 26%),
+    /* bed the title + columns up top; release into the crowd below them */
+    linear-gradient(to bottom,
       var(--bg) 0%,
-      rgba(var(--bg-rgb), 0.72) 48%,
-      transparent 78%);
+      var(--bg) 60%,
+      rgba(var(--bg-rgb), 0.82) 70%,
+      rgba(var(--bg-rgb), 0.32) 82%,
+      transparent 94%);
 }
 .fz-cols {
   display: grid;
