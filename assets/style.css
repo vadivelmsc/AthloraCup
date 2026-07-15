@@ -910,25 +910,37 @@ section {
 /* ============ Ch08 Fan Zone ============
    One surface, hairline dividers. The content is a list, a table and a
    statement — none of those want to be boxes inside a box. */
-.fz-panel {
+/* No card — the copy sits on the scrim so the crowd carries the slide */
+.fz-content {
   width: 100%;
-  max-width: 1020px;
+  max-width: 780px;
   position: relative;
   z-index: 5;
-  display: flex;
-  flex-direction: column;
-  gap: 22px;
-  padding: 28px 30px;
-  background: var(--card-bg);
-  border: 1px solid var(--glass-border);
-  border-radius: 18px;
-  box-shadow: 0 18px 44px var(--shadow);
+}
+/* full-bleed crowd, scrimmed only across the copy */
+.fz-bg img { object-fit: cover; }
+.fz-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background:
+    /* keep the footer nav legible where it crosses the pitch */
+    linear-gradient(to top, var(--bg) 0%, rgba(var(--bg-rgb), 0.55) 10%, transparent 22%),
+    linear-gradient(to bottom, var(--bg) 0%, rgba(var(--bg-rgb), 0.2) 22%, transparent 45%),
+    linear-gradient(to right,
+      var(--bg) 0%,
+      var(--bg) 40%,
+      rgba(var(--bg-rgb), 0.92) 54%,
+      rgba(var(--bg-rgb), 0.55) 70%,
+      rgba(var(--bg-rgb), 0.15) 88%,
+      transparent 100%);
 }
 .fz-cols {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 }
-.fz-col { padding: 0 28px; }
+.fz-col { padding: 0 20px; }
 .fz-col:first-child { padding-left: 0; }
 .fz-col:last-child { padding-right: 0; }
 .fz-col + .fz-col { border-left: 1px solid var(--line); }
@@ -966,6 +978,16 @@ section {
   min-width: 17px;
 }
 .fz-row-icon { width: 17px; height: 17px; flex-shrink: 0; color: var(--gold); }
+.fz-row-icon.orange { color: var(--orange); }
+/* Captain's Armband rides under Team of the Week, balancing column 3 */
+.fz-sub {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
 .fz-metric {
   margin-left: auto;
   font-size: 11px;
@@ -982,35 +1004,22 @@ section {
 }
 .fz-quote strong { color: var(--ink); font-weight: 700; }
 
-.fz-perks {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  border-top: 1px solid var(--line);
-  padding-top: 18px;
-}
-.fz-perk { display: flex; align-items: center; gap: 12px; padding: 0 28px; }
-.fz-perk:first-child { padding-left: 0; }
-.fz-perk + .fz-perk { border-left: 1px solid var(--line); }
-.fz-perk-name { display: block; font-size: 14px; font-weight: 700; color: var(--ink); }
+.fz-perk + .fz-perk-name { display: block; font-size: 14px; font-weight: 700; color: var(--ink); }
 .fz-perk-sub { display: block; font-size: 12px; color: var(--muted); margin-top: 2px; }
 
-/* stack the columns; dividers turn horizontal */
+/* stack the columns; dividers turn horizontal, scrim goes vertical */
 @media (max-width: 900px) {
-  .fz-panel { padding: 22px; gap: 18px; }
+  .fz-content { max-width: 100%; }
   .fz-cols { grid-template-columns: 1fr; }
   .fz-col { padding: 16px 0; }
   .fz-col:first-child { padding-top: 0; }
   .fz-col:last-child { padding-bottom: 0; }
   .fz-col + .fz-col { border-left: none; border-top: 1px solid var(--line); }
-  .fz-perks { grid-template-columns: 1fr; }
-  .fz-perk { padding: 0; }
-  .fz-perk + .fz-perk { border-left: none; border-top: 1px solid var(--line); padding-top: 14px; margin-top: 14px; }
-}
-
-/* ============ Glassmorphism utility (Apple-style frosted depth) ============ */
-.glass {
-  backdrop-filter: blur(18px) saturate(150%);
-  -webkit-backdrop-filter: blur(18px) saturate(150%);
+  /* stadium stays as atmosphere, but the copy needs a firmer bed on a small screen */
+  .fz-scrim {
+    background:
+      linear-gradient(to bottom, var(--bg) 0%, rgba(var(--bg-rgb), 0.94) 42%, rgba(var(--bg-rgb), 0.86) 100%);
+  }
 }
 
 /* ============ Chapter 04 — Knockout Bracket (desktop bracket, stacks on mobile) ============ */
