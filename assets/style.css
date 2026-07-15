@@ -604,6 +604,47 @@ section {
   pointer-events: none;
 }
 
+/* Venue / Fee / Key Dates info strip — registration slide */
+.vfd-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--card-bg);
+  backdrop-filter: blur(14px) saturate(135%);
+  -webkit-backdrop-filter: blur(14px) saturate(135%);
+}
+.vfd-item {
+  padding: 14px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  border-right: 1px solid var(--line);
+}
+.vfd-item:last-child { border-right: none; }
+.vfd-item svg { width: 17px; height: 17px; color: var(--orange); }
+.vfd-label {
+  font-size: 10px;
+  letter-spacing: 1.3px;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 700;
+  margin-top: 2px;
+}
+.vfd-value {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--ink);
+  line-height: 1.25;
+}
+.vfd-sub {
+  font-size: 11.5px;
+  font-weight: 500;
+  color: var(--muted);
+}
+
 /* =====================================================================
    Elevated chapter content system (Chapters 3+ and post-Ch4 sections)
    A consistent, responsive card + grid language for a modern sports feel
@@ -1286,6 +1327,11 @@ section {
     margin: 4px auto 0;
     display: block;
   }
+
+  /* Venue/Fee/Date strip stacks so each item stays readable */
+  .vfd-strip { grid-template-columns: 1fr; }
+  .vfd-item { border-right: none; border-bottom: 1px solid var(--line); }
+  .vfd-item:last-child { border-bottom: none; }
 
   .story-title {
     letter-spacing: 0px !important;
