@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <!-- Reverted to the original clean geometric sports typography -->
 <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,600&family=Barlow+Condensed:wght@700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=3.6">
+<link rel="stylesheet" href="assets/style.css?v=3.7">
 </head>
 <body class="dark-theme">
 
@@ -671,51 +671,122 @@
       <h1 class="story-title" style="margin-bottom:24px;">Media &amp; Weekly Glory</h1>
     </div>
 
-    <div class="cgrid c3 reveal delay-1" style="max-width:1020px;">
-      <div class="surface" style="display:flex; flex-direction:column; gap:16px;">
-        <div style="display:flex; align-items:center; gap:10px;">
-          <span style="font-size:22px;">🎙️</span>
-          <div>
-            <div class="card-eyebrow">After Every Match</div>
-            <div class="card-title" style="font-size:20px;">Media Zone</div>
+    <div class="reveal delay-1" style="display:flex; flex-direction:column; gap:16px; width:100%; max-width:1020px; position:relative; z-index:5;">
+
+      <!-- Three primary cards -->
+      <div class="cgrid c3">
+        <div class="surface" style="display:flex; flex-direction:column; gap:16px;">
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div class="award-icon inline">
+              <!-- microphone -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="9" y="2.25" width="6" height="11" rx="3"/>
+                <path d="M5.25 10.5v1.25a6.75 6.75 0 0 0 13.5 0V10.5"/>
+                <path d="M12 18.5v3.25M8.5 21.75h7"/>
+              </svg>
+            </div>
+            <div>
+              <div class="card-eyebrow">After Every Match</div>
+              <div class="card-title" style="font-size:20px;">Media Zone</div>
+            </div>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <div class="list-row"><span class="token">1</span>Player Interview</div>
+            <div class="list-row"><span class="token">2</span>Coach Interview</div>
+            <div class="list-row"><span class="token">3</span>Parent Interview</div>
           </div>
         </div>
-        <div style="display:flex; flex-direction:column; gap:10px;">
-          <div class="list-row"><span class="token">1</span>Player Interview</div>
-          <div class="list-row"><span class="token">2</span>Coach Interview</div>
-          <div class="list-row"><span class="token">3</span>Parent Interview</div>
+
+        <div class="surface feature-gold" style="display:flex; flex-direction:column; gap:16px;">
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div class="award-icon gold inline">
+              <!-- leaderboard bars -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 20.75h18"/>
+                <rect x="4.75" y="11" width="4.25" height="7.75" rx="1"/>
+                <rect x="9.9" y="5.5" width="4.25" height="13.25" rx="1"/>
+                <rect x="15.05" y="14" width="4.25" height="4.75" rx="1"/>
+              </svg>
+            </div>
+            <div>
+              <div class="card-eyebrow gold">Updated Live</div>
+              <div class="card-title" style="font-size:20px;">Leaderboards</div>
+            </div>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <div class="stat-row">
+              <span class="stat-name">
+                <svg class="row-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h2.2c.9 0 1.7.5 2.1 1.3l1.4 2.5c.3.5.8.8 1.3.9l5.4.8c2.2.3 3.9 1.4 4.5 2.9.3.9-.3 1.8-1.3 1.8H4V6Z"/><path d="M7 16.2v1.9M11 16.2v1.9M15 16.2v1.9M19 16.2v1.9"/></svg>
+                Golden Boot
+              </span>
+              <span class="stat-metric">Goals</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-name">
+                <svg class="row-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6.5a2 2 0 0 0-4 0"/><path d="M14 10.5V4.5a2 2 0 0 0-4 0v2"/><path d="M10 10.5V6.5a2 2 0 0 0-4 0v8"/><path d="M18 8.5a2 2 0 1 1 4 0v5.5a7.5 7.5 0 0 1-7.5 7.5h-1.6c-2.6 0-4.2-.8-5.6-2.2l-3.4-3.4a2 2 0 0 1 2.8-2.8L7 15"/></svg>
+                Golden Glove
+              </span>
+              <span class="stat-metric">Saves</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-name">
+                <svg class="row-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21.75s7.75-3.9 7.75-9.75V5.4L12 2.25 4.25 5.4v6.6c0 5.85 7.75 9.75 7.75 9.75Z"/></svg>
+                Clean Sheets
+              </span>
+              <span class="stat-metric">Defence</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="surface feature-orange" style="display:flex; flex-direction:column; gap:16px;">
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div class="award-icon inline">
+              <!-- team -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16.5 20.75v-1.75a3.75 3.75 0 0 0-3.75-3.75h-5.5A3.75 3.75 0 0 0 3.5 19v1.75"/>
+                <circle cx="10" cy="7.25" r="3.75"/>
+                <path d="M20.5 20.75V19a3.75 3.75 0 0 0-2.8-3.63"/>
+                <path d="M15.5 3.6a3.75 3.75 0 0 1 0 7.27"/>
+              </svg>
+            </div>
+            <div>
+              <div class="card-eyebrow">Weekly</div>
+              <div class="card-title" style="font-size:20px;">Team of the Week</div>
+            </div>
+          </div>
+          <p class="card-desc" style="margin:0;">Awarded every week to the squad that best combines performance, teamwork and spirit — announced across the tournament channels.</p>
         </div>
       </div>
 
-      <div class="surface feature-gold" style="display:flex; flex-direction:column; gap:16px;">
-        <div style="display:flex; align-items:center; gap:10px;">
-          <span style="font-size:22px;">📊</span>
+      <!-- Two perks -->
+      <div class="cgrid c2">
+        <div class="surface" style="display:flex; align-items:center; gap:14px; padding:16px 18px;">
+          <div class="award-icon inline">
+            <!-- jersey -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20.4 3.5 16 2a4 4 0 0 1-8 0L3.6 3.5a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V10h2.17a1 1 0 0 0 .99-.84l.58-3.47A2 2 0 0 0 20.4 3.5Z"/>
+            </svg>
+          </div>
           <div>
-            <div class="card-eyebrow gold">Updated Live</div>
-            <div class="card-title" style="font-size:20px;">Leaderboards</div>
+            <div class="card-eyebrow">Weekly Honour</div>
+            <div style="font-size:15px; font-weight:700; color:var(--ink); margin-top:2px;">Captain's Armband</div>
+            <div style="font-size:12px; color:var(--muted); margin-top:2px;">For top scorer or clean-sheet leader</div>
           </div>
         </div>
-        <div style="display:flex; flex-direction:column; gap:10px;">
-          <div class="stat-row"><span style="font-size:14px; font-weight:700; color:var(--ink);">⚽ Golden Boot</span><span style="font-size:11px; letter-spacing:1px; text-transform:uppercase; color:var(--gold); font-weight:700;">Goals</span></div>
-          <div class="stat-row"><span style="font-size:14px; font-weight:700; color:var(--ink);">🧤 Golden Glove</span><span style="font-size:11px; letter-spacing:1px; text-transform:uppercase; color:var(--gold); font-weight:700;">Saves</span></div>
-          <div class="stat-row"><span style="font-size:14px; font-weight:700; color:var(--ink);">🛡️ Clean Sheets</span><span style="font-size:11px; letter-spacing:1px; text-transform:uppercase; color:var(--gold); font-weight:700;">Defence</span></div>
-        </div>
-      </div>
-
-      <div style="display:flex; flex-direction:column; gap:14px;">
-        <div class="surface feature-orange" style="flex:1; display:flex; flex-direction:column; justify-content:center;">
-          <span style="font-size:28px;">🌟</span>
-          <div class="card-eyebrow" style="margin-top:8px;">Weekly</div>
-          <div class="card-title">Team of the Week</div>
-          <p class="card-desc">Best team for performance, teamwork &amp; spirit</p>
-        </div>
-        <div class="surface" style="padding:16px 20px;">
-          <div style="font-size:15px; font-weight:700; color:var(--ink);">🎽 Captain's Armband</div>
-          <div style="font-size:12px; color:var(--muted); margin-top:3px;">For top scorer or clean-sheet leader</div>
-        </div>
-        <div class="surface" style="padding:16px 20px;">
-          <div style="font-size:15px; font-weight:700; color:var(--ink);">🥤 Refreshments</div>
-          <div style="font-size:12px; color:var(--muted); margin-top:3px;">Keeping every squad match-ready</div>
+        <div class="surface" style="display:flex; align-items:center; gap:14px; padding:16px 18px;">
+          <div class="award-icon inline">
+            <!-- drink -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 8.5h1.25a3.75 3.75 0 0 1 0 7.5H17"/>
+              <path d="M3.25 8.5h13.5v8.75a4 4 0 0 1-4 4h-5.5a4 4 0 0 1-4-4Z"/>
+              <path d="M6.5 2.25v2.5M10 2.25v2.5M13.5 2.25v2.5"/>
+            </svg>
+          </div>
+          <div>
+            <div class="card-eyebrow">Every Matchday</div>
+            <div style="font-size:15px; font-weight:700; color:var(--ink); margin-top:2px;">Refreshments</div>
+            <div style="font-size:12px; color:var(--muted); margin-top:2px;">Keeping every squad match-ready</div>
+          </div>
         </div>
       </div>
     </div>
