@@ -1,0 +1,1341 @@
+* { box-sizing: border-box; }
+
+:root {
+  --orange: #f26a1e;
+  --orange2: #ff8a3d;
+  --gold: #e9b44c;
+  --silver: #9ea8b3;
+  
+  --kicker: clamp(12px, 1.5vw, 15px);
+  --title: clamp(38px, 6vw, 72px);
+  --title-lg: clamp(52px, 8.5vw, 104px);
+  --body: clamp(15px, 1.8vw, 20px);
+  
+  --pad-x: clamp(24px, 7vw, 110px);
+  --pad-y: clamp(24px, 7vh, 86px);
+}
+
+body.dark-theme {
+  --bg: #050505;
+  --bg-rgb: 5, 5, 5;
+  --bg2: #0b0a09;
+  --bg3: #12100e;
+  --ink: #f5efe7;
+  --muted: #7c7263;
+  --line: rgba(255,255,255,0.06);
+  --card-bg: rgba(18, 14, 11, 0.65);
+  --glass-border: rgba(255, 255, 255, 0.05);
+  --grid-color: rgba(255, 255, 255, 0.01);
+  --shadow: rgba(0, 0, 0, 0.6);
+  --text-shadow-val: 0 10px 30px rgba(0,0,0,0.8);
+  --overlay-color: rgba(5, 5, 5, 0.7);
+  --hollow-stroke: rgba(255, 255, 255, 0.08);
+  
+  --bg-img-opacity: 0.55;
+}
+
+body.light-theme {
+  --bg: #f8f6f0;
+  --bg-rgb: 248, 246, 240;
+  --bg2: #ede8dc;
+  --bg3: #e0d7c5;
+  --ink: #1c1a17;
+  --muted: #70685b;
+  --line: rgba(0,0,0,0.06);
+  --card-bg: rgba(255, 255, 255, 0.75);
+  --glass-border: rgba(0, 0, 0, 0.07);
+  --grid-color: rgba(0, 0, 0, 0.02);
+  --shadow: rgba(18, 14, 11, 0.08);
+  --text-shadow-val: 0 4px 12px rgba(0, 0, 0, 0.15);
+  --overlay-color: rgba(248, 246, 240, 0.65);
+  --hollow-stroke: rgba(28, 26, 23, 0.08);
+  
+  --bg-img-opacity: 0.25;
+}
+
+html,body {
+  margin:0;
+  padding:0;
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg);
+  transition: background 0.4s ease;
+}
+
+.deck-container {
+  width: 100vw;
+  height: 100vh;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+section {
+  width: 100%;
+  height: 100vh;
+  max-height: 100vh;
+  scroll-snap-align: start;
+  position: relative;
+  overflow: hidden;
+  padding: 130px var(--pad-x) var(--pad-y);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: 'Barlow', sans-serif;
+  color: var(--ink);
+  background-color: var(--bg);
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+/* Sticky Header */
+.sticky-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 76px;
+  backdrop-filter: blur(20px);
+  background: rgba(var(--bg), 0.85);
+  border-bottom: 1px solid var(--glass-border);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--pad-x);
+  transition: border-color 0.4s ease;
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: 26px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--ink);
+}
+.header-emblem {
+  height: 40px;
+  width: auto;
+  flex-shrink: 0;
+  display: block;
+}
+.header-logo .logo-word > span {
+  color: var(--orange);
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.header-contact {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 17px;
+  letter-spacing: 0.5px;
+  color: var(--muted);
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.header-contact span {
+  color: var(--orange);
+}
+
+.theme-toggle-btn {
+  background: none;
+  border: 1px solid var(--glass-border);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink);
+  transition: border-color 0.3s, background 0.3s;
+}
+.theme-toggle-btn:hover {
+  border-color: var(--orange);
+  background: rgba(242,106,30,0.05);
+}
+
+.register-btn {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #000;
+  background: var(--orange);
+  padding: 10px 22px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+.register-btn:hover {
+  background: var(--orange2);
+  transform: translateY(-1px);
+}
+
+/* Slanted / Bold Typography details */
+.story-header {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: var(--kicker);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--orange);
+  font-weight: 800;
+  margin-bottom: 2px;
+}
+
+.story-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: var(--title);
+  line-height: 0.88;
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
+  margin-top: 6px;
+  margin-bottom: 0;
+}
+
+/* Magazine Layout Splits */
+.mag-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  flex: 1;
+  min-height: 0;
+  align-items: center;
+  position: relative;
+  z-index: 5;
+}
+
+.mag-left-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.mag-route-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.mag-route-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: var(--card-bg);
+  border: 1px solid var(--glass-border);
+  border-left: 4px solid var(--glass-border);
+  border-radius: 12px;
+  padding: 16px 22px;
+  transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+  cursor: pointer;
+  box-shadow: 0 4px 12px var(--shadow);
+}
+
+.mag-route-item:hover {
+  border-color: var(--glass-border);
+  border-left-color: var(--orange);
+  background: rgba(var(--bg-rgb), 0.45);
+  transform: translateX(8px);
+  box-shadow: 0 10px 25px var(--shadow);
+}
+
+.mag-route-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(242, 106, 30, 0.08);
+  border: 1px solid rgba(242, 106, 30, 0.2);
+  color: var(--orange);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: 18px;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.mag-route-item:hover .mag-route-badge {
+  background: var(--orange);
+  color: #000;
+  border-color: var(--orange);
+  box-shadow: 0 0 12px rgba(242, 106, 30, 0.4);
+}
+
+.mag-route-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.mag-route-header {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 850;
+  font-size: clamp(18px, 2.2vw, 24px);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--ink);
+  transition: color 0.3s;
+  margin: 0;
+}
+
+.mag-route-sub {
+  font-family: 'Barlow', sans-serif;
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 550;
+  text-transform: none;
+  letter-spacing: 0;
+  margin: 0;
+}
+
+.mag-btn {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--ink);
+  background: rgba(242, 106, 30, 0.05);
+  border: 1px solid var(--orange);
+  padding: 14px 32px;
+  border-radius: 4px;
+  align-self: flex-start;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.mag-btn:hover {
+  background: var(--orange);
+  color: #000;
+  box-shadow: 0 0 15px rgba(242, 106, 30, 0.35);
+}
+
+.mag-right-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: flex-end;
+  text-align: right;
+}
+
+.mag-mini-visual {
+  width: 320px;
+  height: 190px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 16px 40px var(--shadow);
+  border: 1px solid var(--glass-border);
+  position: relative;
+}
+.mag-mini-visual::after {
+  content: '[ MATCHDAY_ARENA ]';
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px;
+  font-weight: 800;
+  color: #fff;
+  background: rgba(0,0,0,0.6);
+  padding: 2px 6px;
+  border-radius: 2px;
+  letter-spacing: 1px;
+}
+
+.mag-paragraph {
+  font-family: 'Barlow', sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--muted);
+  max-width: 340px;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* Hollow Background Overlay Text - Raised to clear footer text */
+.hollow-overlay-text {
+  position: absolute;
+  bottom: 125px;
+  left: var(--pad-x);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: clamp(60px, 12vw, 150px);
+  line-height: 0.8;
+  text-transform: uppercase;
+  letter-spacing: -4px;
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--hollow-stroke);
+  pointer-events: none;
+  z-index: 2;
+  white-space: nowrap;
+}
+
+/* Full Screen Background Image Crop */
+.mag-bg-image-container {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+.mag-bg-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.15;
+}
+
+.mag-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 50%, transparent 10%, var(--bg) 80%);
+  z-index: 2;
+}
+
+/* Story Footer Nav bar with top border separation */
+.story-footer-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--line);
+  padding-top: 18px;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 700;
+  position: relative;
+  z-index: 5;
+  width: 100%;
+}
+.story-footer-nav span {
+  color: var(--orange);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Roster Spec Columns - Adjusted margins per request */
+.spec-grid-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  width: 100%;
+  padding-top: 10px;
+  margin-top: 10px;
+}
+
+.spec-col-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.spec-col-num {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(34px, 4vw, 54px);
+  font-weight: 900;
+  line-height: 1;
+  color: var(--orange);
+}
+
+.spec-col-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--ink);
+}
+
+.spec-col-desc {
+  font-family: 'Barlow', sans-serif;
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.35;
+}
+
+/* Bracket Card styling */
+.bracket-card {
+  background: var(--card-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 8px;
+  padding: 24px;
+  flex: 1;
+  text-align: center;
+  transition: all 0.3s;
+}
+.bracket-card:hover {
+  border-color: rgba(242,106,30,0.25);
+}
+.bracket-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  margin-top: 2px;
+  color: var(--ink);
+}
+
+.tournament-math-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  width: 100%;
+  position: relative;
+  z-index: 5;
+  margin-top: 20px;
+}
+
+.cover-action-row {
+  margin-top: 30px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.math-card {
+  background: var(--card-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 300px;
+  box-shadow: 0 20px 40px var(--shadow);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  text-align: left;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+.math-card h3 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 26px;
+  font-weight: 900;
+  color: var(--ink);
+  margin: 0 0 16px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 8px;
+}
+
+.math-card p {
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--muted);
+  margin: 0;
+  font-family: 'Barlow', sans-serif;
+  font-weight: 500;
+}
+
+/* ============ Cover / hero ============ */
+.cover-section { justify-content: center !important; }
+
+/* Background photo on the right, faded into the theme bg */
+.cover-photo {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 62%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+.cover-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  filter: grayscale(10%) contrast(105%) brightness(0.85);
+  opacity: 0.85;
+  transition: opacity 0.4s ease;
+  display: block;
+}
+.cover-fade-x,
+.cover-fade-y {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+.cover-fade-x { background: linear-gradient(to right, var(--bg) 0%, var(--bg) 20%, transparent 95%); }
+.cover-fade-y { background: linear-gradient(to top, var(--bg) 0%, transparent 50%); }
+
+.cover-grid {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: 1200px;
+}
+.cover-copy { display: flex; flex-direction: column; max-width: 620px; }
+
+/* Registration sign-off emblem — center-right over the photo on desktop */
+.reg-emblem {
+  position: absolute;
+  right: clamp(24px, 7vw, 110px);
+  top: 50%;
+  transform: translateY(-50%);
+  width: min(30vw, 300px);
+  height: auto;
+  z-index: 4;
+  filter: drop-shadow(0 20px 45px rgba(0, 0, 0, 0.5));
+  pointer-events: none;
+}
+
+/* =====================================================================
+   Elevated chapter content system (Chapters 3+ and post-Ch4 sections)
+   A consistent, responsive card + grid language for a modern sports feel
+   ===================================================================== */
+
+/* Optional intro line that sits under a story title */
+.section-lead {
+  font-size: clamp(15px, 1.6vw, 18px);
+  color: var(--muted);
+  line-height: 1.55;
+  max-width: 640px;
+  margin: 4px 0 0;
+  font-weight: 500;
+}
+
+/* Responsive content grids — collapse gracefully on smaller screens */
+.cgrid {
+  display: grid;
+  gap: 16px;
+  width: 100%;
+  position: relative;
+  z-index: 5;
+}
+.cgrid.c2 { grid-template-columns: repeat(2, 1fr); }
+.cgrid.c3 { grid-template-columns: repeat(3, 1fr); }
+.cgrid.c4 { grid-template-columns: repeat(4, 1fr); }
+
+/* Base elevated surface card — frosted glass */
+.surface {
+  background: var(--card-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  padding: 22px;
+  position: relative;
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  box-shadow: 0 8px 24px var(--shadow);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.surface:hover {
+  transform: translateY(-4px);
+  border-color: rgba(242, 106, 30, 0.35);
+  box-shadow: 0 18px 40px var(--shadow);
+}
+
+/* Eyebrow label used inside cards */
+.card-eyebrow {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--orange);
+  font-weight: 800;
+}
+.card-eyebrow.gold { color: var(--gold); }
+.card-eyebrow.muted { color: var(--muted); }
+
+.card-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: 22px;
+  line-height: 1.05;
+  color: var(--ink);
+  margin: 6px 0 0;
+  letter-spacing: 0.3px;
+}
+.card-desc {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.45;
+  margin: 8px 0 0;
+}
+
+/* Award card with a proper icon badge (Player Recognition) */
+.award-card { display: flex; flex-direction: column; }
+.award-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  line-height: 1;
+  margin-bottom: 14px;
+  background: rgba(242, 106, 30, 0.1);
+  border: 1px solid rgba(242, 106, 30, 0.25);
+  color: var(--orange);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.award-icon svg { width: 24px; height: 24px; display: block; }
+.award-card:hover .award-icon { transform: translateY(-3px) scale(1.05); }
+.award-icon.gold {
+  background: rgba(233, 180, 76, 0.12);
+  border-color: rgba(233, 180, 76, 0.3);
+  color: var(--gold);
+}
+
+/* Editorial stat block (regulations / big-number columns) */
+.rule-stat {
+  border-top: 2px solid var(--line);
+  padding-top: 18px;
+  transition: border-color 0.3s ease;
+}
+.rule-stat:hover { border-top-color: var(--orange); }
+.stat-num {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(54px, 7vw, 84px);
+  font-weight: 900;
+  color: var(--ink);
+  line-height: 1;
+  letter-spacing: -2px;
+  margin-bottom: 10px;
+}
+.stat-num span { font-size: 0.38em; color: var(--orange); letter-spacing: 0; }
+.stat-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--orange);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+}
+.stat-desc { font-size: 13.5px; color: var(--muted); line-height: 1.55; margin: 0; }
+
+/* ============ Chapter 05 — Team Recognition podium ============
+   Real stepped podium: rank reads through scale/height, not decoration.
+   Rank colour is a gradient wash — no accent borders anywhere. */
+.podium-stage {
+  display: flex;
+  align-items: flex-end;
+  gap: 14px;
+  width: 100%;
+  position: relative;
+  z-index: 5;
+}
+.pod {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  padding: 18px 12px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* content rides the TOP of each pedestal so height = rank */
+  justify-content: flex-start;
+  gap: 5px;
+  text-align: center;
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  box-shadow: 0 14px 34px var(--shadow);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+.pod:hover { transform: translateY(-6px); box-shadow: 0 22px 46px var(--shadow); }
+.pod-medal { font-size: clamp(24px, 3vw, 32px); line-height: 1; }
+.pod-rank {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.5px;
+}
+.pod-label {
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--muted);
+}
+/* Ghosted numeral on the pedestal body — like a real podium block */
+.pod-num {
+  position: absolute;
+  left: 50%;
+  bottom: -22px;
+  transform: translateX(-50%);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: 120px;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--hollow-stroke);
+  pointer-events: none;
+  user-select: none;
+}
+/* Pedestals are portrait, not squat — the body below the content IS the block */
+.pod.gold {
+  height: 316px;
+  background: linear-gradient(180deg, rgba(233, 180, 76, 0.22), rgba(233, 180, 76, 0.03));
+}
+.pod.silver {
+  height: 252px;
+  background: linear-gradient(180deg, rgba(158, 168, 179, 0.22), rgba(158, 168, 179, 0.03));
+}
+.pod.bronze {
+  height: 210px;
+  background: linear-gradient(180deg, rgba(242, 106, 30, 0.20), rgba(242, 106, 30, 0.03));
+}
+.pod.gold .pod-rank { font-size: clamp(34px, 4vw, 46px); color: var(--gold); }
+.pod.silver .pod-rank { font-size: clamp(26px, 3.2vw, 34px); color: var(--silver); }
+.pod.bronze .pod-rank { font-size: clamp(26px, 3.2vw, 34px); color: var(--orange); }
+
+/* Also-placed strip (4th–8th) — one panel, hairline dividers */
+.placement-strip {
+  display: flex;
+  width: 100%;
+  border: 1px solid var(--glass-border);
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--card-bg);
+  backdrop-filter: blur(14px) saturate(135%);
+  -webkit-backdrop-filter: blur(14px) saturate(135%);
+}
+.placement-strip .slot {
+  flex: 1;
+  text-align: center;
+  padding: 13px 6px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: 18px;
+  color: var(--muted);
+  transition: color 0.3s ease, background 0.3s ease;
+}
+.placement-strip .slot + .slot { border-left: 1px solid var(--line); }
+.placement-strip .slot:hover { color: var(--ink); background: rgba(127, 127, 127, 0.07); }
+
+.award-icon.inline { margin-bottom: 0; }
+
+/* Ch07 — title + cards centre vertically as one group (auto margins absorb the
+   free space), so the content isn't pinned into the top-right corner */
+.media-group {
+  margin: auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  width: 100%;
+  position: relative;
+  z-index: 5;
+}
+
+/* Numbered route/step item (media & experience sections) */
+.step-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.step-num {
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  background: rgba(242, 106, 30, 0.1);
+  border: 1px solid rgba(242, 106, 30, 0.25);
+  color: var(--orange);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.step-title { font-weight: 700; font-size: 15px; color: var(--ink); }
+.step-sub { font-size: 12px; color: var(--muted); margin-top: 1px; }
+
+/* App-store style pill button */
+.store-btn {
+  background: var(--ink);
+  color: var(--bg);
+  padding: 12px 20px;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-weight: 700;
+  font-size: 14px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.store-btn:hover { transform: translateY(-2px); opacity: 0.9; }
+
+/* Surface variants */
+/* POTM stays a highlight, but as tinted glass — a solid fill broke the glassmorphism */
+.surface.potm {
+  background: linear-gradient(160deg, rgba(242, 106, 30, 0.20), rgba(242, 106, 30, 0.05));
+  border-color: rgba(242, 106, 30, 0.45);
+}
+.surface.potm:hover { border-color: var(--orange); box-shadow: 0 18px 40px rgba(242, 106, 30, 0.18); }
+.surface.feature-gold {
+  background: linear-gradient(150deg, rgba(233, 180, 76, 0.12), rgba(233, 180, 76, 0.02));
+  border-color: rgba(233, 180, 76, 0.35);
+}
+.surface.feature-orange {
+  background: linear-gradient(150deg, rgba(242, 106, 30, 0.14), rgba(242, 106, 30, 0.02));
+  border-color: rgba(242, 106, 30, 0.4);
+}
+
+/* Lightweight mini tile (app features / pricing) */
+.tile {
+  background: var(--card-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 14px;
+  padding: 16px;
+  backdrop-filter: blur(14px) saturate(135%);
+  -webkit-backdrop-filter: blur(14px) saturate(135%);
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+.tile:hover { border-color: rgba(242, 106, 30, 0.3); transform: translateY(-3px); }
+.tile .emoji { font-size: 24px; display: block; margin-bottom: 8px; }
+.tile .t-name { font-weight: 700; font-size: 15px; color: var(--ink); }
+.tile .t-sub { font-size: 13px; color: var(--muted); margin-top: 4px; }
+
+/* Small numbered token (interview list) */
+.token {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--card-bg);
+  border: 1px solid var(--glass-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: 13px;
+  color: var(--orange);
+  flex-shrink: 0;
+}
+.list-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(242, 106, 30, 0.06);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--card-bg);
+  border-radius: 10px;
+  padding: 11px 15px;
+}
+
+/* ============ Glassmorphism utility (Apple-style frosted depth) ============ */
+.glass {
+  backdrop-filter: blur(18px) saturate(150%);
+  -webkit-backdrop-filter: blur(18px) saturate(150%);
+}
+
+/* ============ Chapter 04 — Knockout Bracket (desktop bracket, stacks on mobile) ============ */
+.bracket-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  align-self: flex-start;
+}
+
+.cup-card {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  position: relative;
+  transition: all 0.3s ease;
+  flex: 1;
+}
+
+.cup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 12px;
+}
+
+.cup-badge {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: 24px;
+  letter-spacing: 1px;
+}
+
+.gold-theme .cup-badge { color: var(--gold); }
+.silver-theme .cup-badge { color: var(--silver); }
+
+.cup-sub {
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.bracket-flow {
+  display: flex;
+  gap: 0;
+  align-items: stretch;
+  margin: auto 0;
+}
+
+.bracket-connector {
+  display: flex;
+  align-items: center;
+}
+
+.match-box {
+  background: rgba(127, 127, 127, 0.06);
+  border: 1px solid var(--glass-border);
+  border-radius: 8px;
+  padding: 10px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 65px;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+.match-box:hover {
+  background: rgba(127, 127, 127, 0.1);
+  border-color: rgba(127, 127, 127, 0.2);
+}
+
+.match-meta {
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.match-teams {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.team-seed {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: 18px;
+  color: var(--ink);
+}
+
+.vs-tag {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.gold-theme .vs-tag { color: rgba(233, 180, 76, 0.5); }
+.silver-theme .vs-tag { color: rgba(158, 168, 179, 0.5); }
+
+.match-box.final-box {
+  padding: 12px 18px;
+  height: 75px;
+}
+
+.gold-theme .match-box.final-box {
+  background: rgba(233, 180, 76, 0.08);
+  border-color: rgba(233, 180, 76, 0.3);
+  box-shadow: 0 10px 30px rgba(233, 180, 76, 0.05);
+}
+
+.silver-theme .match-box.final-box {
+  background: rgba(158, 168, 179, 0.1);
+  border-color: rgba(158, 168, 179, 0.3);
+  box-shadow: 0 10px 30px rgba(158, 168, 179, 0.05);
+}
+
+.final-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: 20px;
+  color: var(--ink);
+  letter-spacing: 0.5px;
+}
+
+.gold-theme .final-title { color: var(--gold); }
+.silver-theme .final-title { color: var(--silver); }
+
+/* Mobile: no bracket — one cup per row, matches stacked, connector lines hidden */
+@media (max-width: 1024px), (max-aspect-ratio: 11/10) {
+  .bracket-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .bracket-flow {
+    flex-direction: column;
+    gap: 10px;
+    margin: 0;
+  }
+  .bracket-connector {
+    display: none;
+  }
+  .bracket-flow > div {
+    height: auto !important;
+    flex: none !important;
+  }
+  .bracket-flow > div > div[style*="138px"] {
+    height: auto !important;
+    gap: 10px;
+  }
+  .cup-card { gap: 14px; }
+}
+
+/* Responsive collapse for the elevated system */
+@media (max-width: 1024px) {
+  .cgrid.c3, .cgrid.c4 { grid-template-columns: repeat(2, 1fr); }
+  .cgrid { gap: 12px; }
+  .surface { padding: 18px; border-radius: 14px; }
+}
+@media (max-width: 560px) {
+  .cgrid.c2, .cgrid.c3, .cgrid.c4 { grid-template-columns: 1fr; }
+  /* Podium stays 3-across (that's what a podium is) — just shorter */
+  .podium-stage { gap: 10px; }
+  .pod { padding: 14px 8px 12px; border-radius: 14px; }
+  .pod.gold { height: 176px; }
+  .pod.silver { height: 144px; }
+  .pod.bronze { height: 124px; }
+  /* pedestals are too small here for the numeral — it would collide with the label */
+  .pod-num { display: none; }
+  .pod-label { font-size: 10px; letter-spacing: 1px; }
+  .placement-strip .slot { font-size: 15px; padding: 11px 4px; }
+}
+
+/* Short wide viewports (e.g. 1366x768 laptops): let content-heavy sections grow
+   and scroll instead of clipping, while keeping the multi-column desktop layout */
+@media (min-width: 1025px) and (min-aspect-ratio: 11/10) and (max-height: 780px) {
+  .deck-container { scroll-snap-type: none; }
+  section {
+    height: auto;
+    min-height: 100vh;
+    max-height: none;
+    overflow: visible;
+    scroll-snap-align: none;
+    padding-top: 110px;
+    padding-bottom: 40px;
+  }
+}
+
+/* Mobile and Portrait Adaptations */
+@media (max-width: 1024px), (max-aspect-ratio: 11/10) {
+  /* One slide per viewport where content allows; dense slides can still scroll.
+     Proximity snap keeps the slide-based feel without trapping tall content. */
+  .deck-container {
+    scroll-snap-type: y proximity;
+  }
+  section {
+    height: auto;
+    min-height: 100vh;
+    max-height: none;
+    overflow: visible;
+    scroll-snap-align: start;
+    padding-top: 86px !important;
+    padding-bottom: 34px !important;
+    gap: 12px !important;
+  }
+  /* Header emblem scales down with the compact mobile header */
+  .header-emblem { height: 32px; }
+
+  /* Tighter type + cards so more slides fit a single screen */
+  .story-title { font-size: clamp(30px, 8vw, 40px) !important; }
+  .section-lead { font-size: 15px; }
+  .cgrid { gap: 12px; }
+  .surface { padding: 16px; }
+  /* Regulations stats stay 2-up on mobile (compact, fits one screen) */
+  .cgrid.c4 { grid-template-columns: repeat(2, 1fr) !important; gap: 20px 16px !important; }
+  .stat-num { font-size: clamp(40px, 12vw, 60px); }
+
+  /* Keep compact card grids 2-up on mobile so those slides fit one screen */
+  .cgrid:has(> .tile),
+  .cgrid:has(> .award-card) {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+  }
+  .award-card { padding: 14px; }
+  .award-icon { width: 42px; height: 42px; font-size: 22px; margin-bottom: 10px; }
+
+
+  /* Cover: background photo goes full-bleed and dims so the copy stays readable */
+  .cover-photo { width: 100%; }
+  .cover-photo img { opacity: 0.3; }
+  .cover-fade-x { background: linear-gradient(to right, var(--bg) 0%, rgba(var(--bg-rgb), 0.55) 60%, transparent 100%); }
+  .cover-fade-y { background: linear-gradient(to top, var(--bg) 0%, transparent 60%); }
+
+  /* Registration emblem flows in-content, centered */
+  .reg-emblem {
+    position: static;
+    transform: none;
+    width: 118px;
+    margin: 4px auto 0;
+    display: block;
+  }
+
+  .story-title {
+    letter-spacing: 0px !important;
+    margin-bottom: 10px !important;
+  }
+
+  .mag-split {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    overflow-y: auto;
+  }
+  .mag-right-panel {
+    align-items: flex-start;
+    text-align: left;
+  }
+  .mag-mini-visual {
+    width: 100%;
+    height: 150px;
+  }
+  .hollow-overlay-text {
+    display: none;
+  }
+  
+  .spec-grid-row {
+    gap: 16px;
+  }
+
+  .tournament-math-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-top: 0px !important;
+  }
+
+  .cover-action-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .mag-route-item {
+    padding: 12px 16px !important;
+    gap: 14px !important;
+  }
+  .mag-route-badge {
+    width: 36px !important;
+    height: 36px !important;
+    font-size: 15px !important;
+  }
+  .mag-route-item:hover {
+    transform: translateX(4px) !important;
+  }
+
+  .math-card {
+    min-height: 0 !important;
+    padding: 16px 18px !important;
+    border-radius: 12px !important;
+  }
+
+  .math-card h3 {
+    font-size: 18px !important;
+    margin-bottom: 10px !important;
+    padding-bottom: 4px !important;
+  }
+
+  .math-card p {
+    font-size: 11px !important;
+    line-height: 1.35 !important;
+    margin-top: 6px !important;
+  }
+
+  .math-card span {
+    font-size: 12px !important;
+  }
+
+  .math-card span[style*="font-size: 15px"],
+  .math-card span[style*="font-size: 14px"] {
+    font-size: 12px !important;
+  }
+
+  .math-card span[style*="font-size: 22px"] {
+    font-size: 16px !important;
+  }
+
+  /* Clean single-row mobile header */
+  .sticky-header {
+    height: 62px;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    padding: 0 16px;
+  }
+  .header-logo {
+    font-size: 21px;
+    letter-spacing: 1px;
+  }
+  .header-right {
+    gap: 10px;
+  }
+  .header-contact {
+    display: none; /* phone shown prominently in the registration section */
+  }
+  .register-btn {
+    font-size: 13px;
+    padding: 9px 16px;
+  }
+  .theme-toggle-btn {
+    width: 38px;
+    height: 38px;
+    flex-shrink: 0;
+  }
+
+  /* Fix mobile bracket flow readability */
+  .bracket-card {
+    padding: 16px;
+  }
+  .bracket-title {
+    font-size: 16px;
+  }
+  .bracket-card div:first-child {
+    font-size: 11px !important;
+  }
+}
+
+/* Extreme Mobile Adjustments */
+@media (max-width: 400px) {
+  .header-logo {
+    font-size: 19px;
+  }
+  .register-btn {
+    font-size: 12px;
+    padding: 8px 13px;
+  }
+}
+

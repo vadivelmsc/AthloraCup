@@ -8,656 +8,15 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <!-- Reverted to the original clean geometric sports typography -->
 <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,600&family=Barlow+Condensed:wght@700;800;900&display=swap" rel="stylesheet">
-<style>
-  *{box-sizing:border-box;}
-  
-  :root {
-    --orange: #f26a1e;
-    --orange2: #ff8a3d;
-    --gold: #e9b44c;
-    --silver: #9ea8b3;
-    
-    --kicker: clamp(12px, 1.5vw, 15px);
-    --title: clamp(38px, 6vw, 72px);
-    --title-lg: clamp(52px, 8.5vw, 104px);
-    --body: clamp(15px, 1.8vw, 20px);
-    
-    --pad-x: clamp(24px, 7vw, 110px);
-    --pad-y: clamp(24px, 7vh, 86px);
-  }
-
-  body.dark-theme {
-    --bg: #050505;
-    --bg-rgb: 5, 5, 5;
-    --bg2: #0b0a09;
-    --bg3: #12100e;
-    --ink: #f5efe7;
-    --muted: #7c7263;
-    --line: rgba(255,255,255,0.06);
-    --card-bg: rgba(18, 14, 11, 0.65);
-    --glass-border: rgba(255, 255, 255, 0.05);
-    --grid-color: rgba(255, 255, 255, 0.01);
-    --shadow: rgba(0, 0, 0, 0.6);
-    --text-shadow-val: 0 10px 30px rgba(0,0,0,0.8);
-    --overlay-color: rgba(5, 5, 5, 0.7);
-    --hollow-stroke: rgba(255, 255, 255, 0.08);
-    
-    --bg-img-opacity: 0.55;
-  }
-
-  body.light-theme {
-    --bg: #f8f6f0;
-    --bg-rgb: 248, 246, 240;
-    --bg2: #ede8dc;
-    --bg3: #e0d7c5;
-    --ink: #1c1a17;
-    --muted: #70685b;
-    --line: rgba(0,0,0,0.06);
-    --card-bg: rgba(255, 255, 255, 0.75);
-    --glass-border: rgba(0, 0, 0, 0.07);
-    --grid-color: rgba(0, 0, 0, 0.02);
-    --shadow: rgba(18, 14, 11, 0.08);
-    --text-shadow-val: 0 4px 12px rgba(0, 0, 0, 0.15);
-    --overlay-color: rgba(248, 246, 240, 0.65);
-    --hollow-stroke: rgba(28, 26, 23, 0.08);
-    
-    --bg-img-opacity: 0.25;
-  }
-
-  html,body{
-    margin:0;
-    padding:0;
-    height: 100%;
-    overflow: hidden;
-    background: var(--bg);
-    transition: background 0.4s ease;
-  }
-  
-  .deck-container {
-    width: 100vw;
-    height: 100vh;
-    overflow-y: auto;
-    scroll-snap-type: y mandatory;
-    scroll-behavior: smooth;
-  }
-  
-  section {
-    width: 100%;
-    height: 100vh;
-    max-height: 100vh;
-    scroll-snap-align: start;
-    position: relative;
-    overflow: hidden;
-    padding: 130px var(--pad-x) var(--pad-y);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    font-family: 'Barlow', sans-serif;
-    color: var(--ink);
-    background-color: var(--bg);
-    transition: background 0.4s ease, color 0.4s ease;
-  }
-
-  /* Sticky Header */
-  .sticky-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 76px;
-    backdrop-filter: blur(20px);
-    background: rgba(var(--bg), 0.85);
-    border-bottom: 1px solid var(--glass-border);
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 var(--pad-x);
-    transition: border-color 0.4s ease;
-  }
-
-  .header-logo {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 900;
-    font-size: 26px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: var(--ink);
-  }
-  .header-logo span {
-    color: var(--orange);
-  }
-
-  .header-right {
-    display: flex;
-    align-items: center;
-    gap: 28px;
-  }
-
-  .header-contact {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 700;
-    font-size: 17px;
-    letter-spacing: 0.5px;
-    color: var(--muted);
-    text-transform: uppercase;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .header-contact span {
-    color: var(--orange);
-  }
-
-  .theme-toggle-btn {
-    background: none;
-    border: 1px solid var(--glass-border);
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--ink);
-    transition: border-color 0.3s, background 0.3s;
-  }
-  .theme-toggle-btn:hover {
-    border-color: var(--orange);
-    background: rgba(242,106,30,0.05);
-  }
-
-  .register-btn {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 800;
-    font-size: 15px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: #000;
-    background: var(--orange);
-    padding: 10px 22px;
-    border-radius: 4px;
-    border: none;
-    cursor: pointer;
-    transition: background 0.3s, transform 0.2s;
-  }
-  .register-btn:hover {
-    background: var(--orange2);
-    transform: translateY(-1px);
-  }
-
-  /* Slanted / Bold Typography details */
-  .story-header {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: var(--kicker);
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    color: var(--orange);
-    font-weight: 800;
-    margin-bottom: 2px;
-  }
-
-  .story-title {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 900;
-    font-size: var(--title);
-    line-height: 0.88;
-    text-transform: uppercase;
-    letter-spacing: -0.5px;
-    margin-top: 6px; /* Closely stacked under the chapter subtitle */
-    margin-bottom: 0;
-  }
-
-  /* Magazine Layout Splits */
-  .mag-split {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    flex: 1;
-    min-height: 0;
-    align-items: center;
-    position: relative;
-    z-index: 5;
-  }
-
-  .mag-left-panel {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-  }
-
-  .mag-route-list {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .mag-route-item {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 4px;
-    border-bottom: 1px solid var(--line);
-    padding-bottom: 14px;
-    transition: border-color 0.3s;
-  }
-  .mag-route-header {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 800;
-    font-size: clamp(20px, 2.5vw, 30px);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    color: var(--muted);
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    transition: color 0.3s;
-  }
-  .mag-route-header span {
-    color: var(--orange);
-    font-weight: 600;
-  }
-  .mag-route-sub {
-    font-family: 'Barlow', sans-serif;
-    font-size: 11px;
-    color: var(--muted);
-    font-weight: 600;
-    margin-left: 56px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-  }
-  .mag-route-item:hover .mag-route-header {
-    color: var(--ink);
-  }
-  .mag-route-item:hover {
-    border-color: var(--orange);
-  }
-
-  .mag-btn {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 800;
-    font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: var(--ink);
-    background: rgba(242, 106, 30, 0.05);
-    border: 1px solid var(--orange);
-    padding: 14px 32px;
-    border-radius: 4px;
-    align-self: flex-start;
-    cursor: pointer;
-    transition: all 0.3s;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .mag-btn:hover {
-    background: var(--orange);
-    color: #000;
-    box-shadow: 0 0 15px rgba(242, 106, 30, 0.35);
-  }
-
-  .mag-right-panel {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    align-items: flex-end;
-    text-align: right;
-  }
-
-  .mag-mini-visual {
-    width: 320px;
-    height: 190px;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 16px 40px var(--shadow);
-    border: 1px solid var(--glass-border);
-    position: relative;
-  }
-  .mag-mini-visual::after {
-    content: '[ MATCHDAY_ARENA ]';
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 10px;
-    font-weight: 800;
-    color: #fff;
-    background: rgba(0,0,0,0.6);
-    padding: 2px 6px;
-    border-radius: 2px;
-    letter-spacing: 1px;
-  }
-
-  .mag-paragraph {
-    font-family: 'Barlow', sans-serif;
-    font-size: 14px;
-    line-height: 1.6;
-    color: var(--muted);
-    max-width: 340px;
-    text-transform: uppercase;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-  }
-
-  /* Hollow Background Overlay Text - Raised to clear footer text */
-  .hollow-overlay-text {
-    position: absolute;
-    bottom: 125px;
-    left: var(--pad-x);
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 900;
-    font-size: clamp(60px, 12vw, 150px);
-    line-height: 0.8;
-    text-transform: uppercase;
-    letter-spacing: -4px;
-    color: transparent;
-    -webkit-text-stroke: 1.5px var(--hollow-stroke);
-    pointer-events: none;
-    z-index: 2;
-    white-space: nowrap;
-  }
-
-  /* Full Screen Background Image Crop */
-  .mag-bg-image-container {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    pointer-events: none;
-  }
-  .mag-bg-image-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0.15;
-  }
-
-  .mag-bg-overlay {
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at 30% 50%, transparent 10%, var(--bg) 80%);
-    z-index: 2;
-  }
-
-  /* Story Footer Nav bar with top border separation */
-  .story-footer-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-top: 1px solid var(--line);
-    padding-top: 18px;
-    font-size: 11px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--muted);
-    font-weight: 700;
-    position: relative;
-    z-index: 5;
-    width: 100%;
-  }
-  .story-footer-nav span {
-    color: var(--orange);
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-
-  /* Roster Spec Columns - Adjusted margins per request */
-  .spec-grid-row {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 32px;
-    width: 100%;
-    /* border-top: 1px solid var(--line); */
-    padding-top: 10px;
-    margin-top: 10px;
-  }
-
-  .spec-col-item {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-
-  .spec-col-num {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: clamp(34px, 4vw, 54px);
-    font-weight: 900;
-    line-height: 1;
-    color: var(--orange);
-  }
-
-  .spec-col-label {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 15px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    color: var(--ink);
-  }
-
-  .spec-col-desc {
-    font-family: 'Barlow', sans-serif;
-    font-size: 12px;
-    color: var(--muted);
-    line-height: 1.35;
-  }
-
-  /* Bracket Card styling */
-  .bracket-card {
-    background: var(--card-bg);
-    border: 1px solid var(--glass-border);
-    border-radius: 8px;
-    padding: 24px;
-    flex: 1;
-    text-align: center;
-    transition: all 0.3s;
-  }
-  .bracket-card:hover {
-    border-color: rgba(242,106,30,0.25);
-  }
-  .bracket-title {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 20px;
-    font-weight: 800;
-    margin-top: 2px;
-    color: var(--ink);
-  }
-
-  .tournament-math-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    width: 100%;
-    position: relative;
-    z-index: 5;
-    margin-top: 20px;
-  }
-
-  .cover-action-row {
-    margin-top: 30px;
-    display: flex;
-    gap: 16px;
-    align-items: center;
-  }
-
-  .math-card {
-    background: var(--card-bg);
-    border: 1px solid var(--glass-border);
-    border-radius: 16px;
-    padding: 28px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    min-height: 300px;
-    box-shadow: 0 20px 40px var(--shadow);
-    text-align: left;
-    box-sizing: border-box;
-    transition: all 0.3s ease;
-  }
-
-  .math-card h3 {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 26px;
-    font-weight: 900;
-    color: var(--ink);
-    margin: 0 0 16px 0;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    border-bottom: 1px solid var(--line);
-    padding-bottom: 8px;
-  }
-
-  .math-card p {
-    font-size: 13px;
-    line-height: 1.45;
-    color: var(--muted);
-    margin: 0;
-    font-family: 'Barlow', sans-serif;
-    font-weight: 500;
-  }
-
-  /* Mobile and Portrait Adaptations */
-  @media (max-width: 1024px), (max-aspect-ratio: 11/10) {
-    section {
-      padding-top: 135px !important; /* Adjusted slightly down from 145px to optimize spacing */
-      gap: 10px !important;
-    }
-
-    .story-title {
-      letter-spacing: 0px !important;
-      margin-bottom: 10px !important;
-    }
-
-    .mag-split {
-      grid-template-columns: 1fr;
-      gap: 20px;
-      overflow-y: auto;
-    }
-    .mag-right-panel {
-      align-items: flex-start;
-      text-align: left;
-    }
-    .mag-mini-visual {
-      width: 100%;
-      height: 150px;
-    }
-    .hollow-overlay-text {
-      display: none;
-    }
-    
-    /* Dynamic change - remove 1 column stacking to keep items side by side */
-    .spec-grid-row {
-      /* grid-template-columns: 1fr; */
-      gap: 16px;
-    }
-
-    .tournament-math-grid {
-      grid-template-columns: 1fr;
-      gap: 12px;
-      margin-top: 0px !important;
-    }
-
-    .cover-action-row {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 12px;
-      margin-top: 20px;
-    }
-
-    .math-card {
-      min-height: 130px !important;
-      padding: 16px 20px !important;
-      border-radius: 12px !important;
-    }
-
-    .math-card h3 {
-      font-size: 18px !important;
-      margin-bottom: 10px !important;
-      padding-bottom: 4px !important;
-    }
-
-    .math-card p {
-      font-size: 11px !important;
-      line-height: 1.35 !important;
-      margin-top: 6px !important;
-    }
-
-    .math-card span {
-      font-size: 12px !important;
-    }
-
-    .math-card span[style*="font-size: 15px"],
-    .math-card span[style*="font-size: 14px"] {
-      font-size: 12px !important;
-    }
-
-    .math-card span[style*="font-size: 22px"] {
-      font-size: 16px !important;
-    }
-
-    /* Fixed mobile header overlaps */
-    .sticky-header {
-      height: 86px;
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      padding: 8px 16px;
-    }
-    .header-logo {
-      font-size: 20px;
-    }
-    .header-contact {
-      width: 100%;
-      order: 3;
-      text-align: center;
-      font-size: 11px;
-      margin-top: 2px;
-      border-top: 1px solid var(--line);
-      padding-top: 4px;
-      justify-content: center;
-    }
-    .register-btn {
-      font-size: 12px;
-      padding: 6px 14px;
-    }
-    .theme-toggle-btn {
-      width: 32px;
-      height: 32px;
-    }
-
-    /* Fix mobile bracket flow readability */
-    .bracket-card {
-      padding: 16px;
-    }
-    .bracket-title {
-      font-size: 16px;
-    }
-    .bracket-card div:first-child {
-      font-size: 11px !important;
-    }
-  }
-
-  /* Extreme Mobile Adjustments (Header Stack) */
-  @media (max-width: 480px) {
-    .sticky-header {
-      height: 96px;
-    }
-    .header-logo {
-      font-size: 18px;
-    }
-    .header-right {
-      gap: 12px;
-    }
-  }
-</style>
+<link rel="stylesheet" href="assets/style.css?v=3.6">
 </head>
 <body class="dark-theme">
 
 <!-- ============ STICKY HEADER ============ -->
 <header class="sticky-header">
   <div class="header-logo">
-    Athlora<span>Cup</span>
+    <img class="header-emblem" src="assets/images/athlora-logo.png" alt="Athlora Sports Events" onerror="this.style.display='none'">
+    <span class="logo-word">Athlora<span>Cup</span></span>
   </div>
   <div class="header-right">
     <!-- Contact changed to icon only layout -->
@@ -681,37 +40,39 @@
 <div class="deck-container">
 
   <!-- ============ COVER ============ -->
-  <section data-label="Cover" style="justify-content: center; padding-top: 0; padding-bottom: 0;">
+  <section data-label="Cover" class="cover-section">
     <div class="sports-grid-lines" style="background-image: linear-gradient(to right, rgba(var(--bg-rgb),0.02) 1px, transparent 1px), linear-gradient(to bottom, rgba(var(--bg-rgb),0.02) 1px, transparent 1px);"></div>
-    <div class="radial-glow" style="left:50%; top:50%; transform:translate(-50%, -50%);"></div>
-    
-    <div style="position:absolute; left: auto; right: 0; width: 62%; height: 100%; z-index: 1;">
-      <img class="img-slot" src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?fm=jpg&amp;q=80&amp;w=1900&amp;auto=format&amp;fit=crop" alt="Championship setup" style="width: 100%; height: 100%; object-fit: cover; object-position: center center; filter: grayscale(10%) contrast(105%) brightness(0.85); opacity: 0.85; transition: opacity 0.4s ease;">
-      <!-- Linear gradients to fade image leftward and downward -->
-      <div style="position: absolute; inset: 0; background: linear-gradient(to right, var(--bg) 0%, var(--bg) 20%, transparent 95%); z-index: 2; pointer-events: none;"></div>
-      <div style="position: absolute; inset: 0; background: linear-gradient(to top, var(--bg) 0%, transparent 50%); z-index: 2; pointer-events: none;"></div>
-    </div>
-    
-    <div style="position:relative; z-index:3; max-width:1200px; width:100%; display:flex; flex-direction:column; justify-content:center; height:100%;">
-      <div style="display:flex;align-items:center;gap:10px;font-size:var(--kicker);letter-spacing:4px;text-transform:uppercase;color:var(--orange);font-weight:700;" class="reveal">
-        <span style="width:24px;height:2px;background:var(--orange);display:inline-block;"></span>
-        Junior League Championship
-      </div>
-      
-      <h1 style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:var(--title-lg);line-height:0.88;text-transform:uppercase;margin:18px 0 10px;letter-spacing:-1.5px;text-shadow: var(--text-shadow-val);" class="reveal delay-1">
-        Unlock<br>Your Roster's <span style="color:var(--orange);">Glory.</span>
-      </h1>
-      
-      <p style="font-size:var(--body); font-weight:400; color:var(--muted); max-width:650px; line-height:1.45;" class="reveal delay-2">
-        Welcome to the <strong>Athlora Junior Cup 2026</strong>. A tournament engineered for competitive junior clubs seeking elite organization, live statistics, and high-impact media coverage.
-      </p>
+    <div class="radial-glow" style="left:70%; top:50%; transform:translate(-50%, -50%);"></div>
 
-      <div class="cover-action-row reveal delay-3">
-        <div style="background:var(--orange); color:#000; font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:20px; letter-spacing:1px; text-transform:uppercase; padding:12px 28px; border-radius:3px;">
-          Kickoff Aug 15, 2026
+    <!-- Background photo, faded into the theme bg (same language as the other slides) -->
+    <div class="cover-photo">
+      <img src="assets/images/cover.jpg" alt="Championship setup">
+      <div class="cover-fade-x"></div>
+      <div class="cover-fade-y"></div>
+    </div>
+
+    <div class="cover-grid">
+      <div class="cover-copy">
+        <div style="display:flex;align-items:center;gap:10px;font-size:var(--kicker);letter-spacing:4px;text-transform:uppercase;color:var(--orange);font-weight:700;" class="reveal">
+          <span style="width:24px;height:2px;background:var(--orange);display:inline-block;"></span>
+          Junior League Championship
         </div>
-        <div style="font-size:14px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); font-weight:700;">
-          U9 &amp; U11 divisions &nbsp;•&nbsp; Chennai
+
+        <h1 style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:var(--title-lg);line-height:0.88;text-transform:uppercase;margin:18px 0 12px;letter-spacing:-1.5px;text-shadow: var(--text-shadow-val);" class="reveal delay-1">
+          Unlock<br>Your Roster's <span style="color:var(--orange);">Glory.</span>
+        </h1>
+
+        <p style="font-size:var(--body); font-weight:400; color:var(--muted); max-width:560px; line-height:1.45;" class="reveal delay-2">
+          Welcome to the <strong>Athlora Junior Cup 2026</strong>. A tournament engineered for competitive junior clubs seeking elite organization, live statistics, and high-impact media coverage.
+        </p>
+
+        <div class="cover-action-row reveal delay-3">
+          <div style="background:var(--orange); color:#000; font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:20px; letter-spacing:1px; text-transform:uppercase; padding:12px 28px; border-radius:3px;">
+            Kickoff Aug 15, 2026
+          </div>
+          <div style="font-size:14px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); font-weight:700;">
+            U9 &amp; U11 divisions &nbsp;•&nbsp; Chennai
+          </div>
         </div>
       </div>
     </div>
@@ -722,7 +83,7 @@
     <!-- Background player photo aligned dynamically to the right with left-to-right fade out -->
     <div class="mag-bg-image-container" style="left: auto; right: 0; width: 72%; height: 100%;">
       <!-- Swapped out to a fully working soccer match action image on the right side -->
-      <img src="https://images.unsplash.com/photo-1459865264687-595d652de67e?auto=format&amp;fit=crop&amp;q=80&amp;w=1400" alt="Roster bg" style="object-position: right center; opacity: var(--bg-img-opacity); transition: opacity 0.4s ease;">
+      <img src="assets/images/roster_specs.jpg" alt="Roster bg" style="object-position: right center; opacity: var(--bg-img-opacity); transition: opacity 0.4s ease;">
       <!-- Transition to solid theme bg on the left (copies sit on pure color background) -->
       <div style="position: absolute; inset: 0; background: linear-gradient(to right, var(--bg) 0%, var(--bg) 15%, transparent 90%); z-index: 2;"></div>
     </div>
@@ -771,18 +132,17 @@
 
     <div class="story-footer-nav reveal delay-2" style="margin-top: auto; padding-top: 18px;">
       <div>Scroll to review match timings and math</div>
-      <span>02 / 08 &nbsp;➔</span>
+      <span>02 / 11 &nbsp;➔</span>
     </div>
   </section>
 
   <!-- ============ CHAPTER 2: THE LEAGUE STAGE ============ -->
-  <!-- ============ CHAPTER 2: THE LEAGUE STAGE ============ -->
   <section data-label="League Format" style="justify-content: flex-start; gap: 20px;">
     <!-- Shrunk background image container to 62% width and pushed right to keep cards on solid black -->
     <div class="mag-bg-image-container" style="left: auto; right: 0; width: 62%; height: 100%;">
-      <img src="https://images.unsplash.com/photo-1579527631111-2a14963f0dfc?auto=format&amp;fit=crop&amp;q=80&amp;w=1400" alt="Match bg" style="object-position: right center; opacity: 0.75; transition: opacity 0.4s ease;">
-      <!-- Transition to solid theme bg on the left -->
-      <div style="position: absolute; inset: 0; background: linear-gradient(to right, var(--bg) 0%, var(--bg) 25%, transparent 95%); z-index: 2;"></div>
+      <img src="assets/images/league_format.jpg" alt="Match bg" style="object-position: right center; opacity: 0.75; transition: opacity 0.4s ease;">
+      <!-- Transition to solid theme bg on the right with a gradual, smooth fade -->
+      <div style="position: absolute; inset: 0; background: linear-gradient(to right, var(--bg) 0%, rgba(var(--bg-rgb), 0.9) 20%, rgba(var(--bg-rgb), 0.4) 60%, transparent 90%); z-index: 2;"></div>
     </div>
 
     <!-- Header / Title -->
@@ -792,7 +152,7 @@
     </div>
 
     <!-- 3-Column Premium Feature Cards (Single Container per Column) -->
-    <div class="tournament-math-grid reveal delay-1">
+    <div class="tournament-math-grid reveal delay-1" style="align-self:flex-start; text-align:left;">
       
       <!-- Column 1: Matches -->
       <div class="math-card">
@@ -854,247 +214,611 @@
 
     </div>
 
-    <div class="hollow-overlay-text">ROUND ROBIN PLAY</div>
+    <div class="hollow-overlay-text" style="left: auto; right: var(--pad-x); transform: none;">ROUND ROBIN PLAY</div>
+
+    <div class="story-footer-nav reveal delay-2" style="margin-top: auto; padding-top: 18px; justify-content:flex-end;">
+      <div style="margin-right:12px;">Scroll to view media &amp; photoshoots</div>
+      <span>03 / 11 &nbsp;➔</span>
+    </div>
+  </section>
+
+
+
+  <!-- ============ SLIDE 4: MATCH RULES ============ -->
+  <section data-label="Match Rules" style="justify-content: flex-start; gap: 20px;">
+    <div class="mag-bg-image-container" style="left: 0; right: 0; width: 100%; height: 100%;">
+      <img src="assets/images/indian_kids_football.jpg" alt="Indian kids playing football at sunset" style="object-position: center 30%; opacity: 0.25; transition: opacity 0.4s ease;">
+      <div style="position: absolute; inset: 0; background: linear-gradient(to bottom, var(--bg) 0%, transparent 40%, var(--bg) 100%); z-index: 2;"></div>
+    </div>
+
+    <!-- Header / Title -->
+    <div style="display:flex; flex-direction:column; position:relative; z-index:5; max-width:600px; margin-bottom:60px;" class="reveal">
+      <div class="story-header" style="color:var(--orange); margin-bottom:16px;">Chapter 03 / Regulations</div>
+      <h1 class="story-title" style="margin-bottom:16px; font-size:54px; line-height:1.05;">Strictly Professional Standards.</h1>
+      <p style="font-size:18px; color:var(--muted); margin:0; line-height:1.5;">Regulated match durations, age eligibility, and unlimited rolling substitutions to keep play dynamic.</p>
+    </div>
+
+    <!-- 4-Column Editorial Stat Grid -->
+    <div class="cgrid c4 reveal delay-1" style="max-width:1100px; gap:36px;">
+
+      <div class="rule-stat">
+        <div class="stat-num">15<span>m</span></div>
+        <div class="stat-label">U9 Halves</div>
+        <p class="stat-desc">Fast-paced halves tailored for young stamina. Eligibility: Born 2017+.</p>
+      </div>
+
+      <div class="rule-stat">
+        <div class="stat-num">20<span>m</span></div>
+        <div class="stat-label">U11 Halves</div>
+        <p class="stat-desc">Extended durations to push strategic play. Eligibility: Born 2015+.</p>
+      </div>
+
+      <div class="rule-stat">
+        <div class="stat-num">05<span>m</span></div>
+        <div class="stat-label">Halftime Break</div>
+        <p class="stat-desc">Strictly timed breather between halves for hydration and tactics.</p>
+      </div>
+
+      <div class="rule-stat">
+        <div class="stat-num">∞</div>
+        <div class="stat-label">Rolling Subs</div>
+        <p class="stat-desc">Unlimited substitutions to keep players fresh, plus on-site physio.</p>
+      </div>
+
+    </div>
+
+    <div class="hollow-overlay-text">MATCH REGULATIONS</div>
 
     <div class="story-footer-nav reveal delay-2" style="margin-top: auto; padding-top: 18px;">
-      <div>Scroll to view media &amp; photoshoots</div>
-      <span>03 / 08 &nbsp;➔</span>
+      <div>Scroll to see knockout brackets</div>
+      <span>04 / 11 &nbsp;➔</span>
     </div>
   </section>
 
-  <!-- ============ CHAPTER 3: TEAM PHOTOSHOOTS ============ -->
-  <section data-label="Media Coverage">
-    <div class="mag-bg-image-container">
-      <img src="https://images.unsplash.com/photo-1526232761682-d26e03ac148e?fm=jpg&amp;q=80&amp;w=1400&amp;auto=format&amp;fit=crop" alt="Photoshoot bg">
-      <div class="mag-bg-overlay"></div>
+  <!-- ============ SLIDE 5: KNOCKOUT BRACKETS ============ -->
+  <section data-label="Knockouts" style="justify-content: flex-start; gap: 20px;">
+    <div class="mag-bg-image-container" style="left: auto; right: 0; width: 62%; height: 100%;">
+      <img src="assets/images/knockouts.jpg" alt="Knockouts bg" style="object-position: right center; opacity: 0.35; transition: opacity 0.4s ease;">
+      <!-- Transition to solid theme bg on the right with a gradual, smooth fade to ensure text legibility -->
+      <div style="position: absolute; inset: 0; background: linear-gradient(to right, var(--bg) 0%, rgba(var(--bg-rgb), 0.95) 20%, rgba(var(--bg-rgb), 0.6) 65%, transparent 100%); z-index: 2;"></div>
     </div>
 
+    <!-- Header / Title -->
     <div style="display:flex; flex-direction:column; position:relative; z-index:5;" class="reveal">
-      <div class="story-header">Chapter 03 / Media Coverage</div>
-      <h1 class="story-title">Professional Team Media</h1>
+      <div class="story-header">Chapter 04 / Knockout Stage</div>
+      <h1 class="story-title" style="margin-bottom: 24px;">Gold &amp; Silver Cup</h1>
     </div>
 
-    <div class="mag-split">
-      <div class="mag-left-panel reveal delay-1">
-        <div class="mag-route-list">
-          <div class="mag-route-item">
-            <div class="mag-route-header"><span>001 /</span> Official Squad Squad Photoshoot</div>
-            <div class="mag-route-sub">High-definition crew portraits and roster prints</div>
-          </div>
-          <div class="mag-route-item">
-            <div class="mag-route-header"><span>002 /</span> High-Res Player Portraits</div>
-            <div class="mag-route-sub">Individual digital profile assets and action shots</div>
-          </div>
-          <div class="mag-route-item">
-            <div class="mag-route-header"><span>003 /</span> Custom Video Launch Posters</div>
-            <div class="mag-route-sub">Personalized team graphics optimized for club socials</div>
-          </div>
+
+    <!-- Two "road to the title" ladders -->
+    <!-- 2-Column Bracket Grid (single column on mobile) -->
+    <div class="bracket-grid reveal delay-1">
+
+      <!-- GOLD CUP CARD -->
+      <div class="cup-card gold-theme">
+        <div class="cup-header">
+          <span class="cup-badge">🏆 GOLD CUP</span>
+          <span class="cup-sub">TOP 4 TEAMS</span>
         </div>
-      </div>
-      <div class="mag-right-panel reveal delay-2">
-        <div class="mag-mini-visual">
-          <img class="img-slot" src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?fm=jpg&amp;q=80&amp;w=400&amp;auto=format&amp;fit=crop" alt="Camera lens">
-        </div>
-        <p class="mag-paragraph">
-          Capturing the milestones. High-resolution squad photography and player media assets generated for all club channels.
-        </p>
-      </div>
-    </div>
 
-    <div class="hollow-overlay-text">CAPTURE THE MOMENT</div>
-
-    <div class="story-footer-nav reveal delay-3">
-      <div>Scroll to inspect the mobile app stats</div>
-      <span>04 / 08 &nbsp;➔</span>
-    </div>
-  </section>
-
-  <!-- ============ CHAPTER 4: PLAYER STATISTICS ============ -->
-  <section data-label="Live Tracking">
-    <div class="mag-bg-image-container">
-      <img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?fm=jpg&amp;q=80&amp;w=1400&amp;auto=format&amp;fit=crop" alt="Stats bg">
-      <div class="mag-bg-overlay"></div>
-    </div>
-
-    <div style="display:flex; flex-direction:column; position:relative; z-index:5;" class="reveal">
-      <div class="story-header">Chapter 04 / Live Tracking</div>
-      <h1 class="story-title">Real-Time Player Statistics</h1>
-    </div>
-
-    <div class="mag-split">
-      <div class="mag-left-panel reveal delay-1">
-        <div class="mag-route-list">
-          <div class="mag-route-item">
-            <div class="mag-route-header"><span>001 /</span> Auto-Recorded App Stats</div>
-            <div class="mag-route-sub">Live stats tracking integrated directly on pitchside tables</div>
-          </div>
-          <div class="mag-route-item">
-            <div class="mag-route-header"><span>002 /</span> Goals, Assists &amp; Clean Sheets</div>
-            <div class="mag-route-sub">Detailed statistics compiled to build player charts</div>
-          </div>
-          <div class="mag-route-item">
-            <div class="mag-route-header"><span>003 /</span> Digital Player Profiles</div>
-            <div class="mag-route-sub">Shareable tournament records with complete stats sheets</div>
-          </div>
-        </div>
-      </div>
-      <div class="mag-right-panel reveal delay-2">
-        <div style="width:220px;height:340px;border-radius:24px;border:6px solid #2a231b;background:#0d0b08;overflow:hidden;position:relative;box-shadow:0 20px 50px var(--shadow); text-align:left;">
-          <div style="width: 100%; height: 100%; background: #0c0907; padding: 16px 8px 8px; font-family: 'Barlow', sans-serif; color: #fff; display: flex; flex-direction: column;">
-            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 4px;">
-              <span style="font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 800; text-transform: uppercase;">Athlora App</span>
-              <span style="color: var(--orange); font-size: 7px; font-weight: 700;">• LIVE</span>
+        <div class="bracket-flow">
+          <!-- Semi-Finals & Third Place Column -->
+          <div style="display:flex; flex-direction:column; flex:1.2;">
+            <div style="display:flex; flex-direction:column; justify-content:space-between; height:138px;">
+              <div class="match-box">
+                <div class="match-meta">SEMI-FINAL 1</div>
+                <div class="match-teams">
+                  <span class="team-seed">1st Seed</span>
+                  <span class="vs-tag">VS</span>
+                  <span class="team-seed">4th Seed</span>
+                </div>
+              </div>
+              <div class="match-box">
+                <div class="match-meta">SEMI-FINAL 2</div>
+                <div class="match-teams">
+                  <span class="team-seed">2nd Seed</span>
+                  <span class="vs-tag">VS</span>
+                  <span class="team-seed">3rd Seed</span>
+                </div>
+              </div>
             </div>
-            <div style="background: #181310; border-radius: 8px; padding: 6px; margin-top: 8px; font-size: 9px; display: flex; justify-content: space-between;">
-              <span>Outlast FC</span>
-              <span style="font-weight:700; color:var(--gold);">3 - 1</span>
+
+            <!-- Third Place Playoff -->
+            <div class="match-box" style="margin-top:10px;">
+              <div class="match-meta" style="color:var(--muted);">THIRD-PLACE PLAYOFF</div>
+              <div class="match-teams">
+                <span class="team-seed" style="font-size:15px; color:var(--muted);">Loser SF1</span>
+                <span class="vs-tag">VS</span>
+                <span class="team-seed" style="font-size:15px; color:var(--muted);">Loser SF2</span>
+              </div>
             </div>
-            <div style="margin-top: 10px; font-size: 8px; color: var(--muted); text-transform: uppercase; font-weight:700;">Top Standings</div>
-            <div style="background: rgba(255,255,255,0.02); padding: 4px; border-radius: 4px; font-size: 8px; margin-top: 4px; display: flex; justify-content: space-between;">
-              <span>1. Outlast FC</span>
-              <span style="font-weight: 700; color: var(--orange);">12 PTS</span>
+          </div>
+
+          <!-- Connectors (desktop only) -->
+          <div class="bracket-connector" style="width:60px; height:138px; align-self:flex-start;">
+            <svg width="60" height="138" viewBox="0 0 60 138" style="color: var(--gold); opacity: 0.4;">
+              <path d="M 0 32.5 L 30 32.5 L 30 69 L 60 69" stroke="currentColor" stroke-width="2" fill="none" />
+              <path d="M 0 105.5 L 30 105.5 L 30 69" stroke="currentColor" stroke-width="2" fill="none" />
+            </svg>
+          </div>
+
+          <!-- Finals Column -->
+          <div style="display:flex; flex-direction:column; justify-content:center; height:138px; align-self:flex-start; flex:1;">
+            <div class="match-box final-box">
+              <div class="match-meta">WINNER SF1 VS SF2</div>
+              <div class="final-title">GOLD CHAMPION</div>
             </div>
           </div>
         </div>
-        <p class="mag-paragraph">
-          Roster sheets update automatically on the Sportiva app. Full stats visible securely with parental consent templates.
-        </p>
       </div>
+
+      <!-- SILVER CUP CARD -->
+      <div class="cup-card silver-theme">
+        <div class="cup-header">
+          <span class="cup-badge">🥈 SILVER CUP</span>
+          <span class="cup-sub">5TH-8TH TEAMS</span>
+        </div>
+
+        <div class="bracket-flow">
+          <!-- Semi-Finals & Third Place Column -->
+          <div style="display:flex; flex-direction:column; flex:1.2;">
+            <div style="display:flex; flex-direction:column; justify-content:space-between; height:138px;">
+              <div class="match-box">
+                <div class="match-meta">SEMI-FINAL 1</div>
+                <div class="match-teams">
+                  <span class="team-seed">5th Seed</span>
+                  <span class="vs-tag">VS</span>
+                  <span class="team-seed">8th Seed</span>
+                </div>
+              </div>
+              <div class="match-box">
+                <div class="match-meta">SEMI-FINAL 2</div>
+                <div class="match-teams">
+                  <span class="team-seed">6th Seed</span>
+                  <span class="vs-tag">VS</span>
+                  <span class="team-seed">7th Seed</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Third Place Playoff -->
+            <div class="match-box" style="margin-top:10px;">
+              <div class="match-meta" style="color:var(--muted);">THIRD-PLACE PLAYOFF</div>
+              <div class="match-teams">
+                <span class="team-seed" style="font-size:15px; color:var(--muted);">Loser SF1</span>
+                <span class="vs-tag">VS</span>
+                <span class="team-seed" style="font-size:15px; color:var(--muted);">Loser SF2</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Connectors (desktop only) -->
+          <div class="bracket-connector" style="width:60px; height:138px; align-self:flex-start;">
+            <svg width="60" height="138" viewBox="0 0 60 138" style="color: var(--silver); opacity: 0.4;">
+              <path d="M 0 32.5 L 30 32.5 L 30 69 L 60 69" stroke="currentColor" stroke-width="2" fill="none" />
+              <path d="M 0 105.5 L 30 105.5 L 30 69" stroke="currentColor" stroke-width="2" fill="none" />
+            </svg>
+          </div>
+
+          <!-- Finals Column -->
+          <div style="display:flex; flex-direction:column; justify-content:center; height:138px; align-self:flex-start; flex:1;">
+            <div class="match-box final-box">
+              <div class="match-meta">WINNER SF1 VS SF2</div>
+              <div class="final-title">SILVER CHAMPION</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
 
-    <div class="hollow-overlay-text">LIVE STATS APPS</div>
+    <div class="hollow-overlay-text">THE KNOCKOUTS</div>
 
-    <div class="story-footer-nav reveal delay-3">
-      <div>Scroll to explore knockout brackets</div>
-      <span>05 / 08 &nbsp;➔</span>
+    <div class="story-footer-nav reveal delay-2" style="margin-top:auto; padding-top:18px;">
+      <div>Scroll to see championship awards</div>
+      <span>05 / 11 &nbsp;➔</span>
     </div>
   </section>
 
-  <!-- ============ CHAPTER 5: THE KNOCKOUT PATHWAYS ============ -->
-  <section data-label="Knockouts">
-    <div style="display:flex; flex-direction:column; position:relative; z-index:5;" class="reveal">
-      <div class="story-header">Chapter 05 / Knockout Stage</div>
-      <h1 class="story-title">Gold &amp; Silver Cup Pathways</h1>
+  <!-- ============ SLIDE 6: TEAM AWARDS ============ -->
+  <section data-label="Championship Awards" style="justify-content: flex-start; gap: 20px;">
+    <div class="mag-bg-image-container" style="left: 0; right: auto; width: 62%; height: 100%;">
+      <img src="assets/images/team_awards.jpg" alt="Team Awards bg" style="object-position: left center; opacity: 0.6; transition: opacity 0.4s ease;">
+      <div style="position: absolute; inset: 0; background: linear-gradient(to left, var(--bg) 0%, var(--bg) 25%, transparent 95%); z-index: 2;"></div>
     </div>
 
-    <div class="mag-split">
-      <div class="mag-left-panel reveal delay-1">
-        <p class="story-narrative">
-          In Week 5, standings split. The **Top 4 clubs** advance to the Gold Cup playoffs, and the **Bottom 4 clubs** compete in the Silver Cup brackets, guaranteeing matches and balanced play.
-        </p>
+    <!-- Centered composition — a podium reads best symmetrically -->
+    <div style="display:flex; flex-direction:column; position:relative; z-index:5; align-items:center; text-align:center;" class="reveal">
+      <div class="story-header">Chapter 05 / Awards</div>
+      <h1 class="story-title" style="margin-bottom: 24px;">Team Recognition</h1>
+    </div>
+
+    <div style="display:flex; flex-direction:column; align-items:center; gap:18px; position:relative; z-index:5; width:100%;" class="reveal delay-1">
+
+      <!-- The podium — 2nd / 1st / 3rd, height carries the rank -->
+      <div class="podium-stage" style="max-width:880px;">
+        <div class="pod silver">
+          <span class="pod-medal">🥈</span>
+          <div class="pod-rank">2nd</div>
+          <div class="pod-label">Runner-up</div>
+          <span class="pod-num">2</span>
+        </div>
+        <div class="pod gold">
+          <span class="pod-medal">🏆</span>
+          <div class="pod-rank">1st</div>
+          <div class="pod-label">Champions</div>
+          <span class="pod-num">1</span>
+        </div>
+        <div class="pod bronze">
+          <span class="pod-medal">🥉</span>
+          <div class="pod-rank">3rd</div>
+          <div class="pod-label">Third Place</div>
+          <span class="pod-num">3</span>
+        </div>
       </div>
-      <div class="mag-right-panel reveal delay-2">
-        <div style="display:flex; flex-direction:column; gap:12px; width:100%; text-align:left;">
-          <div class="bracket-card" style="border-left: 3px solid var(--orange);">
-            <div style="font-size:10px; text-transform:uppercase; color:var(--muted); font-weight:700;">Gold Cup Semis</div>
-            <div class="bracket-title">1st vs 4th &nbsp;|&nbsp; 2nd vs 3rd</div>
+
+      <!-- Remaining placements, one panel -->
+      <div style="width:100%; max-width:880px;">
+        <div class="card-eyebrow muted" style="margin-bottom:8px; text-align:left;">Also Placed</div>
+        <div class="placement-strip">
+          <div class="slot">4th</div>
+          <div class="slot">5th</div>
+          <div class="slot">6th</div>
+          <div class="slot">7th</div>
+          <div class="slot">8th</div>
+        </div>
+      </div>
+
+      <!-- Every-player &amp; spirit awards -->
+      <div class="cgrid c2" style="max-width:880px;">
+        <div class="surface" style="display:flex; align-items:center; gap:14px; padding:16px 18px; text-align:left;">
+          <div class="award-icon gold inline">🏅</div>
+          <div>
+            <div class="card-eyebrow gold">Every Player</div>
+            <div class="card-title" style="font-size:17px; margin-top:2px;">Participation Medals &amp; Certificates</div>
           </div>
-          <div class="bracket-card" style="border-color:var(--gold); border-left: 3px solid var(--gold);">
-            <div style="font-size:10px; text-transform:uppercase; color:var(--gold); font-weight:700;">Gold Cup Final</div>
-            <div class="bracket-title" style="color: var(--gold);">Championship Final</div>
-          </div>
-          <div class="bracket-card" style="border-left: 3px solid var(--silver);">
-            <div style="font-size:10px; text-transform:uppercase; color:var(--muted); font-weight:700;">Silver Cup Semis</div>
-            <div class="bracket-title">5th vs 8th &nbsp;|&nbsp; 6th vs 7th</div>
+        </div>
+        <div class="surface" style="display:flex; align-items:center; gap:14px; padding:16px 18px; text-align:left;">
+          <div class="award-icon inline">🤝</div>
+          <div>
+            <div class="card-eyebrow">Sportsmanship</div>
+            <div class="card-title" style="font-size:17px; margin-top:2px;">Fair Play Team Award</div>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="hollow-overlay-text">KNOCKOUT FINALS</div>
+    <div class="hollow-overlay-text" style="left: 50%; right: auto; transform: translateX(-50%);">CHAMPIONS</div>
 
-    <div class="story-footer-nav reveal delay-3">
-      <div>Scroll to inspect the awards list</div>
-      <span>06 / 08 &nbsp;➔</span>
+    <div class="story-footer-nav reveal delay-3" style="margin-top:auto; padding-top:18px; justify-content:flex-end;">
+      <div style="margin-right:12px;">Scroll for individual honours</div>
+      <span>06 / 11 &nbsp;➔</span>
     </div>
   </section>
 
-  <!-- ============ CHAPTER 6: TEAM & INDIVIDUAL AWARDS ============ -->
-  <section data-label="Championship Awards">
-    <div style="display:flex; flex-direction:column; position:relative; z-index:5;" class="reveal">
-      <div class="story-header">Chapter 06 / Championships</div>
-      <h1 class="story-title">Team &amp; Individual Awards</h1>
+  <!-- ============ SLIDE 7: INDIVIDUAL AWARDS ============ -->
+  <section data-label="Individual Awards" style="justify-content: flex-start; gap: 20px;">
+    <div class="mag-bg-image-container" style="left: auto; right: 0; width: 62%; height: 100%;">
+      <img src="assets/images/individual_awards.jpg" alt="Player recognition bg" style="object-position: center; opacity:0.6; transition:opacity 0.4s ease;" onerror="this.style.display='none'">
+      <div style="position:absolute; inset:0; background:linear-gradient(to right, var(--bg) 0%, var(--bg) 25%, transparent 95%); z-index:2;"></div>
     </div>
 
-    <div class="mag-split">
-      <div class="mag-left-panel reveal delay-1">
-        <p class="story-narrative">
-          Celebrating development across all groups. We award official trophies for both Gold and Silver cup champions, combined with specific individual medals.
-        </p>
+    <div style="display:flex; flex-direction:column; position:relative; z-index:5;" class="reveal">
+      <div class="story-header">Chapter 06 / Individual Honours</div>
+      <h1 class="story-title" style="margin-bottom:24px;">Player Recognition</h1>
+    </div>
+
+    <div class="cgrid c3 reveal delay-1" style="max-width:960px;">
+
+      <div class="surface award-card">
+        <div class="award-icon gold">
+          <!-- football boot with studs -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 6h2.2c.9 0 1.7.5 2.1 1.3l1.4 2.5c.3.5.8.8 1.3.9l5.4.8c2.2.3 3.9 1.4 4.5 2.9.3.9-.3 1.8-1.3 1.8H4V6Z"/>
+            <path d="M7 16.2v1.9M11 16.2v1.9M15 16.2v1.9M19 16.2v1.9"/>
+          </svg>
+        </div>
+        <div class="card-eyebrow gold">Top Scorer</div>
+        <div class="card-title">Golden Boot</div>
+        <p class="card-desc">Most goals scored across the tournament</p>
       </div>
-      <div class="mag-right-panel reveal delay-2">
-        <div class="awards-grid">
-          <div class="glass-card" style="padding:14px; text-align:center; border-left: 3px solid var(--gold);">
-            <div style="font-size:20px;">🏆</div>
-            <div style="font-family:'Barlow Condensed',sans-serif; font-size:14px; font-weight:800; color:var(--gold); margin-top:4px;">Gold Cup</div>
-          </div>
-          <div class="glass-card" style="padding:14px; text-align:center; border-left: 3px solid var(--silver);">
-            <div style="font-size:20px;">🥈</div>
-            <div style="font-family:'Barlow Condensed',sans-serif; font-size:14px; font-weight:800; color:var(--silver); margin-top:4px;">Silver Cup</div>
-          </div>
-          <div class="glass-card" style="padding:14px; text-align:center; border-left: 3px solid var(--orange);">
-            <div style="font-size:20px;">⚽</div>
-            <div style="font-family:'Barlow Condensed',sans-serif; font-size:14px; font-weight:800; color:var(--orange); margin-top:4px;">Golden Boot</div>
-          </div>
-          <div class="glass-card" style="padding:14px; text-align:center;">
-            <div style="font-size:20px;">🏅</div>
-            <div style="font-family:'Barlow Condensed',sans-serif; font-size:14px; font-weight:800; color:var(--ink); margin-top:4px;">Medals</div>
-          </div>
+      <div class="surface award-card">
+        <div class="award-icon gold">
+          <!-- football -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="9.25"/>
+            <path d="M12 7.4 16.38 10.58 14.7 15.72 9.3 15.72 7.62 10.58Z"/>
+            <path d="M12 7.4V2.75M16.38 10.58l4.42-1.44M14.7 15.72l2.74 3.76M9.3 15.72l-2.74 3.76M7.62 10.58 3.2 9.14"/>
+          </svg>
+        </div>
+        <div class="card-eyebrow gold">Best Overall</div>
+        <div class="card-title">Golden Ball</div>
+        <p class="card-desc">Best overall player of the tournament</p>
+      </div>
+      <div class="surface award-card">
+        <div class="award-icon gold">
+          <!-- keeper glove -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 11V6.5a2 2 0 0 0-4 0"/>
+            <path d="M14 10.5V4.5a2 2 0 0 0-4 0v2"/>
+            <path d="M10 10.5V6.5a2 2 0 0 0-4 0v8"/>
+            <path d="M18 8.5a2 2 0 1 1 4 0v5.5a7.5 7.5 0 0 1-7.5 7.5h-1.6c-2.6 0-4.2-.8-5.6-2.2l-3.4-3.4a2 2 0 0 1 2.8-2.8L7 15"/>
+          </svg>
+        </div>
+        <div class="card-eyebrow gold">Best Keeper</div>
+        <div class="card-title">Golden Glove</div>
+        <p class="card-desc">Best goalkeeper &amp; most clean sheets</p>
+      </div>
+
+      <div class="surface award-card">
+        <div class="award-icon">
+          <!-- shield / defence -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 21.75s7.75-3.9 7.75-9.75V5.4L12 2.25 4.25 5.4v6.6c0 5.85 7.75 9.75 7.75 9.75Z"/>
+            <path d="m9.2 11.9 2 2 3.6-3.9"/>
+          </svg>
+        </div>
+        <div class="card-eyebrow">Defence</div>
+        <div class="card-title">Best Defender</div>
+        <p class="card-desc">Standout defensive performance</p>
+      </div>
+      <div class="surface award-card">
+        <div class="award-icon">
+          <!-- clipboard / coaching -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="8.25" y="2.25" width="7.5" height="4" rx="1.25"/>
+            <path d="M15.75 4.25H18a2 2 0 0 1 2 2v13.5a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6.25a2 2 0 0 1 2-2h2.25"/>
+            <path d="M8.5 11.75h7M8.5 15.75h4.5"/>
+          </svg>
+        </div>
+        <div class="card-eyebrow">Coaching</div>
+        <div class="card-title">Best Coach</div>
+        <p class="card-desc">Coach of the tournament award</p>
+      </div>
+      <div class="surface award-card potm">
+        <div class="award-icon">
+          <!-- star / player of the match -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m12 2.75 2.9 5.88 6.5.95-4.7 4.58 1.11 6.46L12 17.57l-5.81 3.05 1.11-6.46-4.7-4.58 6.5-.95L12 2.75Z"/>
+          </svg>
+        </div>
+        <div class="card-eyebrow">Awarded Per Match</div>
+        <div class="card-title">Player of the Match</div>
+        <p class="card-desc">Awarded immediately after <strong style="color:var(--ink);">every single match</strong></p>
+      </div>
+    </div>
+
+    <div class="hollow-overlay-text">INDIVIDUAL GLORY</div>
+
+    <div class="story-footer-nav reveal delay-3" style="margin-top:auto; padding-top:18px;">
+      <div>Scroll for world cup experience</div>
+      <span>07 / 11 &nbsp;➔</span>
+    </div>
+  </section>
+
+  <!-- ============ SLIDE 8: WORLD CUP EXPERIENCE ============ -->
+  <section data-label="Media Coverage" style="justify-content: flex-start; gap: 20px;">
+    <div class="mag-bg-image-container" style="left: 0; right: auto; width: 62%; height: 100%;">
+      <img src="assets/images/player_experience.jpg" alt="Experience bg" style="object-position: left center; opacity:0.65; transition:opacity 0.4s ease;">
+      <div style="position:absolute; inset:0; background:linear-gradient(to left, var(--bg) 0%, var(--bg) 25%, transparent 95%); z-index:2;"></div>
+    </div>
+
+    <!-- Title + cards as one vertically-centred group, so it doesn't sit in the top-right corner -->
+    <div class="media-group">
+      <div style="display:flex; flex-direction:column; position:relative; z-index:5; align-items:flex-end; text-align:right;" class="reveal">
+        <div class="story-header">Chapter 07 / World Cup Experience</div>
+        <h1 class="story-title" style="margin-bottom:4px;">Elite Match Coverage</h1>
+      </div>
+
+    <div class="cgrid c2 reveal delay-1" style="max-width:940px; align-self:flex-end;">
+      <div class="surface" style="display:flex; flex-direction:column; gap:16px; text-align:left;">
+        <div style="display:flex; align-items:center; gap:10px; border-bottom:1px solid var(--line); padding-bottom:14px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <div class="card-eyebrow">Before Kickoff</div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">01</div>
+          <div><div class="step-title">Team Launch Poster</div><div class="step-sub">Official poster for every registered team</div></div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">02</div>
+          <div><div class="step-title">Professional Photoshoot</div><div class="step-sub">Squad photos &amp; individual portraits</div></div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">03</div>
+          <div><div class="step-title">Friendly Matches</div><div class="step-sub">Warm-up games before tournament begins</div></div>
+        </div>
+      </div>
+
+      <div class="surface" style="display:flex; flex-direction:column; gap:16px; text-align:left;">
+        <div style="display:flex; align-items:center; gap:10px; border-bottom:1px solid var(--line); padding-bottom:14px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2" stroke-linecap="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          <div class="card-eyebrow">Match Day Experience</div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">01</div>
+          <div><div class="step-title">Player of the Match</div><div class="step-sub">Award given after every single game</div></div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">02</div>
+          <div><div class="step-title">Weekly Best Goal Video</div><div class="step-sub">Highlight reel published every week</div></div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">03</div>
+          <div><div class="step-title">Live Streaming &amp; Commentary</div><div class="step-sub">Professional broadcast for every match</div></div>
         </div>
       </div>
     </div>
+    </div>
 
-    <div class="hollow-overlay-text">TROPHIES &amp; MEDALS</div>
+    <div class="hollow-overlay-text" style="left: auto; right: var(--pad-x); transform: none;">PRO MEDIA</div>
 
-    <div class="story-footer-nav reveal delay-3">
-      <div>Scroll to lock in team entry</div>
-      <span>07 / 08 &nbsp;➔</span>
+    <div class="story-footer-nav reveal delay-3" style="padding-top:18px; justify-content:flex-end;">
+      <div style="margin-right:12px;">Scroll for fan zone &amp; recognition</div>
+      <span>08 / 11 &nbsp;➔</span>
     </div>
   </section>
 
-  <!-- ============ CHAPTER 8: REGISTRATION PROTOCOL ============ -->
-  <section data-label="Registration Info">
-    <div style="display:flex; flex-direction:column; position:relative; z-index:5;" class="reveal">
-      <div class="story-header">Secure Roster Spot</div>
-      <h1 class="story-title">Championship Entry Info</h1>
+  <!-- ============ SLIDE 9: FAN ZONE & RECOGNITION ============ -->
+  <section data-label="Live Tracking" style="justify-content: flex-start; gap: 20px;">
+    <div class="mag-bg-image-container" style="left: auto; right: 0; width: 62%; height: 100%;">
+      <img src="assets/images/fan_zone.jpg" alt="Fan Zone bg" style="object-position: center; opacity: 0.6; transition: opacity 0.4s ease;">
+      <div style="position: absolute; inset: 0; background: linear-gradient(to right, var(--bg) 0%, var(--bg) 25%, transparent 95%); z-index: 2;"></div>
     </div>
 
-    <div class="mag-split">
-      <div class="mag-left-panel reveal delay-1">
-        <p class="story-narrative">
-          Submit roster sheets and verified documentation to team coordinators immediately to secure one of the remaining bracket slots.
-        </p>
+    <div style="display:flex; flex-direction:column; position:relative; z-index:5;" class="reveal">
+      <div class="story-header">Chapter 08 / Fan Zone</div>
+      <h1 class="story-title" style="margin-bottom:24px;">Media &amp; Weekly Glory</h1>
+    </div>
+
+    <div class="cgrid c3 reveal delay-1" style="max-width:1020px;">
+      <div class="surface" style="display:flex; flex-direction:column; gap:16px;">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <span style="font-size:22px;">🎙️</span>
+          <div>
+            <div class="card-eyebrow">After Every Match</div>
+            <div class="card-title" style="font-size:20px;">Media Zone</div>
+          </div>
+        </div>
         <div style="display:flex; flex-direction:column; gap:10px;">
-          <div class="pro-spec-bar">
-            <svg class="svg-icon" viewBox="0 0 24 24"><path d="M15.05 5A5 5 0 0 1 19 8.95M15.05 1A9 9 0 0 1 23 8.95M18 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="9" cy="10" r="3"></circle></svg>
-            <div>
-              <div style="font-family:'Barlow Condensed',sans-serif; font-size:18px; font-weight:800; color:var(--ink);">Gateway International School</div>
-              <div style="font-size:13px; color:var(--muted);">Padur, Chennai</div>
-            </div>
-          </div>
-          <div class="pro-spec-bar" style="border-left-color: var(--gold);">
-            <svg class="svg-icon" viewBox="0 0 24 24" style="stroke: var(--gold);"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect><line x1="12" y1="4" x2="12" y2="20"></line></svg>
-            <div>
-              <div style="font-family:'Barlow Condensed',sans-serif; font-size:18px; font-weight:800; color:var(--gold);">Coordinator Contacts</div>
-              <div style="font-size:13px; color:var(--muted);">Velu: 9342188428 &nbsp;|&nbsp; Aanadh: 7540023081</div>
-            </div>
-          </div>
+          <div class="list-row"><span class="token">1</span>Player Interview</div>
+          <div class="list-row"><span class="token">2</span>Coach Interview</div>
+          <div class="list-row"><span class="token">3</span>Parent Interview</div>
         </div>
       </div>
-      <div class="glass-card reveal delay-2" style="padding:32px; display:flex; flex-direction:column; justify-content:center; background:var(--bg3); border-color:var(--orange);">
-        <div style="font-size:11px; text-transform:uppercase; color:var(--muted); font-weight:700; margin-bottom:6px;">Team Entry Fees</div>
-        <div style="font-family:'Barlow Condensed',sans-serif; font-size:48px; font-weight:900; color:var(--orange); line-height:1; letter-spacing:-1px;">₹2000 <span style="font-size:18px; font-weight:400; color:var(--muted);">/ player</span></div>
-        <div style="border-top:1px solid rgba(255,255,255,0.05); padding-top:14px; margin-top:14px; font-size:13px; color:var(--muted); line-height:1.4;">
-          *Includes team photoshoot, digital profile generation, match physio team security, and registration credentials.
+
+      <div class="surface feature-gold" style="display:flex; flex-direction:column; gap:16px;">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <span style="font-size:22px;">📊</span>
+          <div>
+            <div class="card-eyebrow gold">Updated Live</div>
+            <div class="card-title" style="font-size:20px;">Leaderboards</div>
+          </div>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:10px;">
+          <div class="stat-row"><span style="font-size:14px; font-weight:700; color:var(--ink);">⚽ Golden Boot</span><span style="font-size:11px; letter-spacing:1px; text-transform:uppercase; color:var(--gold); font-weight:700;">Goals</span></div>
+          <div class="stat-row"><span style="font-size:14px; font-weight:700; color:var(--ink);">🧤 Golden Glove</span><span style="font-size:11px; letter-spacing:1px; text-transform:uppercase; color:var(--gold); font-weight:700;">Saves</span></div>
+          <div class="stat-row"><span style="font-size:14px; font-weight:700; color:var(--ink);">🛡️ Clean Sheets</span><span style="font-size:11px; letter-spacing:1px; text-transform:uppercase; color:var(--gold); font-weight:700;">Defence</span></div>
+        </div>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:14px;">
+        <div class="surface feature-orange" style="flex:1; display:flex; flex-direction:column; justify-content:center;">
+          <span style="font-size:28px;">🌟</span>
+          <div class="card-eyebrow" style="margin-top:8px;">Weekly</div>
+          <div class="card-title">Team of the Week</div>
+          <p class="card-desc">Best team for performance, teamwork &amp; spirit</p>
+        </div>
+        <div class="surface" style="padding:16px 20px;">
+          <div style="font-size:15px; font-weight:700; color:var(--ink);">🎽 Captain's Armband</div>
+          <div style="font-size:12px; color:var(--muted); margin-top:3px;">For top scorer or clean-sheet leader</div>
+        </div>
+        <div class="surface" style="padding:16px 20px;">
+          <div style="font-size:15px; font-weight:700; color:var(--ink);">🥤 Refreshments</div>
+          <div style="font-size:12px; color:var(--muted); margin-top:3px;">Keeping every squad match-ready</div>
         </div>
       </div>
     </div>
 
-    <div class="hollow-overlay-text">REGISTER NOW</div>
+    <div class="hollow-overlay-text">THE FAN ZONE</div>
 
-    <div class="story-footer-nav reveal delay-3">
-      <div>Outlast FC Sport Pvt Ltd | Persist • Endure • Prevail</div>
-      <span>08 / 08 &nbsp;➔</span>
+    <div class="story-footer-nav reveal delay-3" style="margin-top:auto; padding-top:18px;">
+      <div>Scroll for the Sportiva app</div>
+      <span>09 / 11 &nbsp;➔</span>
+    </div>
+  </section>
+
+  <!-- ============ SLIDE 10: SPORTIVA APP ============ -->
+  <section data-label="Sportiva App" style="justify-content: flex-start; gap: 20px;">
+    <div class="mag-bg-image-container" style="left: 0; right: auto; width: 62%; height: 100%;">
+      <img src="assets/images/sportiva_app.jpg" alt="App bg" style="object-position: left center; opacity: 0.6; transition: opacity 0.4s ease;">
+      <div style="position: absolute; inset: 0; background: linear-gradient(to left, var(--bg) 0%, var(--bg) 25%, transparent 95%); z-index: 2;"></div>
+    </div>
+
+    <!-- Align to right -->
+    <div style="display:flex; flex-direction:column; position:relative; z-index:5; align-items:flex-end; text-align:right;" class="reveal">
+      <div class="story-header">Chapter 09 / Digital Experience</div>
+      <h1 class="story-title" style="margin-bottom:24px;">Powered By Sportiva</h1>
+    </div>
+
+    <div style="display:flex; flex-direction:column; gap:18px; position:relative; z-index:5; align-items:flex-end; width:100%;" class="reveal delay-1">
+      <div class="surface" style="max-width:620px; text-align:left; width:100%;">
+        <div class="card-eyebrow">Official Tournament App</div>
+        <div class="card-title" style="font-size:24px; margin-top:8px;">Everything in your pocket</div>
+        <p class="card-desc" style="font-size:14px; margin-top:10px;">Track every goal, assist, and card in real-time. Follow your team's progress, check upcoming fixtures, and see where you stand on the global leaderboards.</p>
+      </div>
+
+      <div class="cgrid c2" style="max-width:620px; gap:14px;">
+        <div class="tile"><span class="emoji">📱</span><div class="t-name">Live Match Centre</div><div class="t-sub">Minute-by-minute updates</div></div>
+        <div class="tile"><span class="emoji">📅</span><div class="t-name">Fixtures &amp; Results</div><div class="t-sub">Never miss a kickoff</div></div>
+        <div class="tile"><span class="emoji">📈</span><div class="t-name">Player Stats</div><div class="t-sub">Goals, assists, cards</div></div>
+        <div class="tile"><span class="emoji">🏆</span><div class="t-name">Standings</div><div class="t-sub">Live group tables</div></div>
+      </div>
+
+      <div style="display:flex; gap:12px; flex-wrap:wrap; justify-content:flex-end; max-width:620px; width:100%;">
+        <span class="store-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.15 2.95.97 3.67 2.14-3.13 1.53-2.6 5.86.6 7.22-.61 1.51-1.31 2.87-2.92 3.65zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
+          App Store
+        </span>
+        <span class="store-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3 20.5V3.5C3 2.91 3.34 2.39 3.84 2.15L13.69 12L3.84 21.85C3.34 21.61 3 21.09 3 20.5ZM14.41 11.27L5.59 2.45C6.09 2.25 6.71 2.31 7.15 2.56L15.34 7.29C16.14 7.75 16.14 8.79 15.34 9.25L14.41 11.27ZM14.41 12.73L15.34 14.75C16.14 15.21 16.14 16.25 15.34 16.71L7.15 21.44C6.71 21.69 6.09 21.75 5.59 21.55L14.41 12.73ZM16.32 12L20.84 7.48L21.36 7.78C22.21 8.27 22.21 9.49 21.36 9.98L16.32 12Z"/></svg>
+          Google Play
+        </span>
+      </div>
+    </div>
+
+    <div class="hollow-overlay-text" style="left: auto; right: var(--pad-x); transform: none;">SPORTIVA</div>
+
+    <div class="story-footer-nav reveal delay-3" style="margin-top:auto; padding-top:14px; justify-content:flex-end;">
+      <div style="margin-right:12px;">Scroll to register your team</div>
+      <span>10 / 11 &nbsp;➔</span>
+    </div>
+  </section>
+
+  <!-- ============ SLIDE 11: REGISTRATION ============ -->
+  <section data-label="Registration Info" style="justify-content: flex-start; gap: 20px;">
+    <div class="mag-bg-image-container" style="left: auto; right: 0; width: 62%; height: 100%;">
+      <img src="assets/images/registration.jpg" alt="Registration bg" style="object-position: center center; opacity:0.6; transition: opacity 0.4s ease;">
+      <div style="position:absolute; inset:0; background:linear-gradient(to right, var(--bg) 0%, var(--bg) 25%, transparent 95%); z-index:2;"></div>
+    </div>
+
+    <div style="display:flex; flex-direction:column; position:relative; z-index:5;" class="reveal">
+      <div class="story-header">Chapter 10 / Registration</div>
+      <h1 class="story-title" style="margin-bottom:24px;">Secure Your Spot</h1>
+    </div>
+
+    <div style="display:flex; flex-direction:column; gap:18px; position:relative; z-index:5; max-width:600px; width:100%;" class="reveal delay-1">
+      <p style="font-size:18px; color:var(--ink); line-height:1.6; font-weight:500; margin:0;">Registration closes soon. Don't let your team miss out on the ultimate football experience.</p>
+
+      <div class="surface" style="border-color:var(--orange); padding:32px; text-align:center;">
+        <div class="card-eyebrow" style="letter-spacing:2px; margin-bottom:16px;">Tournament Enquiries</div>
+        <div style="font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:clamp(30px,7vw,38px); color:var(--ink); margin-bottom:8px; letter-spacing:0.5px;">+91 9342 188 428</div>
+        <div style="font-size:16px; color:var(--muted); margin-bottom:24px;">WhatsApp / Call</div>
+
+        <a href="#" style="display:inline-block; background:var(--orange); color:#000; padding:16px 36px; border-radius:8px; font-weight:800; font-size:16px; text-decoration:none; transition:transform 0.2s ease, box-shadow 0.2s ease;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 12px 30px rgba(242,106,30,0.35)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+          Register Now
+        </a>
+      </div>
+
+      <div class="cgrid c2" style="gap:14px;">
+        <div class="tile" style="text-align:center;">
+          <div style="font-weight:700; font-size:15px; color:var(--ink); margin-bottom:4px;">Team Registration</div>
+          <div style="font-size:13px; color:var(--orange); font-weight:700;">₹2,000 / Team</div>
+        </div>
+        <div class="tile" style="text-align:center;">
+          <div style="font-weight:700; font-size:15px; color:var(--ink); margin-bottom:4px;">Squad Size</div>
+          <div style="font-size:13px; color:var(--muted);">Max 10 Players</div>
+        </div>
+      </div>
+    </div>
+
+    <img class="reg-emblem reveal delay-2" src="assets/images/athlora-logo.png" alt="Athlora Sports Events" onerror="this.style.display='none'">
+
+    <div class="hollow-overlay-text">PLAY NOW</div>
+
+    <div class="story-footer-nav reveal delay-3" style="margin-top:auto; padding-top:18px;">
+      <div style="font-size:12px; color:var(--muted);">Designed by Athlora | Powered by Sportiva</div>
+      <span>11 / 11 &nbsp;🏆</span>
     </div>
   </section>
 
