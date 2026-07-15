@@ -591,16 +591,16 @@ section {
 }
 .cover-copy { display: flex; flex-direction: column; max-width: 620px; }
 
-/* Registration sign-off emblem — center-right over the photo on desktop */
+/* Registration sign-off emblem — a corner badge over the clear sky/bokeh
+   area of the photo, not stamped over the players in the frame */
 .reg-emblem {
   position: absolute;
-  right: clamp(24px, 7vw, 110px);
-  top: 50%;
-  transform: translateY(-50%);
-  width: min(30vw, 300px);
+  right: clamp(24px, 6vw, 90px);
+  top: 108px;
+  width: min(14vw, 128px);
   height: auto;
   z-index: 4;
-  filter: drop-shadow(0 20px 45px rgba(0, 0, 0, 0.5));
+  filter: drop-shadow(0 10px 26px rgba(0, 0, 0, 0.45));
   pointer-events: none;
 }
 
