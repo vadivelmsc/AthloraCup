@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <!-- Reverted to the original clean geometric sports typography -->
 <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,600&family=Barlow+Condensed:wght@700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=5.1">
+<link rel="stylesheet" href="assets/style.css?v=5.2">
 </head>
 <body class="dark-theme">
 
@@ -67,8 +67,8 @@
         </p>
 
         <div class="cover-action-row reveal delay-3">
-          <div style="background:var(--orange); color:#000; font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:clamp(14px, 1.8vw, 18px); white-space:nowrap; letter-spacing:0.5px; text-transform:uppercase; padding:12px 24px; border-radius:3px;">
-            Aug 2nd Week &ndash; Mid Sep 2026
+          <div style="background:var(--orange); color:#000; font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:clamp(15px, 2vw, 20px); white-space:nowrap; letter-spacing:0.8px; text-transform:uppercase; padding:12px 28px; border-radius:3px;">
+            Mid Aug &ndash; Sep 2026
           </div>
           <div style="font-size:14px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); font-weight:700;">
             U9 &amp; U11 divisions &nbsp;•&nbsp; Chennai &nbsp;•&nbsp; Dates Tentative
@@ -805,9 +805,9 @@
 
   <!-- ============ SLIDE 11: REGISTRATION ============ -->
   <section data-label="Registration Info" style="justify-content: flex-start; gap: 20px;">
-    <div class="mag-bg-image-container" style="left: auto; right: 0; width: 62%; height: 100%;">
-      <img src="assets/images/registration.jpg" alt="Registration bg" style="object-position: center center; opacity:0.6; transition: opacity 0.4s ease;">
-      <div style="position:absolute; inset:0; background:linear-gradient(to right, var(--bg) 0%, var(--bg) 25%, transparent 95%); z-index:2;"></div>
+    <div class="reg-brand-showcase" aria-hidden="true">
+      <div class="reg-brand-glow"></div>
+      <img src="assets/images/athlora-logo.png" alt="" onerror="this.style.display='none'">
     </div>
 
     <div style="display:flex; flex-direction:column; position:relative; z-index:5;" class="reveal">
@@ -820,21 +820,23 @@
 
       <div class="vfd-strip">
         <div class="vfd-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.5-7-11a7 7 0 0 1 14 0c0 4.5-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
-          <div class="vfd-label">Venue</div>
-          <div class="vfd-value">Gateway International School</div>
-          <div class="vfd-sub">Padur, Chennai</div>
+          <a class="vfd-link" href="https://maps.app.goo.gl/Pa96wGFw7bR7nyz78" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.5-7-11a7 7 0 0 1 14 0c0 4.5-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+            <div class="vfd-label">Venue</div>
+            <div class="vfd-value">Gateway International School</div>
+            <div class="vfd-sub">Padur, Chennai &nbsp;&#8599;</div>
+          </a>
         </div>
         <div class="vfd-item">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41 12 22l-9-9V4a1 1 0 0 1 1-1h9l9 9a1 1 0 0 1 0 1.41Z"/><circle cx="7.5" cy="7.5" r="1"/></svg>
           <div class="vfd-label">Entry Fee</div>
-          <div class="vfd-value" style="color:var(--orange);">₹2,000 <span style="color:var(--muted); font-weight:600; font-size:12px;">/ player</span></div>
+          <div class="vfd-value" style="color:var(--orange); font-size:22px; letter-spacing:0.3px;">₹2,000<span style="color:var(--muted); font-weight:600; font-size:12px; margin-left:4px;">/ player</span></div>
           <div class="vfd-sub">Max 10 players per squad</div>
         </div>
         <div class="vfd-item">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>
           <div class="vfd-label">Tournament Window</div>
-          <div class="vfd-value" style="font-size:15px;">Aug 2nd Wk &ndash; Mid Sep 2026</div>
+          <div class="vfd-value" style="font-size:15px;">Mid Aug &ndash; Sep 2026</div>
           <div class="vfd-sub">Exact dates to be confirmed</div>
         </div>
       </div>
@@ -864,8 +866,6 @@
         </a>
       </div>
     </div>
-
-    <img class="reg-emblem reveal delay-2" src="assets/images/athlora-logo.png" alt="Athlora Sports Events" onerror="this.style.display='none'">
 
     <div class="hollow-overlay-text" style="bottom: 114px; font-size: clamp(40px, 5.5vw, 76px);">PLAY NOW</div>
 

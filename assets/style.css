@@ -591,17 +591,33 @@ section {
 }
 .cover-copy { display: flex; flex-direction: column; max-width: 620px; }
 
-/* Registration sign-off emblem — a corner badge over the clear sky/bokeh
-   area of the photo, not stamped over the players in the frame */
-.reg-emblem {
+/* Registration closing visual — the crest itself on a soft glow,
+   replacing the stock photo so the sign-off slide is pure brand */
+.reg-brand-showcase {
   position: absolute;
-  right: clamp(24px, 6vw, 90px);
-  top: 108px;
-  width: min(14vw, 128px);
-  height: auto;
-  z-index: 4;
-  filter: drop-shadow(0 10px 26px rgba(0, 0, 0, 0.45));
+  inset: 0;
+  left: auto;
+  right: 0;
+  width: 62%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
   pointer-events: none;
+  overflow: hidden;
+}
+.reg-brand-glow {
+  position: absolute;
+  width: min(46vw, 640px);
+  height: min(46vw, 640px);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(242, 106, 30, 0.16) 0%, rgba(242, 106, 30, 0.05) 45%, transparent 72%);
+}
+.reg-brand-showcase img {
+  position: relative;
+  width: min(30vw, 380px);
+  height: auto;
+  filter: drop-shadow(0 25px 55px rgba(0, 0, 0, 0.4));
 }
 
 /* Venue / Fee / Key Dates info strip — registration slide */
@@ -643,6 +659,26 @@ section {
   font-size: 11.5px;
   font-weight: 500;
   color: var(--muted);
+}
+
+/* Venue tile doubles as a Google Maps link */
+.vfd-link {
+  display: contents;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+.vfd-link .vfd-value {
+  text-decoration: underline;
+  text-decoration-color: rgba(242, 106, 30, 0.35);
+  text-underline-offset: 3px;
+  transition: color 0.2s ease;
+}
+.vfd-item:has(.vfd-link):hover {
+  background: rgba(242, 106, 30, 0.06);
+}
+.vfd-item:has(.vfd-link):hover .vfd-value {
+  color: var(--orange);
 }
 
 /* =====================================================================
@@ -1319,14 +1355,10 @@ section {
   .cover-fade-x { background: linear-gradient(to right, var(--bg) 0%, rgba(var(--bg-rgb), 0.55) 60%, transparent 100%); }
   .cover-fade-y { background: linear-gradient(to top, var(--bg) 0%, transparent 60%); }
 
-  /* Registration emblem flows in-content, centered */
-  .reg-emblem {
-    position: static;
-    transform: none;
-    width: 118px;
-    margin: 4px auto 0;
-    display: block;
-  }
+  /* Registration crest sits behind the full-width content, dimmed */
+  .reg-brand-showcase { left: 0; width: 100%; opacity: 0.5; }
+  .reg-brand-showcase img { width: min(46vw, 200px); }
+  .reg-brand-glow { width: min(70vw, 380px); height: min(70vw, 380px); }
 
   /* Venue/Fee/Date strip stacks so each item stays readable */
   .vfd-strip { grid-template-columns: 1fr; }
