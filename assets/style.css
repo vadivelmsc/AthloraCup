@@ -132,7 +132,9 @@ section {
   gap: 28px;
 }
 
-.header-contact {
+.header-contact,
+.header-contact:link,
+.header-contact:visited {
   font-family: 'Barlow Condensed', sans-serif;
   font-weight: 700;
   font-size: 17px;
@@ -146,7 +148,9 @@ section {
   transition: opacity 0.2s ease;
 }
 .header-contact:hover { opacity: 0.75; }
-.header-contact span {
+.header-contact span,
+.header-contact:link span,
+.header-contact:visited span {
   color: var(--orange);
 }
 
@@ -1083,7 +1087,9 @@ section {
 .mini-profile-meta { font-size: 10.5px; color: var(--muted); margin-top: 2px; }
 
 /* Tap-to-call coordinator numbers on the Registration card */
-.coordinator-link {
+.coordinator-link,
+.coordinator-link:link,
+.coordinator-link:visited {
   display: block;
   text-decoration: none;
   color: inherit;
