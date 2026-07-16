@@ -3,14 +3,22 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="format-detection" content="telephone=no">
 <title>Athlora Junior Cup 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <!-- Reverted to the original clean geometric sports typography -->
 <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,600&family=Barlow+Condensed:wght@700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=3.6">
+<link rel="stylesheet" href="assets/style.css?v=8.0">
 </head>
-<body class="dark-theme">
+<body>
+<script>
+  (function () {
+    var saved = localStorage.getItem('athlora-theme');
+    var theme = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.body.className = theme === 'dark' ? 'dark-theme' : 'light-theme';
+  })();
+</script>
 
 <!-- ============ STICKY HEADER ============ -->
 <header class="sticky-header">
@@ -20,13 +28,11 @@
   </div>
   <div class="header-right">
     <!-- Contact changed to icon only layout -->
-    <div class="header-contact" title="Roster Support Contact">
+    <a class="header-contact" href="tel:+919342188428" title="Call Roster Support">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
       <span>+91 9342188428</span>
-    </div>
+    </a>
     
-    <button class="register-btn" onclick="window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'})">Register Now</button>
-
     <!-- Theme Switcher Button -->
     <button class="theme-toggle-btn" id="theme-toggle" title="Switch Theme">
       <!-- Sun Icon (shown in dark theme) -->
@@ -34,6 +40,8 @@
       <!-- Moon Icon (shown in light theme) -->
       <svg id="moon-icon" style="display:none;" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
     </button>
+
+    <button class="register-btn" onclick="openRegisterModal()">Register Now</button>
   </div>
 </header>
 
@@ -67,11 +75,11 @@
         </p>
 
         <div class="cover-action-row reveal delay-3">
-          <div style="background:var(--orange); color:#000; font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:20px; letter-spacing:1px; text-transform:uppercase; padding:12px 28px; border-radius:3px;">
-            Kickoff Aug 15, 2026
+          <div style="background:var(--orange); color:#000; font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:clamp(15px, 2vw, 20px); white-space:nowrap; letter-spacing:0.8px; text-transform:uppercase; padding:12px 28px; border-radius:3px;">
+            Aug &ndash; Sep 2026
           </div>
           <div style="font-size:14px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); font-weight:700;">
-            U9 &amp; U11 divisions &nbsp;•&nbsp; Chennai
+            U9 &amp; U11 divisions &nbsp;•&nbsp; Chennai &nbsp;•&nbsp; Dates Tentative
           </div>
         </div>
       </div>
@@ -103,7 +111,7 @@
       </p>
 
       <!-- Action Button directly below the copy -->
-      <button class="mag-btn" style="margin-bottom: 30px;" onclick="window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'})">
+      <button class="mag-btn" style="margin-bottom: 30px;" onclick="openRegisterModal()">
         Start registration ➔
       </button>
 
@@ -132,7 +140,7 @@
 
     <div class="story-footer-nav reveal delay-2" style="margin-top: auto; padding-top: 18px;">
       <div>Scroll to review match timings and math</div>
-      <span>02 / 11 &nbsp;➔</span>
+      <span class="next-page-link">02 / 12 &nbsp;➔</span>
     </div>
   </section>
 
@@ -216,9 +224,9 @@
 
     <div class="hollow-overlay-text" style="left: auto; right: var(--pad-x); transform: none;">ROUND ROBIN PLAY</div>
 
-    <div class="story-footer-nav reveal delay-2" style="margin-top: auto; padding-top: 18px; justify-content:flex-end;">
-      <div style="margin-right:12px;">Scroll to view media &amp; photoshoots</div>
-      <span>03 / 11 &nbsp;➔</span>
+    <div class="story-footer-nav reveal delay-2" style="margin-top: auto; padding-top: 18px;">
+      <div>Scroll to view media &amp; photoshoots</div>
+      <span class="next-page-link">03 / 12 &nbsp;➔</span>
     </div>
   </section>
 
@@ -271,7 +279,7 @@
 
     <div class="story-footer-nav reveal delay-2" style="margin-top: auto; padding-top: 18px;">
       <div>Scroll to see knockout brackets</div>
-      <span>04 / 11 &nbsp;➔</span>
+      <span class="next-page-link">04 / 12 &nbsp;➔</span>
     </div>
   </section>
 
@@ -416,7 +424,7 @@
 
     <div class="story-footer-nav reveal delay-2" style="margin-top:auto; padding-top:18px;">
       <div>Scroll to see championship awards</div>
-      <span>05 / 11 &nbsp;➔</span>
+      <span class="next-page-link">05 / 12 &nbsp;➔</span>
     </div>
   </section>
 
@@ -490,16 +498,16 @@
 
     <div class="hollow-overlay-text" style="left: 50%; right: auto; transform: translateX(-50%);">CHAMPIONS</div>
 
-    <div class="story-footer-nav reveal delay-3" style="margin-top:auto; padding-top:18px; justify-content:flex-end;">
-      <div style="margin-right:12px;">Scroll for individual honours</div>
-      <span>06 / 11 &nbsp;➔</span>
+    <div class="story-footer-nav reveal delay-3" style="margin-top:auto; padding-top:18px;">
+      <div>Scroll for individual honours</div>
+      <span class="next-page-link">06 / 12 &nbsp;➔</span>
     </div>
   </section>
 
   <!-- ============ SLIDE 7: INDIVIDUAL AWARDS ============ -->
   <section data-label="Individual Awards" style="justify-content: flex-start; gap: 20px;">
     <div class="mag-bg-image-container" style="left: auto; right: 0; width: 62%; height: 100%;">
-      <img src="assets/images/individual_awards.jpg" alt="Player recognition bg" style="object-position: center; opacity:0.6; transition:opacity 0.4s ease;" onerror="this.style.display='none'">
+      <img src="assets/images/awards.jpg?v=2" alt="Football trophy" style="object-position: center; opacity:0.6; transition:opacity 0.4s ease;">
       <div style="position:absolute; inset:0; background:linear-gradient(to right, var(--bg) 0%, var(--bg) 25%, transparent 95%); z-index:2;"></div>
     </div>
 
@@ -592,7 +600,7 @@
 
     <div class="story-footer-nav reveal delay-3" style="margin-top:auto; padding-top:18px;">
       <div>Scroll for world cup experience</div>
-      <span>07 / 11 &nbsp;➔</span>
+      <span class="next-page-link">07 / 12 &nbsp;➔</span>
     </div>
   </section>
 
@@ -604,7 +612,7 @@
     </div>
 
     <!-- Title + cards as one vertically-centred group, so it doesn't sit in the top-right corner -->
-    <div class="media-group">
+    <div class="slide-center">
       <div style="display:flex; flex-direction:column; position:relative; z-index:5; align-items:flex-end; text-align:right;" class="reveal">
         <div class="story-header">Chapter 07 / World Cup Experience</div>
         <h1 class="story-title" style="margin-bottom:4px;">Elite Match Coverage</h1>
@@ -647,178 +655,350 @@
           <div class="step-num">03</div>
           <div><div class="step-title">Live Streaming &amp; Commentary</div><div class="step-sub">Professional broadcast for every match</div></div>
         </div>
+        <div class="step-item">
+          <div class="step-num">04</div>
+          <div><div class="step-title">Refreshments</div><div class="step-sub">Keeping every squad match-ready</div></div>
+        </div>
       </div>
     </div>
     </div>
 
     <div class="hollow-overlay-text" style="left: auto; right: var(--pad-x); transform: none;">PRO MEDIA</div>
 
-    <div class="story-footer-nav reveal delay-3" style="padding-top:18px; justify-content:flex-end;">
-      <div style="margin-right:12px;">Scroll for fan zone &amp; recognition</div>
-      <span>08 / 11 &nbsp;➔</span>
+    <div class="story-footer-nav reveal delay-3" style="padding-top:18px;">
+      <div>Scroll for fan zone &amp; recognition</div>
+      <span class="next-page-link">08 / 12 &nbsp;➔</span>
     </div>
   </section>
 
   <!-- ============ SLIDE 9: FAN ZONE & RECOGNITION ============ -->
   <section data-label="Live Tracking" style="justify-content: flex-start; gap: 20px;">
-    <div class="mag-bg-image-container" style="left: auto; right: 0; width: 62%; height: 100%;">
-      <img src="assets/images/fan_zone.jpg" alt="Fan Zone bg" style="object-position: center; opacity: 0.6; transition: opacity 0.4s ease;">
-      <div style="position: absolute; inset: 0; background: linear-gradient(to right, var(--bg) 0%, var(--bg) 25%, transparent 95%); z-index: 2;"></div>
+    <!-- The crowd IS the fan zone — let it fill the slide, scrim only where the copy sits -->
+    <div class="mag-bg-image-container fz-bg" style="left:0; right:0; width:100%; height:100%;">
+      <img src="assets/images/fan_zone.jpg?v=3" alt="Packed stadium crowd" style="object-position: center 38%; opacity: 0.9; transition: opacity 0.4s ease;">
+      <div class="fz-scrim"></div>
     </div>
 
     <div style="display:flex; flex-direction:column; position:relative; z-index:5;" class="reveal">
       <div class="story-header">Chapter 08 / Fan Zone</div>
-      <h1 class="story-title" style="margin-bottom:24px;">Media &amp; Weekly Glory</h1>
+      <h1 class="story-title" style="margin-bottom:4px;">Media &amp; Weekly Glory</h1>
     </div>
 
-    <div class="cgrid c3 reveal delay-1" style="max-width:1020px;">
-      <div class="surface" style="display:flex; flex-direction:column; gap:16px;">
-        <div style="display:flex; align-items:center; gap:10px;">
-          <span style="font-size:22px;">🎙️</span>
-          <div>
-            <div class="card-eyebrow">After Every Match</div>
-            <div class="card-title" style="font-size:20px;">Media Zone</div>
+    <div class="fz-content reveal delay-1">
+      <div class="fz-cols">
+
+        <!-- a sequence -> a numbered list -->
+        <div class="fz-col">
+          <div class="card-eyebrow">After Every Match</div>
+          <div class="fz-head">
+            <svg class="fz-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="9" y="2.25" width="6" height="11" rx="3"/>
+              <path d="M5.25 10.5v1.25a6.75 6.75 0 0 0 13.5 0V10.5"/>
+              <path d="M12 18.5v3.25M8.5 21.75h7"/>
+            </svg>
+            <span>Media Zone</span>
+          </div>
+          <ul class="fz-list">
+            <li><span class="fz-num">01</span>Player Interview</li>
+            <li><span class="fz-num">02</span>Coach Interview</li>
+            <li><span class="fz-num">03</span>Parent Interview</li>
+          </ul>
+        </div>
+
+        <!-- live standings -> a table -->
+        <div class="fz-col">
+          <div class="card-eyebrow gold">Updated Live</div>
+          <div class="fz-head gold">
+            <svg class="fz-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 20.75h18"/>
+              <rect x="4.75" y="11" width="4.25" height="7.75" rx="1"/>
+              <rect x="9.9" y="5.5" width="4.25" height="13.25" rx="1"/>
+              <rect x="15.05" y="14" width="4.25" height="4.75" rx="1"/>
+            </svg>
+            <span>Leaderboards</span>
+          </div>
+          <ul class="fz-list">
+            <li>
+              <svg class="fz-row-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h2.2c.9 0 1.7.5 2.1 1.3l1.4 2.5c.3.5.8.8 1.3.9l5.4.8c2.2.3 3.9 1.4 4.5 2.9.3.9-.3 1.8-1.3 1.8H4V6Z"/><path d="M7 16.2v1.9M11 16.2v1.9M15 16.2v1.9M19 16.2v1.9"/></svg>
+              Golden Boot<span class="fz-metric">Goals</span>
+            </li>
+            <li>
+              <svg class="fz-row-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6.5a2 2 0 0 0-4 0"/><path d="M14 10.5V4.5a2 2 0 0 0-4 0v2"/><path d="M10 10.5V6.5a2 2 0 0 0-4 0v8"/><path d="M18 8.5a2 2 0 1 1 4 0v5.5a7.5 7.5 0 0 1-7.5 7.5h-1.6c-2.6 0-4.2-.8-5.6-2.2l-3.4-3.4a2 2 0 0 1 2.8-2.8L7 15"/></svg>
+              Golden Glove<span class="fz-metric">Saves</span>
+            </li>
+            <li>
+              <svg class="fz-row-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21.75s7.75-3.9 7.75-9.75V5.4L12 2.25 4.25 5.4v6.6c0 5.85 7.75 9.75 7.75 9.75Z"/></svg>
+              Clean Sheets<span class="fz-metric">Defence</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- the weekly honours -> statements -->
+        <div class="fz-col">
+          <div class="card-eyebrow">Weekly</div>
+          <div class="fz-head">
+            <svg class="fz-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16.5 20.75v-1.75a3.75 3.75 0 0 0-3.75-3.75h-5.5A3.75 3.75 0 0 0 3.5 19v1.75"/>
+              <circle cx="10" cy="7.25" r="3.75"/>
+              <path d="M20.5 20.75V19a3.75 3.75 0 0 0-2.8-3.63"/>
+              <path d="M15.5 3.6a3.75 3.75 0 0 1 0 7.27"/>
+            </svg>
+            <span>Team of the Week</span>
+          </div>
+          <p class="fz-quote">The squad that best combines <strong>performance, teamwork and spirit</strong> — announced every week across the tournament channels.</p>
+          <div class="fz-sub">
+            <svg class="fz-row-icon orange" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.4 3.5 16 2a4 4 0 0 1-8 0L3.6 3.5a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V10h2.17a1 1 0 0 0 .99-.84l.58-3.47A2 2 0 0 0 20.4 3.5Z"/></svg>
+            <div><span class="fz-perk-name">Captain's Armband</span><span class="fz-perk-sub">For top scorer or clean-sheet leader</span></div>
           </div>
         </div>
-        <div style="display:flex; flex-direction:column; gap:10px;">
-          <div class="list-row"><span class="token">1</span>Player Interview</div>
-          <div class="list-row"><span class="token">2</span>Coach Interview</div>
-          <div class="list-row"><span class="token">3</span>Parent Interview</div>
-        </div>
-      </div>
 
-      <div class="surface feature-gold" style="display:flex; flex-direction:column; gap:16px;">
-        <div style="display:flex; align-items:center; gap:10px;">
-          <span style="font-size:22px;">📊</span>
-          <div>
-            <div class="card-eyebrow gold">Updated Live</div>
-            <div class="card-title" style="font-size:20px;">Leaderboards</div>
-          </div>
-        </div>
-        <div style="display:flex; flex-direction:column; gap:10px;">
-          <div class="stat-row"><span style="font-size:14px; font-weight:700; color:var(--ink);">⚽ Golden Boot</span><span style="font-size:11px; letter-spacing:1px; text-transform:uppercase; color:var(--gold); font-weight:700;">Goals</span></div>
-          <div class="stat-row"><span style="font-size:14px; font-weight:700; color:var(--ink);">🧤 Golden Glove</span><span style="font-size:11px; letter-spacing:1px; text-transform:uppercase; color:var(--gold); font-weight:700;">Saves</span></div>
-          <div class="stat-row"><span style="font-size:14px; font-weight:700; color:var(--ink);">🛡️ Clean Sheets</span><span style="font-size:11px; letter-spacing:1px; text-transform:uppercase; color:var(--gold); font-weight:700;">Defence</span></div>
-        </div>
-      </div>
-
-      <div style="display:flex; flex-direction:column; gap:14px;">
-        <div class="surface feature-orange" style="flex:1; display:flex; flex-direction:column; justify-content:center;">
-          <span style="font-size:28px;">🌟</span>
-          <div class="card-eyebrow" style="margin-top:8px;">Weekly</div>
-          <div class="card-title">Team of the Week</div>
-          <p class="card-desc">Best team for performance, teamwork &amp; spirit</p>
-        </div>
-        <div class="surface" style="padding:16px 20px;">
-          <div style="font-size:15px; font-weight:700; color:var(--ink);">🎽 Captain's Armband</div>
-          <div style="font-size:12px; color:var(--muted); margin-top:3px;">For top scorer or clean-sheet leader</div>
-        </div>
-        <div class="surface" style="padding:16px 20px;">
-          <div style="font-size:15px; font-weight:700; color:var(--ink);">🥤 Refreshments</div>
-          <div style="font-size:12px; color:var(--muted); margin-top:3px;">Keeping every squad match-ready</div>
-        </div>
       </div>
     </div>
 
-    <div class="hollow-overlay-text">THE FAN ZONE</div>
+    <!-- no hollow watermark here: it collided with the info band, and the
+         stadium already carries this slide's identity -->
 
     <div class="story-footer-nav reveal delay-3" style="margin-top:auto; padding-top:18px;">
       <div>Scroll for the Sportiva app</div>
-      <span>09 / 11 &nbsp;➔</span>
+      <span class="next-page-link">09 / 12 &nbsp;➔</span>
     </div>
   </section>
 
-  <!-- ============ SLIDE 10: SPORTIVA APP ============ -->
-  <section data-label="Sportiva App" style="justify-content: flex-start; gap: 20px;">
-    <div class="mag-bg-image-container" style="left: 0; right: auto; width: 62%; height: 100%;">
-      <img src="assets/images/sportiva_app.jpg" alt="App bg" style="object-position: left center; opacity: 0.6; transition: opacity 0.4s ease;">
-      <div style="position: absolute; inset: 0; background: linear-gradient(to left, var(--bg) 0%, var(--bg) 25%, transparent 95%); z-index: 2;"></div>
-    </div>
+  <!-- ============ SLIDE 10: SPORTIVA APP INTRO ============ -->
+  <section data-label="Sportiva App" style="justify-content: flex-start; gap: 14px;">
+    <div class="reg-brand-glow" aria-hidden="true" style="right: 6%; left: auto; top: 46%; transform: translateY(-50%); position: absolute;"></div>
 
-    <!-- Align to right -->
-    <div style="display:flex; flex-direction:column; position:relative; z-index:5; align-items:flex-end; text-align:right;" class="reveal">
+    <div style="display:flex; flex-direction:column; position:relative; z-index:5;" class="reveal">
       <div class="story-header">Chapter 09 / Digital Experience</div>
-      <h1 class="story-title" style="margin-bottom:24px;">Powered By Sportiva</h1>
+      <div class="card-eyebrow" style="margin-top:2px;">Powered By</div>
+      <h1 class="story-title" style="margin-bottom:10px;">Introducing the <span style="color:var(--orange);">Sportiva App</span></h1>
+      <p class="section-lead" style="max-width:760px;"><strong style="color:var(--ink);">Your tournament, live in your pocket.</strong> Every fixture, result, stat, and award race — updated automatically and available to every player and parent, in real time.</p>
     </div>
 
-    <div style="display:flex; flex-direction:column; gap:18px; position:relative; z-index:5; align-items:flex-end; width:100%;" class="reveal delay-1">
-      <div class="surface" style="max-width:620px; text-align:left; width:100%;">
-        <div class="card-eyebrow">Official Tournament App</div>
-        <div class="card-title" style="font-size:24px; margin-top:8px;">Everything in your pocket</div>
-        <p class="card-desc" style="font-size:14px; margin-top:10px;">Track every goal, assist, and card in real-time. Follow your team's progress, check upcoming fixtures, and see where you stand on the global leaderboards.</p>
+    <div class="feature-grid-wide reveal delay-1" style="max-width:1080px; width:75%;">
+      <div class="surface award-card">
+        <div style="display:flex; gap:6px; flex-wrap:wrap; margin-bottom:18px;">
+          <span class="reg-pill on">Registered</span>
+          <span class="reg-pill on">Approved</span>
+          <span class="reg-pill">Hold</span>
+        </div>
+        <div class="card-eyebrow">Team Status</div>
+        <div class="card-title">Registration Status</div>
+        <p class="card-desc">Know exactly where your team stands — tracked live, no phone calls needed.</p>
       </div>
 
-      <div class="cgrid c2" style="max-width:620px; gap:14px;">
-        <div class="tile"><span class="emoji">📱</span><div class="t-name">Live Match Centre</div><div class="t-sub">Minute-by-minute updates</div></div>
-        <div class="tile"><span class="emoji">📅</span><div class="t-name">Fixtures &amp; Results</div><div class="t-sub">Never miss a kickoff</div></div>
-        <div class="tile"><span class="emoji">📈</span><div class="t-name">Player Stats</div><div class="t-sub">Goals, assists, cards</div></div>
-        <div class="tile"><span class="emoji">🏆</span><div class="t-name">Standings</div><div class="t-sub">Live group tables</div></div>
+      <div class="surface award-card">
+        <div class="mini-scorecard">
+          <div class="mini-scorecard-team"><span class="mini-scorecard-crest"></span>U11 A</div>
+          <div class="mini-scorecard-mid">
+            <span class="mini-scorecard-score">2&nbsp;-&nbsp;1</span>
+            <span class="mini-scorecard-live">&#9679; LIVE 62&#39;</span>
+          </div>
+          <div class="mini-scorecard-team">U11 B<span class="mini-scorecard-crest muted"></span></div>
+        </div>
+        <div class="card-eyebrow">Live</div>
+        <div class="card-title">Live Match Center</div>
+        <p class="card-desc">Scores, fixtures, and standings update the second the whistle blows.</p>
       </div>
 
-      <div style="display:flex; gap:12px; flex-wrap:wrap; justify-content:flex-end; max-width:620px; width:100%;">
-        <span class="store-btn">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.15 2.95.97 3.67 2.14-3.13 1.53-2.6 5.86.6 7.22-.61 1.51-1.31 2.87-2.92 3.65zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
-          App Store
-        </span>
-        <span class="store-btn">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3 20.5V3.5C3 2.91 3.34 2.39 3.84 2.15L13.69 12L3.84 21.85C3.34 21.61 3 21.09 3 20.5ZM14.41 11.27L5.59 2.45C6.09 2.25 6.71 2.31 7.15 2.56L15.34 7.29C16.14 7.75 16.14 8.79 15.34 9.25L14.41 11.27ZM14.41 12.73L15.34 14.75C16.14 15.21 16.14 16.25 15.34 16.71L7.15 21.44C6.71 21.69 6.09 21.75 5.59 21.55L14.41 12.73ZM16.32 12L20.84 7.48L21.36 7.78C22.21 8.27 22.21 9.49 21.36 9.98L16.32 12Z"/></svg>
-          Google Play
-        </span>
+      <div class="surface award-card">
+        <div class="stat-row-list">
+          <div class="stat-row"><span class="stat-row-num">42</span><span class="stat-row-bar"><span style="width:88%;"></span></span><span class="stat-row-label">Goals</span></div>
+          <div class="stat-row"><span class="stat-row-num">31</span><span class="stat-row-bar"><span style="width:65%; opacity:0.7;"></span></span><span class="stat-row-label">Assists</span></div>
+          <div class="stat-row"><span class="stat-row-num">12</span><span class="stat-row-bar"><span style="width:35%; opacity:0.45;"></span></span><span class="stat-row-label">Clean Sh.</span></div>
+        </div>
+        <div class="card-eyebrow">Auto-Recorded</div>
+        <div class="card-title">Player Statistics</div>
+        <p class="card-desc">Goals, assists, clean sheets &amp; POTM — tallied straight from the scoresheet.</p>
+      </div>
+
+      <div class="surface award-card potm">
+        <div class="rank-row-list">
+          <div class="rank-row"><span class="rank-badge gold">1</span><span class="rank-bar gold" style="width:100%;"></span><span class="rank-val">9</span></div>
+          <div class="rank-row"><span class="rank-badge">2</span><span class="rank-bar" style="width:70%;"></span><span class="rank-val">7</span></div>
+          <div class="rank-row"><span class="rank-badge">3</span><span class="rank-bar muted" style="width:48%;"></span><span class="rank-val">5</span></div>
+        </div>
+        <div class="card-eyebrow gold">Golden Boot &amp; Glove</div>
+        <div class="card-title">Live Award Races</div>
+        <p class="card-desc">Track the race for top scorer and best keeper, match by match.</p>
+      </div>
+
+      <div class="surface award-card" style="grid-column: span 2;">
+        <div class="mini-team-card">
+          <span class="mini-team-crest"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.75s7.75-3.9 7.75-9.75V5.4L12 2.25 4.25 5.4v6.6c0 5.85 7.75 9.75 7.75 9.75Z"/></svg></span>
+          <div>
+            <div class="mini-team-name">FC Thunderbolts &mdash; U11</div>
+            <div class="mini-team-stats"><span><strong>8</strong> Fixtures</span><span><strong>6</strong> Wins</span><span><strong>2nd</strong> Standing</span></div>
+          </div>
+        </div>
+        <div class="card-eyebrow">Public Page</div>
+        <div class="card-title">Team Profile</div>
+        <p class="card-desc">A public home for your squad — roster, fixtures, results &amp; standings, shareable with one link to every parent.</p>
       </div>
     </div>
 
-    <div class="hollow-overlay-text" style="left: auto; right: var(--pad-x); transform: none;">SPORTIVA</div>
+    <!-- no hollow watermark here: the feature grid runs the full height of the slide,
+         there's no clean band left for it to sit in without colliding with a card -->
 
-    <div class="story-footer-nav reveal delay-3" style="margin-top:auto; padding-top:14px; justify-content:flex-end;">
-      <div style="margin-right:12px;">Scroll to register your team</div>
-      <span>10 / 11 &nbsp;➔</span>
+    <div class="story-footer-nav reveal delay-3" style="margin-top:auto; padding-top:14px;">
+      <div>Scroll to see your player experience</div>
+      <span class="next-page-link">10 / 12 &nbsp;➔</span>
     </div>
   </section>
 
-  <!-- ============ SLIDE 11: REGISTRATION ============ -->
+  <!-- ============ SLIDE 11: YOUR PLAYER EXPERIENCE ============ -->
+  <section data-label="Player Experience" style="justify-content: flex-start; gap: 20px;">
+    <div class="reg-brand-glow" aria-hidden="true" style="right: 8%; left: auto; top: 50%; transform: translateY(-50%); position: absolute;"></div>
+
+    <div style="display:flex; flex-direction:column; position:relative; z-index:5;" class="reveal">
+      <div class="story-header">Chapter 10 / Digital Experience</div>
+      <h1 class="story-title" style="margin-bottom:10px;">Your Player Experience</h1>
+      <p class="section-lead" style="max-width:760px;">The app is built around what parents and players actually check — status, stats, and a record that's kept safe.</p>
+    </div>
+
+    <div class="feature-grid-wide reveal delay-1" style="max-width:1080px; width:75%;">
+      <div class="surface award-card">
+        <div class="mini-chart-box">
+          <svg viewBox="0 0 100 48" style="width:auto; height:40px;">
+            <rect x="30" y="2" width="28" height="44" rx="7" fill="none" stroke="var(--orange)" stroke-width="3"/>
+            <rect x="38" y="38" width="12" height="3" rx="1.5" fill="var(--orange)"/>
+            <rect x="36" y="10" width="16" height="16" rx="3" fill="var(--orange)" opacity="0.18"/>
+            <circle cx="54" cy="10" r="7" fill="var(--orange)"/>
+            <circle cx="54" cy="10" r="7" fill="none" stroke="var(--card-bg)" stroke-width="2.5"/>
+          </svg>
+        </div>
+        <div class="card-eyebrow">Access</div>
+        <div class="card-title">Mobile Access</div>
+        <p class="card-desc">Everything above, in your pocket — no downloads to chase, no papers to lose.</p>
+      </div>
+      <div class="surface award-card">
+        <div class="standings-table">
+          <div class="standings-row leader"><span class="standings-rank">1</span><span class="standings-name">U9 Group A</span><span class="standings-pts">12<em>pts</em></span></div>
+          <div class="standings-row"><span class="standings-rank">2</span><span class="standings-name">U9 Group B</span><span class="standings-pts">9<em>pts</em></span></div>
+          <div class="standings-row"><span class="standings-rank">3</span><span class="standings-name">U11 Group A</span><span class="standings-pts">7<em>pts</em></span></div>
+        </div>
+        <div class="card-eyebrow">Standings</div>
+        <div class="card-title">Age-Group Standings</div>
+        <p class="card-desc">Separate tables for every division — only ever compared against real competition.</p>
+      </div>
+      <div class="surface award-card">
+        <div class="mini-profile-card">
+          <span class="mini-profile-avatar">AK</span>
+          <div>
+            <div class="mini-profile-name">Arjun K. <svg width="13" height="13" viewBox="0 0 24 24" fill="var(--gold)"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4" stroke="var(--bg)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="mini-profile-meta">8 Goals &middot; 12 Apps &middot; U11</div>
+          </div>
+        </div>
+        <div class="card-eyebrow">Profile</div>
+        <div class="card-title">Digital Player Profile</div>
+        <p class="card-desc">A verified, permanent record of a player's tournament journey — kept for good.</p>
+      </div>
+      <div class="surface award-card potm">
+        <div class="mini-chart-box">
+          <svg viewBox="0 0 70 48" style="width:auto; height:40px; margin:0;">
+            <path d="M35 2l24 8v16c0 14-24 20-24 20s-24-6-24-20V10z" fill="var(--gold)" opacity="0.15"/>
+            <path d="M35 2l24 8v16c0 14-24 20-24 20s-24-6-24-20V10z" fill="none" stroke="var(--gold)" stroke-width="2.4"/>
+            <rect x="24" y="24" width="22" height="16" rx="3" fill="none" stroke="var(--gold)" stroke-width="2.2"/>
+            <path d="M27 24v-5a8 8 0 0 1 16 0v5" stroke="var(--gold)" stroke-width="2.2" fill="none"/>
+          </svg>
+        </div>
+        <div class="card-eyebrow gold">Privacy Protected</div>
+        <div class="card-title">Secure By Design</div>
+        <p class="card-desc">Shown only with parental consent — built for a youth tournament, not a public feed.</p>
+      </div>
+      <div class="surface award-card" style="grid-column: span 2;">
+        <div class="mini-chart-box" style="gap:18px; margin-bottom:16px;">
+          <svg viewBox="0 0 48 48" width="44" height="44" style="flex-shrink:0;">
+            <circle cx="24" cy="24" r="18" fill="none" stroke="var(--line)" stroke-width="5"/>
+            <circle cx="24" cy="24" r="18" fill="none" stroke="var(--orange)" stroke-width="5" stroke-linecap="round" stroke-dasharray="113" stroke-dashoffset="26" transform="rotate(-90 24 24)"/>
+          </svg>
+          <div>
+            <div class="card-eyebrow" style="margin-bottom:2px;">No Manual Record Keeping</div>
+            <div class="card-title" style="font-size:18px;">Automatic Stats</div>
+          </div>
+        </div>
+        <p class="card-desc">No coach filling spreadsheets after the match — every statistic syncs itself, straight from the official scoresheet.</p>
+      </div>
+    </div>
+
+    <!-- no hollow watermark here: the feature grid now runs the full height of the
+         slide (standings table added a row), no clean band left for it to sit in -->
+
+    <div class="story-footer-nav reveal delay-3" style="margin-top:auto; padding-top:18px;">
+      <div>Scroll to register your team</div>
+      <span class="next-page-link">11 / 12 &nbsp;➔</span>
+    </div>
+  </section>
+
+  <!-- ============ SLIDE 12: REGISTRATION ============ -->
   <section data-label="Registration Info" style="justify-content: flex-start; gap: 20px;">
-    <div class="mag-bg-image-container" style="left: auto; right: 0; width: 62%; height: 100%;">
-      <img src="assets/images/registration.jpg" alt="Registration bg" style="object-position: center center; opacity:0.6; transition: opacity 0.4s ease;">
-      <div style="position:absolute; inset:0; background:linear-gradient(to right, var(--bg) 0%, var(--bg) 25%, transparent 95%); z-index:2;"></div>
+    <div class="reg-brand-showcase" aria-hidden="true">
+      <div class="reg-brand-glow"></div>
+      <img src="assets/images/athlora-logo.png" alt="" onerror="this.style.display='none'">
     </div>
 
     <div style="display:flex; flex-direction:column; position:relative; z-index:5;" class="reveal">
-      <div class="story-header">Chapter 10 / Registration</div>
+      <div class="story-header">Chapter 11 / Registration</div>
       <h1 class="story-title" style="margin-bottom:24px;">Secure Your Spot</h1>
     </div>
 
-    <div style="display:flex; flex-direction:column; gap:18px; position:relative; z-index:5; max-width:600px; width:100%;" class="reveal delay-1">
-      <p style="font-size:18px; color:var(--ink); line-height:1.6; font-weight:500; margin:0;">Registration closes soon. Don't let your team miss out on the ultimate football experience.</p>
+    <div style="display:flex; flex-direction:column; gap:16px; position:relative; z-index:5; max-width:600px; width:100%;" class="reveal delay-1">
+      <p style="font-size:16px; color:var(--ink); line-height:1.55; font-weight:500; margin:0;">Registration closes soon. Don't let your team miss out on the ultimate football experience.</p>
 
-      <div class="surface" style="border-color:var(--orange); padding:32px; text-align:center;">
-        <div class="card-eyebrow" style="letter-spacing:2px; margin-bottom:16px;">Tournament Enquiries</div>
-        <div style="font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:clamp(30px,7vw,38px); color:var(--ink); margin-bottom:8px; letter-spacing:0.5px;">+91 9342 188 428</div>
-        <div style="font-size:16px; color:var(--muted); margin-bottom:24px;">WhatsApp / Call</div>
-
-        <a href="#" style="display:inline-block; background:var(--orange); color:#000; padding:16px 36px; border-radius:8px; font-weight:800; font-size:16px; text-decoration:none; transition:transform 0.2s ease, box-shadow 0.2s ease;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 12px 30px rgba(242,106,30,0.35)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-          Register Now
-        </a>
+      <div class="vfd-strip">
+        <div class="vfd-item">
+          <a class="vfd-link" href="https://maps.app.goo.gl/Pa96wGFw7bR7nyz78" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.5-7-11a7 7 0 0 1 14 0c0 4.5-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+            <div class="vfd-label">Venue</div>
+            <div class="vfd-value">Gateway International School</div>
+            <div class="vfd-sub">Padur, Chennai &nbsp;&#8599;</div>
+          </a>
+        </div>
+        <div class="vfd-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41 12 22l-9-9V4a1 1 0 0 1 1-1h9l9 9a1 1 0 0 1 0 1.41Z"/><circle cx="7.5" cy="7.5" r="1"/></svg>
+          <div class="vfd-label">Entry Fee</div>
+          <div class="vfd-value" style="color:var(--orange); font-size:22px; letter-spacing:0.3px;">₹2,000<span style="color:var(--muted); font-weight:600; font-size:12px; margin-left:4px;">/ player</span></div>
+          <div class="vfd-sub">Max 10 players per squad</div>
+        </div>
+        <div class="vfd-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>
+          <div class="vfd-label">Tournament Window</div>
+          <div class="vfd-value" style="font-size:15px;">Aug &ndash; Sep 2026</div>
+          <div class="vfd-sub">Exact dates to be confirmed</div>
+        </div>
       </div>
 
-      <div class="cgrid c2" style="gap:14px;">
-        <div class="tile" style="text-align:center;">
-          <div style="font-weight:700; font-size:15px; color:var(--ink); margin-bottom:4px;">Team Registration</div>
-          <div style="font-size:13px; color:var(--orange); font-weight:700;">₹2,000 / Team</div>
+      <div style="display:flex; align-items:flex-start; gap:10px; font-size:13px; color:var(--muted); line-height:1.5; padding:0 2px;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="width:18px; height:18px; flex-shrink:0; margin-top:1px;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="M12 8v6M9 11h6"/></svg>
+        <span>Physio &amp; safety team on-site — a qualified physio is present throughout the tournament for player safety.</span>
+      </div>
+
+      <div class="surface" style="border-color:var(--orange); padding:26px 32px; text-align:center;">
+        <div class="card-eyebrow" style="letter-spacing:2px; margin-bottom:18px;">Contact Your Coordinator</div>
+
+        <div style="display:flex; justify-content:center; gap:40px; margin-bottom:22px;">
+          <a href="tel:+919342188428" class="coordinator-link">
+            <div class="coordinator-name">Velu</div>
+            <div class="coordinator-number"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>9342188428</div>
+          </a>
+          <div style="width:1px; background:var(--line);"></div>
+          <a href="tel:+917540023081" class="coordinator-link">
+            <div class="coordinator-name">Aanadh</div>
+            <div class="coordinator-number"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>7540023081</div>
+          </a>
         </div>
-        <div class="tile" style="text-align:center;">
-          <div style="font-weight:700; font-size:15px; color:var(--ink); margin-bottom:4px;">Squad Size</div>
-          <div style="font-size:13px; color:var(--muted);">Max 10 Players</div>
-        </div>
+
+        <button type="button" onclick="openRegisterModal()" style="display:inline-block; background:var(--orange); color:#000; padding:14px 36px; border-radius:8px; border:none; font-family:inherit; font-weight:800; font-size:16px; cursor:pointer; text-decoration:none; transition:transform 0.2s ease, box-shadow 0.2s ease;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 12px 30px rgba(242,106,30,0.35)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+          Register Now
+        </button>
       </div>
     </div>
 
-    <img class="reg-emblem reveal delay-2" src="assets/images/athlora-logo.png" alt="Athlora Sports Events" onerror="this.style.display='none'">
-
-    <div class="hollow-overlay-text">PLAY NOW</div>
+    <div class="hollow-overlay-text" style="bottom: 114px; font-size: clamp(40px, 5.5vw, 76px);">PLAY NOW</div>
 
     <div class="story-footer-nav reveal delay-3" style="margin-top:auto; padding-top:18px;">
       <div style="font-size:12px; color:var(--muted);">Designed by Athlora | Powered by Sportiva</div>
-      <span>11 / 11 &nbsp;🏆</span>
+      <span>12 / 12 &nbsp;<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="width:15px; height:15px;"><path d="M8 21h8"/><path d="M12 17v4"/><path d="M7 4h10v5a5 5 0 0 1-10 0V4Z"/><path d="M17 5h2.5a2.5 2.5 0 0 1 0 5H17"/><path d="M7 5H4.5a2.5 2.5 0 0 0 0 5H7"/></svg></span>
     </div>
   </section>
 
@@ -881,7 +1061,28 @@
     sections.forEach(section => {
       observer.observe(section);
     });
+
+    // Footer page-number arrow: click to advance to the next slide
+    const deckContainer = document.querySelector('.deck-container');
+    document.querySelectorAll('.next-page-link').forEach(link => {
+      link.addEventListener('click', () => {
+        const currentSection = link.closest('section');
+        const nextSection = currentSection && currentSection.nextElementSibling;
+        if (nextSection) {
+          deckContainer.scrollTo({ top: nextSection.offsetTop, behavior: 'smooth' });
+        }
+      });
+    });
   });
+</script>
+
+<!-- Register Now: opens the Google Form in a new tab -->
+<script>
+  const REGISTRATION_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSeCiKpLtVaDdFaFj-mQ-QL4dKST8NaqWEGMtn0um9OjgXQmRA/viewform';
+
+  function openRegisterModal() {
+    window.open(REGISTRATION_FORM_URL, '_blank', 'noopener');
+  }
 </script>
 
 </body>

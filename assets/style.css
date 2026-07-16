@@ -132,7 +132,9 @@ section {
   gap: 28px;
 }
 
-.header-contact {
+.header-contact,
+.header-contact:link,
+.header-contact:visited {
   font-family: 'Barlow Condensed', sans-serif;
   font-weight: 700;
   font-size: 17px;
@@ -142,8 +144,13 @@ section {
   display: flex;
   align-items: center;
   gap: 8px;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
 }
-.header-contact span {
+.header-contact:hover { opacity: 0.75; }
+.header-contact span,
+.header-contact:link span,
+.header-contact:visited span {
   color: var(--orange);
 }
 
@@ -414,8 +421,9 @@ section {
 /* Story Footer Nav bar with top border separation */
 .story-footer-nav {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
+  gap: 12px;
   border-top: 1px solid var(--line);
   padding-top: 18px;
   font-size: 11px;
@@ -433,6 +441,11 @@ section {
   align-items: center;
   gap: 6px;
 }
+.next-page-link {
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.next-page-link:hover { transform: translateX(3px); opacity: 0.8; }
 
 /* Roster Spec Columns - Adjusted margins per request */
 .spec-grid-row {
@@ -591,17 +604,94 @@ section {
 }
 .cover-copy { display: flex; flex-direction: column; max-width: 620px; }
 
-/* Registration sign-off emblem — center-right over the photo on desktop */
-.reg-emblem {
+/* Registration closing visual — the crest itself on a soft glow,
+   replacing the stock photo so the sign-off slide is pure brand */
+.reg-brand-showcase {
   position: absolute;
-  right: clamp(24px, 7vw, 110px);
-  top: 50%;
-  transform: translateY(-50%);
-  width: min(30vw, 300px);
-  height: auto;
-  z-index: 4;
-  filter: drop-shadow(0 20px 45px rgba(0, 0, 0, 0.5));
+  inset: 0;
+  left: auto;
+  right: 0;
+  width: 62%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
   pointer-events: none;
+  overflow: hidden;
+}
+.reg-brand-glow {
+  position: absolute;
+  width: min(46vw, 640px);
+  height: min(46vw, 640px);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(242, 106, 30, 0.16) 0%, rgba(242, 106, 30, 0.05) 45%, transparent 72%);
+}
+.reg-brand-showcase img {
+  position: relative;
+  width: min(30vw, 380px);
+  height: auto;
+  filter: drop-shadow(0 25px 55px rgba(0, 0, 0, 0.4));
+}
+
+/* Venue / Fee / Key Dates info strip — registration slide */
+.vfd-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--card-bg);
+  backdrop-filter: blur(14px) saturate(135%);
+  -webkit-backdrop-filter: blur(14px) saturate(135%);
+}
+.vfd-item {
+  padding: 14px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  border-right: 1px solid var(--line);
+}
+.vfd-item:last-child { border-right: none; }
+.vfd-item svg { width: 17px; height: 17px; color: var(--orange); }
+.vfd-label {
+  font-size: 10px;
+  letter-spacing: 1.3px;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 700;
+  margin-top: 2px;
+}
+.vfd-value {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--ink);
+  line-height: 1.25;
+}
+.vfd-sub {
+  font-size: 11.5px;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+/* Venue tile doubles as a Google Maps link */
+.vfd-link {
+  display: contents;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+.vfd-link .vfd-value {
+  text-decoration: underline;
+  text-decoration-color: rgba(242, 106, 30, 0.35);
+  text-underline-offset: 3px;
+  transition: color 0.2s ease;
+}
+.vfd-item:has(.vfd-link):hover {
+  background: rgba(242, 106, 30, 0.06);
+}
+.vfd-item:has(.vfd-link):hover .vfd-value {
+  color: var(--orange);
 }
 
 /* =====================================================================
@@ -630,6 +720,17 @@ section {
 .cgrid.c2 { grid-template-columns: repeat(2, 1fr); }
 .cgrid.c3 { grid-template-columns: repeat(3, 1fr); }
 .cgrid.c4 { grid-template-columns: repeat(4, 1fr); }
+
+/* Standalone wide feature grid (Sportiva app slides) — deliberately not
+   a .cgrid variant so it never inherits the legacy mobile card-grid rules */
+.feature-grid-wide {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  width: 100%;
+  position: relative;
+  z-index: 5;
+}
 
 /* Base elevated surface card — frosted glass */
 .surface {
@@ -833,9 +934,9 @@ section {
 
 .award-icon.inline { margin-bottom: 0; }
 
-/* Ch07 — title + cards centre vertically as one group (auto margins absorb the
+/* Title + body centre vertically as one group (auto margins absorb the
    free space), so the content isn't pinned into the top-right corner */
-.media-group {
+.slide-center {
   margin: auto 0;
   display: flex;
   flex-direction: column;
@@ -869,20 +970,146 @@ section {
 .step-title { font-weight: 700; font-size: 15px; color: var(--ink); }
 .step-sub { font-size: 12px; color: var(--muted); margin-top: 1px; }
 
-/* App-store style pill button */
-.store-btn {
-  background: var(--ink);
-  color: var(--bg);
-  padding: 12px 20px;
-  border-radius: 10px;
-  display: inline-flex;
+/* Small inline chart/graphic sitting at the top of a feature card,
+   in place of a plain icon — bar charts, trackers, mini leaderboards */
+.mini-chart-box {
+  width: 100%;
+  margin-bottom: 14px;
+  display: flex;
   align-items: center;
-  gap: 9px;
-  font-weight: 700;
-  font-size: 14px;
-  transition: transform 0.2s ease, opacity 0.2s ease;
 }
-.store-btn:hover { transform: translateY(-2px); opacity: 0.9; }
+
+/* Registration status pills — the 4 real states, not an abstract tracker */
+.reg-pill {
+  font-size: 11px;
+  font-weight: 800;
+  padding: 6px 12px;
+  border-radius: 20px;
+  background: var(--card-bg);
+  border: 1px solid var(--line);
+  color: var(--muted);
+}
+.reg-pill.on { background: var(--orange); border-color: var(--orange); color: #000; }
+
+/* Live match scoreboard mockup */
+.mini-scorecard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  background: var(--card-bg);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-bottom: 18px;
+}
+.mini-scorecard-team {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 800;
+  font-size: 13px;
+  color: var(--ink);
+}
+.mini-scorecard-crest { width: 24px; height: 24px; border-radius: 50%; background: var(--orange); opacity: 0.85; flex-shrink: 0; }
+.mini-scorecard-crest.muted { background: var(--line); opacity: 1; }
+.mini-scorecard-mid { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.mini-scorecard-score { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 22px; color: var(--ink); letter-spacing: 0.5px; }
+.mini-scorecard-live { background: rgba(242, 106, 30, 0.15); color: var(--orange); font-size: 9px; font-weight: 800; padding: 3px 7px; border-radius: 4px; letter-spacing: 0.4px; }
+
+/* Labelled stat rows (goals / assists / clean sheets) */
+.stat-row-list { display: flex; flex-direction: column; gap: 9px; margin-bottom: 18px; }
+.stat-row { display: flex; align-items: center; gap: 10px; }
+.stat-row-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 18px; color: var(--orange); width: 26px; flex-shrink: 0; }
+.stat-row-bar { flex: 1; height: 7px; background: var(--line); border-radius: 4px; overflow: hidden; display: block; }
+.stat-row-bar span { display: block; height: 100%; background: var(--orange); border-radius: 4px; }
+.stat-row-label { font-size: 11px; color: var(--muted); width: 50px; flex-shrink: 0; text-align: right; }
+
+/* Mini leaderboard rows (award races) */
+.rank-row-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 18px; }
+.rank-row { display: flex; align-items: center; gap: 8px; }
+.rank-badge { width: 18px; height: 18px; border-radius: 5px; background: var(--line); color: var(--muted); font-size: 10px; font-weight: 900; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.rank-badge.gold { background: var(--gold); color: #000; }
+.rank-bar { flex: 1; height: 9px; border-radius: 5px; background: var(--line); display: block; }
+.rank-bar.gold { background: var(--gold); opacity: 0.9; }
+.rank-bar.muted { opacity: 0.7; }
+.rank-val { font-size: 10px; color: var(--muted); font-weight: 700; width: 14px; text-align: right; }
+
+/* Team profile card mockup */
+.mini-team-card { display: flex; align-items: center; gap: 14px; background: var(--card-bg); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; margin-bottom: 18px; }
+.mini-team-crest { width: 44px; height: 44px; border-radius: 10px; background: var(--orange); flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+.mini-team-crest svg { width: 24px; height: 24px; color: #000; opacity: 0.82; }
+.mini-team-name { font-weight: 800; font-size: 14px; color: var(--ink); margin-bottom: 6px; }
+.mini-team-stats { display: flex; gap: 16px; font-size: 11px; color: var(--muted); }
+.mini-team-stats strong { color: var(--ink); }
+
+/* Mini standings table — a real leaderboard, not plain text rows */
+.standings-table {
+  background: var(--card-bg);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 18px;
+}
+.standings-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  font-size: 12.5px;
+}
+.standings-row + .standings-row { border-top: 1px solid var(--line); }
+.standings-row.leader { background: rgba(242, 106, 30, 0.1); }
+.standings-rank {
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  background: var(--line);
+  color: var(--muted);
+  font-size: 10.5px;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.standings-row.leader .standings-rank { background: var(--orange); color: #000; }
+.standings-name { flex: 1; color: var(--muted); font-weight: 600; }
+.standings-row.leader .standings-name { color: var(--ink); font-weight: 800; }
+.standings-pts { color: var(--muted); font-weight: 800; flex-shrink: 0; }
+.standings-row.leader .standings-pts { color: var(--orange); }
+.standings-pts em { font-style: normal; font-weight: 500; opacity: 0.7; margin-left: 3px; font-size: 0.82em; }
+
+/* Player profile card mockup */
+.mini-profile-card { display: flex; align-items: center; gap: 12px; background: var(--card-bg); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; margin-bottom: 18px; }
+.mini-profile-avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--orange); opacity: 0.85; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-weight: 900; color: #000; font-size: 13px; }
+.mini-profile-name { display: flex; align-items: center; gap: 6px; font-weight: 800; font-size: 13px; color: var(--ink); }
+.mini-profile-meta { font-size: 10.5px; color: var(--muted); margin-top: 2px; }
+
+/* Tap-to-call coordinator numbers on the Registration card */
+.coordinator-link,
+.coordinator-link:link,
+.coordinator-link:visited {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  padding: 4px;
+  margin: -4px;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+}
+.coordinator-link:hover { background: rgba(242, 106, 30, 0.08); }
+.coordinator-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 19px; color: var(--ink); }
+.coordinator-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  font-size: 14px;
+  color: var(--orange);
+  font-weight: 700;
+  margin-top: 2px;
+}
 
 /* Surface variants */
 /* POTM stays a highlight, but as tinted glass — a solid fill broke the glassmorphism */
@@ -891,14 +1118,6 @@ section {
   border-color: rgba(242, 106, 30, 0.45);
 }
 .surface.potm:hover { border-color: var(--orange); box-shadow: 0 18px 40px rgba(242, 106, 30, 0.18); }
-.surface.feature-gold {
-  background: linear-gradient(150deg, rgba(233, 180, 76, 0.12), rgba(233, 180, 76, 0.02));
-  border-color: rgba(233, 180, 76, 0.35);
-}
-.surface.feature-orange {
-  background: linear-gradient(150deg, rgba(242, 106, 30, 0.14), rgba(242, 106, 30, 0.02));
-  border-color: rgba(242, 106, 30, 0.4);
-}
 
 /* Lightweight mini tile (app features / pricing) */
 .tile {
@@ -915,46 +1134,135 @@ section {
 .tile .t-name { font-weight: 700; font-size: 15px; color: var(--ink); }
 .tile .t-sub { font-size: 13px; color: var(--muted); margin-top: 4px; }
 
-/* Small numbered token (interview list) */
-.token {
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  background: var(--card-bg);
-  border: 1px solid var(--glass-border);
+/* ============ Ch08 Fan Zone ============
+   One surface, hairline dividers. The content is a list, a table and a
+   statement — none of those want to be boxes inside a box. */
+/* No card — the copy sits on the scrim so the crowd carries the slide */
+/* Content sits at its natural height under the title; the space below it is
+   filled by the crowd itself rather than by empty columns or dead scrim */
+.fz-content {
+  width: 100%;
+  flex: none;
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  position: relative;
+  z-index: 5;
+}
+/* full-bleed crowd, scrimmed only across the copy */
+.fz-bg img { object-fit: cover; }
+.fz-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background:
+    /* keep the footer legible where it crosses the floodlit pitch */
+    linear-gradient(to top,
+      var(--bg) 0%,
+      rgba(var(--bg-rgb), 0.9) 9%,
+      rgba(var(--bg-rgb), 0.4) 16%,
+      transparent 26%),
+    /* bed the title + columns up top; release into the crowd below them */
+    linear-gradient(to bottom,
+      var(--bg) 0%,
+      var(--bg) 60%,
+      rgba(var(--bg-rgb), 0.82) 70%,
+      rgba(var(--bg-rgb), 0.32) 82%,
+      transparent 94%);
+}
+.fz-cols {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.fz-col { padding: 0 26px; }
+/* type scaled for a 1440 slide, not a card */
+.fz-col .card-eyebrow { font-size: 12px; letter-spacing: 2.2px; }
+.fz-col:first-child { padding-left: 0; }
+.fz-col:last-child { padding-right: 0; }
+.fz-col + .fz-col { border-left: 1px solid var(--line); }
+
+.fz-head {
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 11px;
+  margin: 8px 0 22px;
   font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 800;
-  font-size: 13px;
-  color: var(--orange);
-  flex-shrink: 0;
+  font-weight: 900;
+  font-size: 32px;
+  letter-spacing: 0.3px;
+  color: var(--ink);
 }
-.list-row {
+.fz-icon { width: 26px; height: 26px; flex-shrink: 0; color: var(--orange); }
+.fz-head.gold .fz-icon { color: var(--gold); }
+
+.fz-list { list-style: none; margin: 0; padding: 0; }
+.fz-list li {
   display: flex;
   align-items: center;
   gap: 12px;
-  background: rgba(242, 106, 30, 0.06);
-  border-radius: 10px;
-  padding: 10px 14px;
-  font-size: 14px;
+  padding: 18px 0;
+  font-size: 17px;
   font-weight: 600;
   color: var(--ink);
 }
-.stat-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: var(--card-bg);
-  border-radius: 10px;
-  padding: 11px 15px;
+.fz-list li + li { border-top: 1px solid var(--line); }
+.fz-num {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: 15px;
+  color: var(--orange);
+  min-width: 20px;
 }
+.fz-row-icon { width: 20px; height: 20px; flex-shrink: 0; color: var(--gold); }
+.fz-row-icon.orange { color: var(--orange); }
+/* Captain's Armband rides under Team of the Week, balancing column 3 */
+.fz-sub {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+}
+.fz-metric {
+  margin-left: auto;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 700;
+}
+.fz-quote {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--muted);
+  margin: 0;
+}
+.fz-quote strong { color: var(--ink); font-weight: 700; }
 
-/* ============ Glassmorphism utility (Apple-style frosted depth) ============ */
-.glass {
-  backdrop-filter: blur(18px) saturate(150%);
-  -webkit-backdrop-filter: blur(18px) saturate(150%);
+.fz-perk + .fz-perk-name { display: block; font-size: 16px; font-weight: 700; color: var(--ink); }
+.fz-perk-sub { display: block; font-size: 13px; color: var(--muted); margin-top: 3px; }
+
+/* stack the columns; dividers turn horizontal, scrim goes vertical */
+@media (max-width: 900px) {
+  /* the big type is for a 1440 slide — dial it back on a phone */
+  .fz-content { max-width: 100%; padding-top: 18px; }
+  .fz-head { font-size: 24px; margin: 6px 0 14px; }
+  .fz-icon { width: 21px; height: 21px; }
+  .fz-list li { font-size: 15.5px; padding: 13px 0; }
+  .fz-quote { font-size: 14.5px; }
+  .fz-sub { margin-top: 14px; padding-top: 14px; }
+  .fz-cols { grid-template-columns: 1fr; }
+  .fz-col { padding: 16px 0; }
+  .fz-col:first-child { padding-top: 0; }
+  .fz-col:last-child { padding-bottom: 0; }
+  .fz-col + .fz-col { border-left: none; border-top: 1px solid var(--line); }
+  /* stadium stays as atmosphere, but the copy needs a firmer bed on a small screen */
+  .fz-scrim {
+    background:
+      linear-gradient(to bottom, var(--bg) 0%, rgba(var(--bg-rgb), 0.94) 42%, rgba(var(--bg-rgb), 0.86) 100%);
+  }
 }
 
 /* ============ Chapter 04 — Knockout Bracket (desktop bracket, stacks on mobile) ============ */
@@ -1190,6 +1498,12 @@ section {
   .award-card { padding: 14px; }
   .award-icon { width: 42px; height: 42px; font-size: 22px; margin-bottom: 10px; }
 
+  /* Sportiva app slides carry rich widget mockups (scorecards, tables,
+     profile cards) that don't survive being squeezed into 2 columns —
+     these need the full mobile width to stay readable */
+  .feature-grid-wide { grid-template-columns: 1fr; width: 100% !important; max-width: 100% !important; }
+  .feature-grid-wide > * { grid-column: auto !important; }
+
 
   /* Cover: background photo goes full-bleed and dims so the copy stays readable */
   .cover-photo { width: 100%; }
@@ -1197,14 +1511,15 @@ section {
   .cover-fade-x { background: linear-gradient(to right, var(--bg) 0%, rgba(var(--bg-rgb), 0.55) 60%, transparent 100%); }
   .cover-fade-y { background: linear-gradient(to top, var(--bg) 0%, transparent 60%); }
 
-  /* Registration emblem flows in-content, centered */
-  .reg-emblem {
-    position: static;
-    transform: none;
-    width: 118px;
-    margin: 4px auto 0;
-    display: block;
-  }
+  /* Registration crest sits behind the full-width content, dimmed */
+  .reg-brand-showcase { left: 0; width: 100%; opacity: 0.5; }
+  .reg-brand-showcase img { width: min(46vw, 200px); }
+  .reg-brand-glow { width: min(70vw, 380px); height: min(70vw, 380px); }
+
+  /* Venue/Fee/Date strip stacks so each item stays readable */
+  .vfd-strip { grid-template-columns: 1fr; }
+  .vfd-item { border-right: none; border-bottom: 1px solid var(--line); }
+  .vfd-item:last-child { border-bottom: none; }
 
   .story-title {
     letter-spacing: 0px !important;
@@ -1304,7 +1619,7 @@ section {
     gap: 10px;
   }
   .header-contact {
-    display: none; /* phone shown prominently in the registration section */
+    display: none !important; /* phone shown prominently in the registration section */
   }
   .register-btn {
     font-size: 13px;
@@ -1338,4 +1653,3 @@ section {
     padding: 8px 13px;
   }
 }
-
