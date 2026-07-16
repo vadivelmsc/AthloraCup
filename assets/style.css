@@ -81,7 +81,7 @@ section {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  font-family: 'Barlow', sans-serif;
+  font-family: 'Manrope', sans-serif;
   color: var(--ink);
   background-color: var(--bg);
   transition: background 0.4s ease, color 0.4s ease;
@@ -109,7 +109,7 @@ section {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Big Shoulders Condensed', sans-serif;
   font-weight: 900;
   font-size: 26px;
   text-transform: uppercase;
@@ -135,7 +135,7 @@ section {
 .header-contact,
 .header-contact:link,
 .header-contact:visited {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Big Shoulders Condensed', sans-serif;
   font-weight: 700;
   font-size: 17px;
   letter-spacing: 0.5px;
@@ -173,7 +173,7 @@ section {
 }
 
 .register-btn {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Big Shoulders Condensed', sans-serif;
   font-weight: 800;
   font-size: 15px;
   text-transform: uppercase;
@@ -193,7 +193,7 @@ section {
 
 /* Slanted / Bold Typography details */
 .story-header {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Big Shoulders Condensed', sans-serif;
   font-size: var(--kicker);
   text-transform: uppercase;
   letter-spacing: 3px;
@@ -203,7 +203,7 @@ section {
 }
 
 .story-title {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Big Shoulders Condensed', sans-serif;
   font-weight: 900;
   font-size: var(--title);
   line-height: 0.88;
@@ -270,7 +270,7 @@ section {
   background: rgba(242, 106, 30, 0.08);
   border: 1px solid rgba(242, 106, 30, 0.2);
   color: var(--orange);
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Big Shoulders Condensed', sans-serif;
   font-weight: 800;
   font-size: 18px;
   transition: all 0.3s ease;
@@ -292,7 +292,7 @@ section {
 }
 
 .mag-route-header {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Big Shoulders Condensed', sans-serif;
   font-weight: 850;
   font-size: clamp(18px, 2.2vw, 24px);
   text-transform: uppercase;
@@ -303,7 +303,7 @@ section {
 }
 
 .mag-route-sub {
-  font-family: 'Barlow', sans-serif;
+  font-family: 'Manrope', sans-serif;
   font-size: 12px;
   color: var(--muted);
   font-weight: 550;
@@ -313,7 +313,7 @@ section {
 }
 
 .mag-btn {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Big Shoulders Condensed', sans-serif;
   font-weight: 800;
   font-size: 14px;
   text-transform: uppercase;
@@ -358,7 +358,7 @@ section {
   position: absolute;
   bottom: 10px;
   right: 10px;
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Big Shoulders Condensed', sans-serif;
   font-size: 10px;
   font-weight: 800;
   color: #fff;
@@ -369,7 +369,7 @@ section {
 }
 
 .mag-paragraph {
-  font-family: 'Barlow', sans-serif;
+  font-family: 'Manrope', sans-serif;
   font-size: 14px;
   line-height: 1.6;
   color: var(--muted);
@@ -384,7 +384,7 @@ section {
   position: absolute;
   bottom: 125px;
   left: var(--pad-x);
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Big Shoulders Condensed', sans-serif;
   font-weight: 900;
   font-size: clamp(60px, 12vw, 150px);
   line-height: 0.8;
@@ -464,7 +464,7 @@ section {
 }
 
 .spec-col-num {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Big Shoulders Condensed', sans-serif;
   font-size: clamp(34px, 4vw, 54px);
   font-weight: 900;
   line-height: 1;
@@ -472,7 +472,7 @@ section {
 }
 
 .spec-col-label {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Big Shoulders Condensed', sans-serif;
   font-size: 15px;
   font-weight: 800;
   text-transform: uppercase;
@@ -481,7 +481,7 @@ section {
 }
 
 .spec-col-desc {
-  font-family: 'Barlow', sans-serif;
+  font-family: 'Manrope', sans-serif;
   font-size: 12px;
   color: var(--muted);
   line-height: 1.35;
@@ -501,7 +501,7 @@ section {
   border-color: rgba(242,106,30,0.25);
 }
 .bracket-title {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Big Shoulders Condensed', sans-serif;
   font-size: 20px;
   font-weight: 800;
   margin-top: 2px;
@@ -543,7 +543,7 @@ section {
 }
 
 .math-card h3 {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Big Shoulders Condensed', sans-serif;
   font-size: 26px;
   font-weight: 900;
   color: var(--ink);
@@ -559,7 +559,7 @@ section {
   line-height: 1.45;
   color: var(--muted);
   margin: 0;
-  font-family: 'Barlow', sans-serif;
+  font-family: 'Manrope', sans-serif;
   font-weight: 500;
 }
 
@@ -662,7 +662,7 @@ section {
   margin-top: 2px;
 }
 .vfd-value {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Big Shoulders Condensed', sans-serif;
   font-size: 16px;
   font-weight: 800;
   color: var(--ink);
@@ -763,7 +763,7 @@ section {
 .card-eyebrow.muted { color: var(--muted); }
 
 .card-title {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Big Shoulders Condensed', sans-serif;
   font-weight: 900;
   font-size: 22px;
   line-height: 1.05;
@@ -811,7 +811,7 @@ section {
 }
 .rule-stat:hover { border-top-color: var(--orange); }
 .stat-num {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Big Shoulders Condensed', sans-serif;
   font-size: clamp(54px, 7vw, 84px);
   font-weight: 900;
   color: var(--ink);
@@ -821,7 +821,7 @@ section {
 }
 .stat-num span { font-size: 0.38em; color: var(--orange); letter-spacing: 0; }
 .stat-label {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Big Shoulders Condensed', sans-serif;
   font-size: 18px;
   font-weight: 800;
   color: var(--orange);
@@ -864,7 +864,7 @@ section {
 .pod:hover { transform: translateY(-6px); box-shadow: 0 22px 46px var(--shadow); }
 .pod-medal { font-size: clamp(24px, 3vw, 32px); line-height: 1; }
 .pod-rank {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Big Shoulders Condensed', sans-serif;
   font-weight: 900;
   line-height: 1;
   letter-spacing: -0.5px;
@@ -882,7 +882,7 @@ section {
   left: 50%;
   bottom: -22px;
   transform: translateX(-50%);
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Big Shoulders Condensed', sans-serif;
   font-weight: 900;
   font-size: 120px;
   line-height: 1;
@@ -923,7 +923,7 @@ section {
   flex: 1;
   text-align: center;
   padding: 13px 6px;
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Big Shoulders Condensed', sans-serif;
   font-weight: 900;
   font-size: 18px;
   color: var(--muted);
@@ -959,7 +959,7 @@ section {
   background: rgba(242, 106, 30, 0.1);
   border: 1px solid rgba(242, 106, 30, 0.25);
   color: var(--orange);
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Big Shoulders Condensed', sans-serif;
   font-weight: 800;
   font-size: 15px;
   display: flex;
@@ -1014,13 +1014,13 @@ section {
 .mini-scorecard-crest { width: 24px; height: 24px; border-radius: 50%; background: var(--orange); opacity: 0.85; flex-shrink: 0; }
 .mini-scorecard-crest.muted { background: var(--line); opacity: 1; }
 .mini-scorecard-mid { display: flex; flex-direction: column; align-items: center; gap: 4px; }
-.mini-scorecard-score { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 22px; color: var(--ink); letter-spacing: 0.5px; }
+.mini-scorecard-score { font-family: 'Big Shoulders Condensed', sans-serif; font-weight: 900; font-size: 22px; color: var(--ink); letter-spacing: 0.5px; }
 .mini-scorecard-live { background: rgba(242, 106, 30, 0.15); color: var(--orange); font-size: 9px; font-weight: 800; padding: 3px 7px; border-radius: 4px; letter-spacing: 0.4px; }
 
 /* Labelled stat rows (goals / assists / clean sheets) */
 .stat-row-list { display: flex; flex-direction: column; gap: 9px; margin-bottom: 18px; }
 .stat-row { display: flex; align-items: center; gap: 10px; }
-.stat-row-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 18px; color: var(--orange); width: 26px; flex-shrink: 0; }
+.stat-row-num { font-family: 'Big Shoulders Condensed', sans-serif; font-weight: 900; font-size: 18px; color: var(--orange); width: 26px; flex-shrink: 0; }
 .stat-row-bar { flex: 1; height: 7px; background: var(--line); border-radius: 4px; overflow: hidden; display: block; }
 .stat-row-bar span { display: block; height: 100%; background: var(--orange); border-radius: 4px; }
 .stat-row-label { font-size: 11px; color: var(--muted); width: 50px; flex-shrink: 0; text-align: right; }
@@ -1099,7 +1099,7 @@ section {
   transition: background 0.2s ease;
 }
 .coordinator-link:hover { background: rgba(242, 106, 30, 0.08); }
-.coordinator-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 19px; color: var(--ink); }
+.coordinator-name { font-family: 'Big Shoulders Condensed', sans-serif; font-weight: 800; font-size: 19px; color: var(--ink); }
 .coordinator-number {
   display: flex;
   align-items: center;
@@ -1187,7 +1187,7 @@ section {
   align-items: center;
   gap: 11px;
   margin: 8px 0 22px;
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Big Shoulders Condensed', sans-serif;
   font-weight: 900;
   font-size: 32px;
   letter-spacing: 0.3px;
@@ -1208,7 +1208,7 @@ section {
 }
 .fz-list li + li { border-top: 1px solid var(--line); }
 .fz-num {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Big Shoulders Condensed', sans-serif;
   font-weight: 800;
   font-size: 15px;
   color: var(--orange);
@@ -1294,7 +1294,7 @@ section {
 }
 
 .cup-badge {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Big Shoulders Condensed', sans-serif;
   font-weight: 900;
   font-size: 24px;
   letter-spacing: 1px;
@@ -1357,7 +1357,7 @@ section {
 }
 
 .team-seed {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Big Shoulders Condensed', sans-serif;
   font-weight: 800;
   font-size: 18px;
   color: var(--ink);
@@ -1390,7 +1390,7 @@ section {
 }
 
 .final-title {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Big Shoulders Condensed', sans-serif;
   font-weight: 900;
   font-size: 20px;
   color: var(--ink);
@@ -1619,7 +1619,7 @@ section {
     gap: 10px;
   }
   .header-contact {
-    display: none; /* phone shown prominently in the registration section */
+    display: none !important; /* phone shown prominently in the registration section */
   }
   .register-btn {
     font-size: 13px;
@@ -1652,5 +1652,148 @@ section {
     font-size: 12px;
     padding: 8px 13px;
   }
+}
+
+/* =====================================================================
+   Register Now modal
+   ===================================================================== */
+.reg-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(5, 5, 5, 0.72);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  font-family: 'Manrope', sans-serif;
+  color: var(--ink);
+}
+.reg-modal-overlay.open {
+  display: flex;
+}
+.reg-modal {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  max-height: 88vh;
+  overflow-y: auto;
+  background: var(--bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 18px;
+  padding: 36px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+  transform: translateY(16px) scale(0.98);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reg-modal-overlay.open .reg-modal {
+  transform: translateY(0) scale(1);
+}
+.reg-modal-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: var(--card-bg);
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.reg-modal-close:hover { background: rgba(242, 106, 30, 0.12); transform: rotate(90deg); }
+.reg-modal-close svg { width: 16px; height: 16px; }
+.reg-modal-title {
+  font-family: 'Big Shoulders Condensed', sans-serif;
+  font-weight: 900;
+  font-size: clamp(28px, 5vw, 34px);
+  color: var(--ink);
+  margin: 6px 0 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+.reg-modal-sub {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.55;
+  margin: 0 0 24px;
+  max-width: 420px;
+}
+
+.reg-form { display: flex; flex-direction: column; gap: 16px; }
+.reg-field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.reg-field { display: flex; flex-direction: column; gap: 6px; }
+.reg-field label {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.reg-field input,
+.reg-field select,
+.reg-field textarea {
+  font-family: 'Manrope', sans-serif;
+  font-size: 15px;
+  color: var(--ink);
+  background: var(--card-bg);
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  padding: 11px 13px;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.reg-field textarea { resize: vertical; min-height: 44px; }
+.reg-field input:focus,
+.reg-field select:focus,
+.reg-field textarea:focus {
+  border-color: var(--orange);
+  box-shadow: 0 0 0 3px rgba(242, 106, 30, 0.15);
+}
+.reg-field select { appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237c7263' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; background-size: 16px; padding-right: 36px; }
+
+.reg-form-error {
+  font-size: 13px;
+  color: #e05252;
+  min-height: 1em;
+}
+
+.reg-submit-btn {
+  width: 100%;
+  background: var(--orange);
+  color: #000;
+  border: none;
+  border-radius: 9px;
+  padding: 15px;
+  font-family: inherit;
+  font-weight: 800;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+}
+.reg-submit-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(242, 106, 30, 0.35); }
+.reg-submit-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; box-shadow: none; }
+.reg-form-fineprint {
+  font-size: 12px;
+  color: var(--muted);
+  text-align: center;
+  margin: 4px 0 0;
+}
+
+.reg-modal-success { text-align: center; padding: 12px 0; }
+.reg-success-icon { width: 56px; height: 56px; margin-bottom: 12px; }
+.reg-modal-success .reg-modal-title { margin-top: 0; }
+.reg-modal-success .reg-modal-sub { max-width: none; margin-bottom: 26px; }
+.reg-modal-success .reg-submit-btn { max-width: 220px; margin: 0 auto; }
+
+@media (max-width: 560px) {
+  .reg-modal { padding: 26px 22px; border-radius: 14px; }
+  .reg-field-row { grid-template-columns: 1fr; gap: 16px; }
 }
 
