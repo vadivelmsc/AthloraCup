@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <!-- Reverted to the original clean geometric sports typography -->
 <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,600&family=Barlow+Condensed:wght@700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=6.1">
+<link rel="stylesheet" href="assets/style.css?v=6.2">
 </head>
 <body class="dark-theme">
 
@@ -132,7 +132,7 @@
 
     <div class="story-footer-nav reveal delay-2" style="margin-top: auto; padding-top: 18px;">
       <div>Scroll to review match timings and math</div>
-      <span>02 / 12 &nbsp;➔</span>
+      <span class="next-page-link">02 / 12 &nbsp;➔</span>
     </div>
   </section>
 
@@ -218,7 +218,7 @@
 
     <div class="story-footer-nav reveal delay-2" style="margin-top: auto; padding-top: 18px; justify-content:flex-end;">
       <div style="margin-right:12px;">Scroll to view media &amp; photoshoots</div>
-      <span>03 / 12 &nbsp;➔</span>
+      <span class="next-page-link">03 / 12 &nbsp;➔</span>
     </div>
   </section>
 
@@ -271,7 +271,7 @@
 
     <div class="story-footer-nav reveal delay-2" style="margin-top: auto; padding-top: 18px;">
       <div>Scroll to see knockout brackets</div>
-      <span>04 / 12 &nbsp;➔</span>
+      <span class="next-page-link">04 / 12 &nbsp;➔</span>
     </div>
   </section>
 
@@ -416,7 +416,7 @@
 
     <div class="story-footer-nav reveal delay-2" style="margin-top:auto; padding-top:18px;">
       <div>Scroll to see championship awards</div>
-      <span>05 / 12 &nbsp;➔</span>
+      <span class="next-page-link">05 / 12 &nbsp;➔</span>
     </div>
   </section>
 
@@ -492,7 +492,7 @@
 
     <div class="story-footer-nav reveal delay-3" style="margin-top:auto; padding-top:18px; justify-content:flex-end;">
       <div style="margin-right:12px;">Scroll for individual honours</div>
-      <span>06 / 12 &nbsp;➔</span>
+      <span class="next-page-link">06 / 12 &nbsp;➔</span>
     </div>
   </section>
 
@@ -592,7 +592,7 @@
 
     <div class="story-footer-nav reveal delay-3" style="margin-top:auto; padding-top:18px;">
       <div>Scroll for world cup experience</div>
-      <span>07 / 12 &nbsp;➔</span>
+      <span class="next-page-link">07 / 12 &nbsp;➔</span>
     </div>
   </section>
 
@@ -659,7 +659,7 @@
 
     <div class="story-footer-nav reveal delay-3" style="padding-top:18px; justify-content:flex-end;">
       <div style="margin-right:12px;">Scroll for fan zone &amp; recognition</div>
-      <span>08 / 12 &nbsp;➔</span>
+      <span class="next-page-link">08 / 12 &nbsp;➔</span>
     </div>
   </section>
 
@@ -752,7 +752,7 @@
 
     <div class="story-footer-nav reveal delay-3" style="margin-top:auto; padding-top:18px;">
       <div>Scroll for the Sportiva app</div>
-      <span>09 / 12 &nbsp;➔</span>
+      <span class="next-page-link">09 / 12 &nbsp;➔</span>
     </div>
   </section>
 
@@ -773,7 +773,6 @@
           <span class="reg-pill on">Registered</span>
           <span class="reg-pill on">Approved</span>
           <span class="reg-pill">Hold</span>
-          <span class="reg-pill">Waitlist</span>
         </div>
         <div class="card-eyebrow">Team Status</div>
         <div class="card-title">Registration Status</div>
@@ -818,7 +817,7 @@
 
       <div class="surface award-card" style="grid-column: span 2;">
         <div class="mini-team-card">
-          <span class="mini-team-crest"></span>
+          <span class="mini-team-crest"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.75s7.75-3.9 7.75-9.75V5.4L12 2.25 4.25 5.4v6.6c0 5.85 7.75 9.75 7.75 9.75Z"/></svg></span>
           <div>
             <div class="mini-team-name">FC Thunderbolts &mdash; U11</div>
             <div class="mini-team-stats"><span><strong>8</strong> Fixtures</span><span><strong>6</strong> Wins</span><span><strong>2nd</strong> Standing</span></div>
@@ -835,7 +834,7 @@
 
     <div class="story-footer-nav reveal delay-3" style="margin-top:auto; padding-top:14px;">
       <div>Scroll to see your player experience</div>
-      <span>10 / 12 &nbsp;➔</span>
+      <span class="next-page-link">10 / 12 &nbsp;➔</span>
     </div>
   </section>
 
@@ -865,10 +864,10 @@
         <p class="card-desc">Everything above, in your pocket — no downloads to chase, no papers to lose.</p>
       </div>
       <div class="surface award-card">
-        <div class="standings-row-list">
-          <div class="standings-row"><span class="standings-rank">1</span><span class="standings-name on">U9 Group A</span><span class="standings-pts">12 pts</span></div>
-          <div class="standings-row"><span class="standings-rank">2</span><span class="standings-name">U9 Group B</span><span class="standings-pts">9 pts</span></div>
-          <div class="standings-row"><span class="standings-rank">3</span><span class="standings-name">U11 Group A</span><span class="standings-pts">7 pts</span></div>
+        <div class="standings-table">
+          <div class="standings-row leader"><span class="standings-rank">1</span><span class="standings-name">U9 Group A</span><span class="standings-pts">12<em>pts</em></span></div>
+          <div class="standings-row"><span class="standings-rank">2</span><span class="standings-name">U9 Group B</span><span class="standings-pts">9<em>pts</em></span></div>
+          <div class="standings-row"><span class="standings-rank">3</span><span class="standings-name">U11 Group A</span><span class="standings-pts">7<em>pts</em></span></div>
         </div>
         <div class="card-eyebrow">Standings</div>
         <div class="card-title">Age-Group Standings</div>
@@ -914,11 +913,12 @@
       </div>
     </div>
 
-    <div class="hollow-overlay-text" style="bottom: 105px; font-size: clamp(36px, 5vw, 68px);">TRUSTED</div>
+    <!-- no hollow watermark here: the feature grid now runs the full height of the
+         slide (standings table added a row), no clean band left for it to sit in -->
 
     <div class="story-footer-nav reveal delay-3" style="margin-top:auto; padding-top:18px;">
       <div>Scroll to register your team</div>
-      <span>11 / 12 &nbsp;➔</span>
+      <span class="next-page-link">11 / 12 &nbsp;➔</span>
     </div>
   </section>
 
@@ -1052,6 +1052,18 @@
 
     sections.forEach(section => {
       observer.observe(section);
+    });
+
+    // Footer page-number arrow: click to advance to the next slide
+    const deckContainer = document.querySelector('.deck-container');
+    document.querySelectorAll('.next-page-link').forEach(link => {
+      link.addEventListener('click', () => {
+        const currentSection = link.closest('section');
+        const nextSection = currentSection && currentSection.nextElementSibling;
+        if (nextSection) {
+          deckContainer.scrollTo({ top: nextSection.offsetTop, behavior: 'smooth' });
+        }
+      });
     });
   });
 </script>

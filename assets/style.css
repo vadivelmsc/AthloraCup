@@ -433,6 +433,11 @@ section {
   align-items: center;
   gap: 6px;
 }
+.next-page-link {
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.next-page-link:hover { transform: translateX(3px); opacity: 0.8; }
 
 /* Roster Spec Columns - Adjusted margins per request */
 .spec-grid-row {
@@ -1024,18 +1029,48 @@ section {
 
 /* Team profile card mockup */
 .mini-team-card { display: flex; align-items: center; gap: 14px; background: var(--card-bg); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; margin-bottom: 18px; }
-.mini-team-crest { width: 44px; height: 44px; border-radius: 10px; background: var(--orange); opacity: 0.85; flex-shrink: 0; }
+.mini-team-crest { width: 44px; height: 44px; border-radius: 10px; background: var(--orange); flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+.mini-team-crest svg { width: 24px; height: 24px; color: #000; opacity: 0.82; }
 .mini-team-name { font-weight: 800; font-size: 14px; color: var(--ink); margin-bottom: 6px; }
 .mini-team-stats { display: flex; gap: 16px; font-size: 11px; color: var(--muted); }
 .mini-team-stats strong { color: var(--ink); }
 
-/* Mini standings table rows */
-.standings-row-list { display: flex; flex-direction: column; gap: 7px; margin-bottom: 18px; }
-.standings-row { display: flex; align-items: center; gap: 8px; font-size: 12px; }
-.standings-rank { width: 16px; color: var(--muted); font-weight: 700; flex-shrink: 0; }
+/* Mini standings table — a real leaderboard, not plain text rows */
+.standings-table {
+  background: var(--card-bg);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 18px;
+}
+.standings-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  font-size: 12.5px;
+}
+.standings-row + .standings-row { border-top: 1px solid var(--line); }
+.standings-row.leader { background: rgba(242, 106, 30, 0.1); }
+.standings-rank {
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  background: var(--line);
+  color: var(--muted);
+  font-size: 10.5px;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.standings-row.leader .standings-rank { background: var(--orange); color: #000; }
 .standings-name { flex: 1; color: var(--muted); font-weight: 600; }
-.standings-name.on { color: var(--ink); font-weight: 700; }
-.standings-pts { color: var(--muted); font-weight: 700; flex-shrink: 0; }
+.standings-row.leader .standings-name { color: var(--ink); font-weight: 800; }
+.standings-pts { color: var(--muted); font-weight: 800; flex-shrink: 0; }
+.standings-row.leader .standings-pts { color: var(--orange); }
+.standings-pts em { font-style: normal; font-weight: 500; opacity: 0.7; margin-left: 3px; font-size: 0.82em; }
 
 /* Player profile card mockup */
 .mini-profile-card { display: flex; align-items: center; gap: 12px; background: var(--card-bg); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; margin-bottom: 18px; }
