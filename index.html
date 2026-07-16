@@ -9,9 +9,16 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <!-- Reverted to the original clean geometric sports typography -->
 <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,600&family=Barlow+Condensed:wght@700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=7.0">
+<link rel="stylesheet" href="assets/style.css?v=8.0">
 </head>
-<body class="dark-theme">
+<body>
+<script>
+  (function () {
+    var saved = localStorage.getItem('athlora-theme');
+    var theme = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.body.className = theme === 'dark' ? 'dark-theme' : 'light-theme';
+  })();
+</script>
 
 <!-- ============ STICKY HEADER ============ -->
 <header class="sticky-header">
@@ -26,8 +33,6 @@
       <span>+91 9342188428</span>
     </a>
     
-    <button class="register-btn" onclick="openRegisterModal()">Register Now</button>
-
     <!-- Theme Switcher Button -->
     <button class="theme-toggle-btn" id="theme-toggle" title="Switch Theme">
       <!-- Sun Icon (shown in dark theme) -->
@@ -35,6 +40,8 @@
       <!-- Moon Icon (shown in light theme) -->
       <svg id="moon-icon" style="display:none;" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
     </button>
+
+    <button class="register-btn" onclick="openRegisterModal()">Register Now</button>
   </div>
 </header>
 
@@ -997,76 +1004,6 @@
 
 </div>
 
-<!-- ============ REGISTER NOW MODAL ============ -->
-<div class="reg-modal-overlay" id="reg-modal-overlay" onclick="if(event.target===this) closeRegisterModal()">
-  <div class="reg-modal" role="dialog" aria-modal="true" aria-labelledby="reg-modal-title">
-    <button class="reg-modal-close" type="button" onclick="closeRegisterModal()" aria-label="Close">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
-    </button>
-
-    <div id="reg-modal-form-view">
-      <div class="card-eyebrow">Athlora Junior Cup 2026</div>
-      <h2 id="reg-modal-title" class="reg-modal-title">Register Your Team</h2>
-      <p class="reg-modal-sub">Tell us about your squad — a coordinator will confirm your spot within 24 hours.</p>
-
-      <form id="reg-form" class="reg-form">
-        <div class="reg-field">
-          <label for="reg-teamName">Team Name *</label>
-          <input type="text" id="reg-teamName" name="teamName" required autocomplete="organization">
-        </div>
-
-        <div class="reg-field-row">
-          <div class="reg-field">
-            <label for="reg-coachName">Coach / Manager Name *</label>
-            <input type="text" id="reg-coachName" name="coachName" required autocomplete="name">
-          </div>
-          <div class="reg-field">
-            <label for="reg-phone">Phone (WhatsApp) *</label>
-            <input type="tel" id="reg-phone" name="phone" required autocomplete="tel" placeholder="10-digit mobile number">
-          </div>
-        </div>
-
-        <div class="reg-field-row">
-          <div class="reg-field">
-            <label for="reg-email">Email</label>
-            <input type="email" id="reg-email" name="email" autocomplete="email">
-          </div>
-          <div class="reg-field">
-            <label for="reg-division">Division *</label>
-            <select id="reg-division" name="division" required>
-              <option value="" disabled selected>Select division</option>
-              <option value="U9">U9 (Born 2017+)</option>
-              <option value="U11">U11 (Born 2015+)</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="reg-field">
-          <label for="reg-players">Number of Players *</label>
-          <input type="number" id="reg-players" name="players" min="5" max="10" required placeholder="5 to 10 players">
-        </div>
-
-        <div class="reg-field">
-          <label for="reg-notes">Anything else we should know?</label>
-          <textarea id="reg-notes" name="notes" rows="2"></textarea>
-        </div>
-
-        <div class="reg-form-error" id="reg-form-error"></div>
-
-        <button type="submit" class="reg-submit-btn" id="reg-submit-btn">Submit Registration</button>
-        <p class="reg-form-fineprint">Entry fee is ₹2,000 / player, collected after your coordinator confirms your slot.</p>
-      </form>
-    </div>
-
-    <div id="reg-modal-success-view" class="reg-modal-success" style="display:none;">
-      <svg viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="reg-success-icon"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
-      <h2 class="reg-modal-title">You're on the list!</h2>
-      <p class="reg-modal-sub">Thanks for registering — Velu or Aanadh will call you within 24 hours to confirm your slot and collect payment.</p>
-      <button type="button" class="reg-submit-btn" onclick="closeRegisterModal()">Done</button>
-    </div>
-  </div>
-</div>
-
 <!-- Theme Switcher & Intersection Observer JS -->
 <script>
   document.addEventListener('DOMContentLoaded', () => {
@@ -1139,68 +1076,13 @@
   });
 </script>
 
-<!-- Register Now modal: open/close + submit to Google Sheet via Apps Script -->
+<!-- Register Now: opens the Google Form in a new tab -->
 <script>
-  // Paste the Web App URL from your Apps Script deployment here.
-  // See registration-apps-script.gs for the script + deployment steps.
-  const GAS_WEB_APP_URL = 'PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE';
+  const REGISTRATION_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSeCiKpLtVaDdFaFj-mQ-QL4dKST8NaqWEGMtn0um9OjgXQmRA/viewform';
 
   function openRegisterModal() {
-    const overlay = document.getElementById('reg-modal-overlay');
-    overlay.classList.add('open');
-    document.body.style.overflow = 'hidden';
+    window.open(REGISTRATION_FORM_URL, '_blank', 'noopener');
   }
-
-  function closeRegisterModal() {
-    const overlay = document.getElementById('reg-modal-overlay');
-    overlay.classList.remove('open');
-    document.body.style.overflow = '';
-  }
-
-  document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('reg-form');
-    const submitBtn = document.getElementById('reg-submit-btn');
-    const errorBox = document.getElementById('reg-form-error');
-
-    form.addEventListener('submit', (event) => {
-      event.preventDefault();
-      errorBox.textContent = '';
-
-      if (GAS_WEB_APP_URL.indexOf('PASTE_YOUR') === 0) {
-        errorBox.textContent = 'Form isn\'t connected yet — add the Apps Script Web App URL in index.html (GAS_WEB_APP_URL).';
-        return;
-      }
-
-      const data = Object.fromEntries(new FormData(form).entries());
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Submitting…';
-
-      // Content-Type text/plain avoids a CORS preflight the Apps Script
-      // endpoint doesn't handle; the script parses e.postData.contents as JSON.
-      fetch(GAS_WEB_APP_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'text/plain' },
-        body: JSON.stringify(data)
-      })
-        .then((res) => res.json())
-        .then((result) => {
-          if (result.result === 'success') {
-            document.getElementById('reg-modal-form-view').style.display = 'none';
-            document.getElementById('reg-modal-success-view').style.display = 'block';
-            form.reset();
-          } else {
-            errorBox.textContent = 'Something went wrong — please try again or WhatsApp your coordinator directly.';
-          }
-        })
-        .catch(() => {
-          errorBox.textContent = 'Couldn\'t reach the server — check your connection and try again.';
-        })
-        .finally(() => {
-          submitBtn.disabled = false;
-          submitBtn.textContent = 'Submit Registration';
-        });
-    });
-  });
 </script>
 
 </body>
