@@ -946,6 +946,14 @@ section {
 .step-title { font-weight: 700; font-size: 15px; color: var(--ink); }
 .step-sub { font-size: 12px; color: var(--muted); margin-top: 1px; }
 
+/* Live Tournament Features — 2-up on desktop, single column on mobile
+   so titles don't wrap into a squeezed narrow column */
+.ltf-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px 20px;
+}
+
 /* App-store style pill button */
 .store-btn {
   background: var(--ink);
@@ -1364,6 +1372,9 @@ section {
   .vfd-strip { grid-template-columns: 1fr; }
   .vfd-item { border-right: none; border-bottom: 1px solid var(--line); }
   .vfd-item:last-child { border-bottom: none; }
+
+  /* Live Tournament Features stacks to one column so titles don't wrap */
+  .ltf-grid { grid-template-columns: 1fr; }
 
   .story-title {
     letter-spacing: 0px !important;
