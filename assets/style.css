@@ -946,28 +946,14 @@ section {
 .step-title { font-weight: 700; font-size: 15px; color: var(--ink); }
 .step-sub { font-size: 12px; color: var(--muted); margin-top: 1px; }
 
-/* Live Tournament Features — 2-up on desktop, single column on mobile
-   so titles don't wrap into a squeezed narrow column */
-.ltf-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 14px 20px;
-}
-
-/* App-store style pill button */
-.store-btn {
-  background: var(--ink);
-  color: var(--bg);
-  padding: 12px 20px;
-  border-radius: 10px;
-  display: inline-flex;
+/* Small inline chart/graphic sitting at the top of a feature card,
+   in place of a plain icon — bar charts, trackers, mini leaderboards */
+.mini-chart-box {
+  width: 100%;
+  margin-bottom: 14px;
+  display: flex;
   align-items: center;
-  gap: 9px;
-  font-weight: 700;
-  font-size: 14px;
-  transition: transform 0.2s ease, opacity 0.2s ease;
 }
-.store-btn:hover { transform: translateY(-2px); opacity: 0.9; }
 
 /* Surface variants */
 /* POTM stays a highlight, but as tinted glass — a solid fill broke the glassmorphism */
@@ -1372,9 +1358,6 @@ section {
   .vfd-strip { grid-template-columns: 1fr; }
   .vfd-item { border-right: none; border-bottom: 1px solid var(--line); }
   .vfd-item:last-child { border-bottom: none; }
-
-  /* Live Tournament Features stacks to one column so titles don't wrap */
-  .ltf-grid { grid-template-columns: 1fr; }
 
   .story-title {
     letter-spacing: 0px !important;
