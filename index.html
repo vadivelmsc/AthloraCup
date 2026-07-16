@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <!-- Reverted to the original clean geometric sports typography -->
 <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,600&family=Barlow+Condensed:wght@700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=5.4">
+<link rel="stylesheet" href="assets/style.css?v=6.1">
 </head>
 <body class="dark-theme">
 
@@ -757,98 +757,84 @@
   </section>
 
   <!-- ============ SLIDE 10: SPORTIVA APP INTRO ============ -->
-  <section data-label="Sportiva App" style="justify-content: flex-start; gap: 16px;">
-    <div class="mag-bg-image-container" style="left: 0; right: auto; width: 62%; height: 100%;">
-      <img src="assets/images/sportiva_app.jpg" alt="App bg" style="object-position: left center; opacity: 0.6; transition: opacity 0.4s ease;">
-      <div style="position: absolute; inset: 0; background: linear-gradient(to left, var(--bg) 0%, var(--bg) 25%, transparent 95%); z-index: 2;"></div>
-    </div>
+  <section data-label="Sportiva App" style="justify-content: flex-start; gap: 14px;">
+    <div class="reg-brand-glow" aria-hidden="true" style="right: 6%; left: auto; top: 46%; transform: translateY(-50%); position: absolute;"></div>
 
-    <!-- Align to right -->
-    <div style="display:flex; flex-direction:column; position:relative; z-index:5; align-items:flex-end; text-align:right;" class="reveal">
+    <div style="display:flex; flex-direction:column; position:relative; z-index:5;" class="reveal">
       <div class="story-header">Chapter 09 / Digital Experience</div>
       <div class="card-eyebrow" style="margin-top:2px;">Powered By</div>
-      <h1 class="story-title" style="margin-bottom:8px;">Introducing the <span style="color:var(--orange);">Sportiva App</span></h1>
-      <div style="font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:19px; color:var(--ink); margin-bottom:8px;">Your tournament, live in your pocket</div>
-      <p style="font-size:14px; color:var(--muted); line-height:1.55; max-width:480px; margin:0;">Every fixture, result, stat, and award race — updated automatically and available to every player and parent, in real time.</p>
+      <h1 class="story-title" style="margin-bottom:10px;">Introducing the <span style="color:var(--orange);">Sportiva App</span></h1>
+      <p class="section-lead" style="max-width:760px;"><strong style="color:var(--ink);">Your tournament, live in your pocket.</strong> Every fixture, result, stat, and award race — updated automatically and available to every player and parent, in real time.</p>
     </div>
 
-    <div style="display:flex; flex-direction:column; gap:14px; position:relative; z-index:5; align-items:flex-end; width:100%;" class="reveal delay-1">
-      <div class="card-title" style="font-size:18px; margin:0;">Live Tournament Features</div>
-
-      <div class="cgrid c3" style="max-width:620px;">
-        <div class="surface award-card">
-          <div class="mini-chart-box">
-            <svg viewBox="0 0 160 40" preserveAspectRatio="xMinYMid meet" style="width:100%; height:36px;">
-              <line x1="8" y1="20" x2="152" y2="20" stroke="var(--line)" stroke-width="3.5"/>
-              <line x1="8" y1="20" x2="96" y2="20" stroke="var(--orange)" stroke-width="3.5"/>
-              <circle cx="8" cy="20" r="7" fill="var(--orange)"/>
-              <circle cx="52" cy="20" r="7" fill="var(--orange)"/>
-              <circle cx="96" cy="20" r="7" fill="var(--orange)"/>
-              <circle cx="152" cy="20" r="6" fill="var(--card-bg)" stroke="var(--line)" stroke-width="3.5"/>
-            </svg>
-          </div>
-          <div class="card-eyebrow">Registration</div>
-          <div class="card-title" style="font-size:16px;">Status Tracking</div>
+    <div class="feature-grid-wide reveal delay-1" style="max-width:1080px; width:75%;">
+      <div class="surface award-card">
+        <div style="display:flex; gap:6px; flex-wrap:wrap; margin-bottom:18px;">
+          <span class="reg-pill on">Registered</span>
+          <span class="reg-pill on">Approved</span>
+          <span class="reg-pill">Hold</span>
+          <span class="reg-pill">Waitlist</span>
         </div>
+        <div class="card-eyebrow">Team Status</div>
+        <div class="card-title">Registration Status</div>
+        <p class="card-desc">Know exactly where your team stands — tracked live, no phone calls needed.</p>
+      </div>
 
-        <div class="surface award-card">
-          <div class="mini-chart-box">
-            <svg viewBox="0 0 160 40" preserveAspectRatio="xMinYMid meet" style="width:100%; height:36px;">
-              <circle cx="12" cy="8" r="5" fill="var(--orange)"/>
-              <circle cx="12" cy="8" r="9" fill="none" stroke="var(--orange)" stroke-width="1.6" opacity="0.4"/>
-              <rect x="28" y="4" width="90" height="8" rx="4" fill="var(--ink)" opacity="0.82"/>
-              <rect x="0" y="21" width="160" height="7" rx="3.5" fill="var(--line)"/>
-              <rect x="0" y="33" width="112" height="6" rx="3" fill="var(--line)"/>
-            </svg>
+      <div class="surface award-card">
+        <div class="mini-scorecard">
+          <div class="mini-scorecard-team"><span class="mini-scorecard-crest"></span>U11 A</div>
+          <div class="mini-scorecard-mid">
+            <span class="mini-scorecard-score">2&nbsp;-&nbsp;1</span>
+            <span class="mini-scorecard-live">&#9679; LIVE 62&#39;</span>
           </div>
-          <div class="card-eyebrow">Live</div>
-          <div class="card-title" style="font-size:16px;">Tournament Updates</div>
+          <div class="mini-scorecard-team">U11 B<span class="mini-scorecard-crest muted"></span></div>
         </div>
+        <div class="card-eyebrow">Live</div>
+        <div class="card-title">Live Match Center</div>
+        <p class="card-desc">Scores, fixtures, and standings update the second the whistle blows.</p>
+      </div>
 
-        <div class="surface award-card">
-          <div class="mini-chart-box">
-            <svg viewBox="0 0 100 48" preserveAspectRatio="none" style="width:100%; height:36px;">
-              <rect x="4" y="26" width="16" height="22" rx="3" fill="var(--line)"/>
-              <rect x="30" y="14" width="16" height="34" rx="3" fill="var(--orange)" opacity="0.55"/>
-              <rect x="56" y="2" width="16" height="46" rx="3" fill="var(--orange)"/>
-              <rect x="82" y="20" width="16" height="28" rx="3" fill="var(--line)"/>
-            </svg>
-          </div>
-          <div class="card-eyebrow">Auto-Recorded</div>
-          <div class="card-title" style="font-size:16px;">Player Statistics</div>
+      <div class="surface award-card">
+        <div class="stat-row-list">
+          <div class="stat-row"><span class="stat-row-num">42</span><span class="stat-row-bar"><span style="width:88%;"></span></span><span class="stat-row-label">Goals</span></div>
+          <div class="stat-row"><span class="stat-row-num">31</span><span class="stat-row-bar"><span style="width:65%; opacity:0.7;"></span></span><span class="stat-row-label">Assists</span></div>
+          <div class="stat-row"><span class="stat-row-num">12</span><span class="stat-row-bar"><span style="width:35%; opacity:0.45;"></span></span><span class="stat-row-label">Clean Sh.</span></div>
         </div>
+        <div class="card-eyebrow">Auto-Recorded</div>
+        <div class="card-title">Player Statistics</div>
+        <p class="card-desc">Goals, assists, clean sheets &amp; POTM — tallied straight from the scoresheet.</p>
+      </div>
 
-        <div class="surface award-card potm">
-          <div class="mini-chart-box">
-            <svg viewBox="0 0 100 48" preserveAspectRatio="none" style="width:100%; height:36px;">
-              <rect x="0" y="4" width="92" height="11" rx="5.5" fill="var(--gold)"/>
-              <rect x="0" y="19" width="66" height="11" rx="5.5" fill="var(--orange)" opacity="0.6"/>
-              <rect x="0" y="34" width="42" height="11" rx="5.5" fill="var(--line)"/>
-            </svg>
-          </div>
-          <div class="card-eyebrow gold">Golden Boot &amp; Glove</div>
-          <div class="card-title" style="font-size:16px;">Live Award Races</div>
+      <div class="surface award-card potm">
+        <div class="rank-row-list">
+          <div class="rank-row"><span class="rank-badge gold">1</span><span class="rank-bar gold" style="width:100%;"></span><span class="rank-val">9</span></div>
+          <div class="rank-row"><span class="rank-badge">2</span><span class="rank-bar" style="width:70%;"></span><span class="rank-val">7</span></div>
+          <div class="rank-row"><span class="rank-badge">3</span><span class="rank-bar muted" style="width:48%;"></span><span class="rank-val">5</span></div>
         </div>
+        <div class="card-eyebrow gold">Golden Boot &amp; Glove</div>
+        <div class="card-title">Live Award Races</div>
+        <p class="card-desc">Track the race for top scorer and best keeper, match by match.</p>
+      </div>
 
-        <div class="surface award-card" style="grid-column: span 2;">
-          <div class="mini-chart-box">
-            <svg viewBox="0 0 160 40" preserveAspectRatio="xMinYMid meet" style="width:100%; height:36px;">
-              <rect x="0" y="0" width="160" height="40" rx="7" fill="none" stroke="var(--line)" stroke-width="2.2"/>
-              <circle cx="17" cy="20" r="8" fill="var(--orange)" opacity="0.7"/>
-              <rect x="32" y="13" width="90" height="6" rx="3" fill="var(--ink)" opacity="0.8"/>
-              <rect x="32" y="23" width="62" height="5" rx="2.5" fill="var(--line)"/>
-            </svg>
+      <div class="surface award-card" style="grid-column: span 2;">
+        <div class="mini-team-card">
+          <span class="mini-team-crest"></span>
+          <div>
+            <div class="mini-team-name">FC Thunderbolts &mdash; U11</div>
+            <div class="mini-team-stats"><span><strong>8</strong> Fixtures</span><span><strong>6</strong> Wins</span><span><strong>2nd</strong> Standing</span></div>
           </div>
-          <div class="card-eyebrow">Public Page</div>
-          <div class="card-title" style="font-size:16px;">Team Profile</div>
         </div>
+        <div class="card-eyebrow">Public Page</div>
+        <div class="card-title">Team Profile</div>
+        <p class="card-desc">A public home for your squad — roster, fixtures, results &amp; standings, shareable with one link to every parent.</p>
       </div>
     </div>
 
-    <div class="hollow-overlay-text" style="left: auto; right: var(--pad-x); transform: none;">SPORTIVA</div>
+    <!-- no hollow watermark here: the feature grid runs the full height of the slide,
+         there's no clean band left for it to sit in without colliding with a card -->
 
-    <div class="story-footer-nav reveal delay-3" style="margin-top:auto; padding-top:14px; justify-content:flex-end;">
-      <div style="margin-right:12px;">Scroll to see your player experience</div>
+    <div class="story-footer-nav reveal delay-3" style="margin-top:auto; padding-top:14px;">
+      <div>Scroll to see your player experience</div>
       <span>10 / 12 &nbsp;➔</span>
     </div>
   </section>
@@ -859,48 +845,46 @@
 
     <div style="display:flex; flex-direction:column; position:relative; z-index:5;" class="reveal">
       <div class="story-header">Chapter 10 / Digital Experience</div>
-      <h1 class="story-title" style="margin-bottom:8px;">Your Player Experience</h1>
-      <p class="section-lead">The app is built around what parents and players actually check — status, stats, and a record that's kept safe.</p>
+      <h1 class="story-title" style="margin-bottom:10px;">Your Player Experience</h1>
+      <p class="section-lead" style="max-width:760px;">The app is built around what parents and players actually check — status, stats, and a record that's kept safe.</p>
     </div>
 
-    <div class="cgrid c3 reveal delay-1" style="max-width:980px;">
+    <div class="feature-grid-wide reveal delay-1" style="max-width:1080px; width:75%;">
       <div class="surface award-card">
         <div class="mini-chart-box">
           <svg viewBox="0 0 100 48" style="width:auto; height:40px;">
-            <rect x="36" y="2" width="28" height="44" rx="7" fill="none" stroke="var(--orange)" stroke-width="3"/>
-            <rect x="44" y="38" width="12" height="3" rx="1.5" fill="var(--orange)"/>
-            <circle cx="60" cy="10" r="7" fill="var(--orange)"/>
-            <circle cx="60" cy="10" r="7" fill="none" stroke="var(--card-bg)" stroke-width="2.5"/>
+            <rect x="30" y="2" width="28" height="44" rx="7" fill="none" stroke="var(--orange)" stroke-width="3"/>
+            <rect x="38" y="38" width="12" height="3" rx="1.5" fill="var(--orange)"/>
+            <rect x="36" y="10" width="16" height="16" rx="3" fill="var(--orange)" opacity="0.18"/>
+            <circle cx="54" cy="10" r="7" fill="var(--orange)"/>
+            <circle cx="54" cy="10" r="7" fill="none" stroke="var(--card-bg)" stroke-width="2.5"/>
           </svg>
         </div>
         <div class="card-eyebrow">Access</div>
         <div class="card-title">Mobile Access</div>
+        <p class="card-desc">Everything above, in your pocket — no downloads to chase, no papers to lose.</p>
       </div>
       <div class="surface award-card">
-        <div class="mini-chart-box">
-          <svg viewBox="0 0 100 48" preserveAspectRatio="none" style="width:100%; height:40px;">
-            <rect x="0" y="4" width="86" height="11" rx="5.5" fill="var(--orange)"/>
-            <rect x="0" y="19" width="62" height="11" rx="5.5" fill="var(--orange)" opacity="0.55"/>
-            <rect x="0" y="34" width="40" height="11" rx="5.5" fill="var(--line)"/>
-          </svg>
+        <div class="standings-row-list">
+          <div class="standings-row"><span class="standings-rank">1</span><span class="standings-name on">U9 Group A</span><span class="standings-pts">12 pts</span></div>
+          <div class="standings-row"><span class="standings-rank">2</span><span class="standings-name">U9 Group B</span><span class="standings-pts">9 pts</span></div>
+          <div class="standings-row"><span class="standings-rank">3</span><span class="standings-name">U11 Group A</span><span class="standings-pts">7 pts</span></div>
         </div>
         <div class="card-eyebrow">Standings</div>
         <div class="card-title">Age-Group Standings</div>
+        <p class="card-desc">Separate tables for every division — only ever compared against real competition.</p>
       </div>
       <div class="surface award-card">
-        <div class="mini-chart-box">
-          <svg viewBox="0 0 160 40" preserveAspectRatio="xMinYMid meet" style="width:100%; height:36px;">
-            <rect x="0" y="0" width="160" height="40" rx="7" fill="none" stroke="var(--line)" stroke-width="2.2"/>
-            <circle cx="17" cy="20" r="8" fill="var(--orange)" opacity="0.15"/>
-            <circle cx="17" cy="20" r="5" fill="var(--orange)"/>
-            <rect x="32" y="13" width="78" height="6" rx="3" fill="var(--ink)" opacity="0.8"/>
-            <rect x="32" y="23" width="50" height="5" rx="2.5" fill="var(--line)"/>
-            <circle cx="147" cy="9" r="7" fill="var(--gold)"/>
-            <path d="M144 9l2 2 4-4" stroke="var(--bg)" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
+        <div class="mini-profile-card">
+          <span class="mini-profile-avatar">AK</span>
+          <div>
+            <div class="mini-profile-name">Arjun K. <svg width="13" height="13" viewBox="0 0 24 24" fill="var(--gold)"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4" stroke="var(--bg)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="mini-profile-meta">8 Goals &middot; 12 Apps &middot; U11</div>
+          </div>
         </div>
         <div class="card-eyebrow">Profile</div>
         <div class="card-title">Digital Player Profile</div>
+        <p class="card-desc">A verified, permanent record of a player's tournament journey — kept for good.</p>
       </div>
       <div class="surface award-card potm">
         <div class="mini-chart-box">
@@ -913,18 +897,20 @@
         </div>
         <div class="card-eyebrow gold">Privacy Protected</div>
         <div class="card-title">Secure By Design</div>
+        <p class="card-desc">Shown only with parental consent — built for a youth tournament, not a public feed.</p>
       </div>
       <div class="surface award-card" style="grid-column: span 2;">
-        <div class="mini-chart-box" style="gap:16px;">
-          <svg viewBox="0 0 48 48" width="40" height="40" style="flex-shrink:0;">
+        <div class="mini-chart-box" style="gap:18px; margin-bottom:16px;">
+          <svg viewBox="0 0 48 48" width="44" height="44" style="flex-shrink:0;">
             <circle cx="24" cy="24" r="18" fill="none" stroke="var(--line)" stroke-width="5"/>
             <circle cx="24" cy="24" r="18" fill="none" stroke="var(--orange)" stroke-width="5" stroke-linecap="round" stroke-dasharray="113" stroke-dashoffset="26" transform="rotate(-90 24 24)"/>
           </svg>
           <div>
             <div class="card-eyebrow" style="margin-bottom:2px;">No Manual Record Keeping</div>
-            <div class="card-title" style="font-size:17px;">Automatic Stats</div>
+            <div class="card-title" style="font-size:18px;">Automatic Stats</div>
           </div>
         </div>
+        <p class="card-desc">No coach filling spreadsheets after the match — every statistic syncs itself, straight from the official scoresheet.</p>
       </div>
     </div>
 

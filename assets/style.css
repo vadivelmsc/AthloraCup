@@ -708,6 +708,17 @@ section {
 .cgrid.c3 { grid-template-columns: repeat(3, 1fr); }
 .cgrid.c4 { grid-template-columns: repeat(4, 1fr); }
 
+/* Standalone wide feature grid (Sportiva app slides) — deliberately not
+   a .cgrid variant so it never inherits the legacy mobile card-grid rules */
+.feature-grid-wide {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  width: 100%;
+  position: relative;
+  z-index: 5;
+}
+
 /* Base elevated surface card — frosted glass */
 .surface {
   background: var(--card-bg);
@@ -954,6 +965,83 @@ section {
   display: flex;
   align-items: center;
 }
+
+/* Registration status pills — the 4 real states, not an abstract tracker */
+.reg-pill {
+  font-size: 11px;
+  font-weight: 800;
+  padding: 6px 12px;
+  border-radius: 20px;
+  background: var(--card-bg);
+  border: 1px solid var(--line);
+  color: var(--muted);
+}
+.reg-pill.on { background: var(--orange); border-color: var(--orange); color: #000; }
+
+/* Live match scoreboard mockup */
+.mini-scorecard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  background: var(--card-bg);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-bottom: 18px;
+}
+.mini-scorecard-team {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 800;
+  font-size: 13px;
+  color: var(--ink);
+}
+.mini-scorecard-crest { width: 24px; height: 24px; border-radius: 50%; background: var(--orange); opacity: 0.85; flex-shrink: 0; }
+.mini-scorecard-crest.muted { background: var(--line); opacity: 1; }
+.mini-scorecard-mid { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.mini-scorecard-score { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 22px; color: var(--ink); letter-spacing: 0.5px; }
+.mini-scorecard-live { background: rgba(242, 106, 30, 0.15); color: var(--orange); font-size: 9px; font-weight: 800; padding: 3px 7px; border-radius: 4px; letter-spacing: 0.4px; }
+
+/* Labelled stat rows (goals / assists / clean sheets) */
+.stat-row-list { display: flex; flex-direction: column; gap: 9px; margin-bottom: 18px; }
+.stat-row { display: flex; align-items: center; gap: 10px; }
+.stat-row-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 18px; color: var(--orange); width: 26px; flex-shrink: 0; }
+.stat-row-bar { flex: 1; height: 7px; background: var(--line); border-radius: 4px; overflow: hidden; display: block; }
+.stat-row-bar span { display: block; height: 100%; background: var(--orange); border-radius: 4px; }
+.stat-row-label { font-size: 11px; color: var(--muted); width: 50px; flex-shrink: 0; text-align: right; }
+
+/* Mini leaderboard rows (award races) */
+.rank-row-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 18px; }
+.rank-row { display: flex; align-items: center; gap: 8px; }
+.rank-badge { width: 18px; height: 18px; border-radius: 5px; background: var(--line); color: var(--muted); font-size: 10px; font-weight: 900; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.rank-badge.gold { background: var(--gold); color: #000; }
+.rank-bar { flex: 1; height: 9px; border-radius: 5px; background: var(--line); display: block; }
+.rank-bar.gold { background: var(--gold); opacity: 0.9; }
+.rank-bar.muted { opacity: 0.7; }
+.rank-val { font-size: 10px; color: var(--muted); font-weight: 700; width: 14px; text-align: right; }
+
+/* Team profile card mockup */
+.mini-team-card { display: flex; align-items: center; gap: 14px; background: var(--card-bg); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; margin-bottom: 18px; }
+.mini-team-crest { width: 44px; height: 44px; border-radius: 10px; background: var(--orange); opacity: 0.85; flex-shrink: 0; }
+.mini-team-name { font-weight: 800; font-size: 14px; color: var(--ink); margin-bottom: 6px; }
+.mini-team-stats { display: flex; gap: 16px; font-size: 11px; color: var(--muted); }
+.mini-team-stats strong { color: var(--ink); }
+
+/* Mini standings table rows */
+.standings-row-list { display: flex; flex-direction: column; gap: 7px; margin-bottom: 18px; }
+.standings-row { display: flex; align-items: center; gap: 8px; font-size: 12px; }
+.standings-rank { width: 16px; color: var(--muted); font-weight: 700; flex-shrink: 0; }
+.standings-name { flex: 1; color: var(--muted); font-weight: 600; }
+.standings-name.on { color: var(--ink); font-weight: 700; }
+.standings-pts { color: var(--muted); font-weight: 700; flex-shrink: 0; }
+
+/* Player profile card mockup */
+.mini-profile-card { display: flex; align-items: center; gap: 12px; background: var(--card-bg); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; margin-bottom: 18px; }
+.mini-profile-avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--orange); opacity: 0.85; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-weight: 900; color: #000; font-size: 13px; }
+.mini-profile-name { display: flex; align-items: center; gap: 6px; font-weight: 800; font-size: 13px; color: var(--ink); }
+.mini-profile-meta { font-size: 10.5px; color: var(--muted); margin-top: 2px; }
 
 /* Surface variants */
 /* POTM stays a highlight, but as tinted glass — a solid fill broke the glassmorphism */
@@ -1341,6 +1429,12 @@ section {
   }
   .award-card { padding: 14px; }
   .award-icon { width: 42px; height: 42px; font-size: 22px; margin-bottom: 10px; }
+
+  /* Sportiva app slides carry rich widget mockups (scorecards, tables,
+     profile cards) that don't survive being squeezed into 2 columns —
+     these need the full mobile width to stay readable */
+  .feature-grid-wide { grid-template-columns: 1fr; width: 100% !important; max-width: 100% !important; }
+  .feature-grid-wide > * { grid-column: auto !important; }
 
 
   /* Cover: background photo goes full-bleed and dims so the copy stays readable */
