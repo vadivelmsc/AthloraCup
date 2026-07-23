@@ -81,7 +81,7 @@
 <!-- ============ STICKY HEADER ============ -->
 <header class="sticky-header">
   <div class="header-logo">
-    <img class="header-emblem" src="assets/images/athlora-logo.png" alt="Athlora Sports Events" onerror="this.style.display='none'">
+    <picture><source srcset="assets/images/athlora-logo.webp" type="image/webp"><img class="header-emblem" src="assets/images/athlora-logo.png" alt="Athlora Sports Events" onerror="this.style.display='none'"></picture>
     <span class="logo-word">Athlora<span>Cup</span></span>
   </div>
   <div class="header-right">
@@ -112,7 +112,7 @@
 
     <!-- Background photo, faded into the theme bg (same language as the other slides) -->
     <div class="cover-photo">
-      <img src="assets/images/cover.jpg" alt="Championship setup">
+      <picture><source srcset="assets/images/cover.webp" type="image/webp"><img src="assets/images/cover.jpg" alt="Championship setup" fetchpriority="high"></picture>
       <div class="cover-fade-x"></div>
       <div class="cover-fade-y"></div>
     </div>
@@ -153,7 +153,7 @@
     <!-- Background player photo aligned dynamically to the right with left-to-right fade out -->
     <div class="mag-bg-image-container" style="left: auto; right: 0; width: 72%; height: 100%;">
       <!-- Swapped out to a fully working soccer match action image on the right side -->
-      <img src="assets/images/roster_specs.jpg" alt="Roster bg" style="object-position: right center; opacity: var(--bg-img-opacity); transition: opacity 0.4s ease;">
+      <picture><source srcset="assets/images/roster_specs.webp" type="image/webp"><img loading="lazy" src="assets/images/roster_specs.jpg" alt="Roster bg" style="object-position: right center; opacity: var(--bg-img-opacity); transition: opacity 0.4s ease;"></picture>
       <!-- Transition to solid theme bg on the left (copies sit on pure color background) -->
       <div style="position: absolute; inset: 0; background: linear-gradient(to right, var(--bg) 0%, var(--bg) 15%, transparent 90%); z-index: 2;"></div>
     </div>
@@ -210,7 +210,7 @@
   <section data-label="League Format" style="justify-content: flex-start; gap: 20px;">
     <!-- Shrunk background image container to 62% width and pushed right to keep cards on solid black -->
     <div class="mag-bg-image-container" style="left: auto; right: 0; width: 62%; height: 100%;">
-      <img src="assets/images/league_format.jpg" alt="Match bg" style="object-position: right center; opacity: 0.75; transition: opacity 0.4s ease;">
+      <picture><source srcset="assets/images/league_format.webp" type="image/webp"><img loading="lazy" src="assets/images/league_format.jpg" alt="Match bg" style="object-position: right center; opacity: 0.75; transition: opacity 0.4s ease;"></picture>
       <!-- Transition to solid theme bg on the right with a gradual, smooth fade -->
       <div style="position: absolute; inset: 0; background: linear-gradient(to right, var(--bg) 0%, rgba(var(--bg-rgb), 0.9) 20%, rgba(var(--bg-rgb), 0.4) 60%, transparent 90%); z-index: 2;"></div>
     </div>
@@ -297,7 +297,7 @@
   <!-- ============ SLIDE 4: MATCH RULES ============ -->
   <section data-label="Match Rules" style="justify-content: flex-start; gap: 20px;">
     <div class="mag-bg-image-container" style="left: 0; right: 0; width: 100%; height: 100%;">
-      <img src="assets/images/indian_kids_football.jpg" alt="Indian kids playing football at sunset" style="object-position: center 30%; opacity: 0.25; transition: opacity 0.4s ease;">
+      <picture><source srcset="assets/images/indian_kids_football.webp" type="image/webp"><img loading="lazy" src="assets/images/indian_kids_football.jpg" alt="Indian kids playing football at sunset" style="object-position: center 30%; opacity: 0.25; transition: opacity 0.4s ease;"></picture>
       <div style="position: absolute; inset: 0; background: linear-gradient(to bottom, var(--bg) 0%, transparent 40%, var(--bg) 100%); z-index: 2;"></div>
     </div>
 
@@ -348,7 +348,7 @@
   <!-- ============ SLIDE 5: KNOCKOUT BRACKETS ============ -->
   <section data-label="Knockouts" style="justify-content: flex-start; gap: 20px;">
     <div class="mag-bg-image-container" style="left: auto; right: 0; width: 62%; height: 100%;">
-      <img src="assets/images/knockouts.jpg" alt="Knockouts bg" style="object-position: right center; opacity: 0.35; transition: opacity 0.4s ease;">
+      <picture><source srcset="assets/images/knockouts.webp" type="image/webp"><img loading="lazy" src="assets/images/knockouts.jpg" alt="Knockouts bg" style="object-position: right center; opacity: 0.35; transition: opacity 0.4s ease;"></picture>
       <!-- Transition to solid theme bg on the right with a gradual, smooth fade to ensure text legibility -->
       <div style="position: absolute; inset: 0; background: linear-gradient(to right, var(--bg) 0%, rgba(var(--bg-rgb), 0.95) 20%, rgba(var(--bg-rgb), 0.6) 65%, transparent 100%); z-index: 2;"></div>
     </div>
@@ -493,7 +493,7 @@
   <!-- ============ SLIDE 6: TEAM AWARDS ============ -->
   <section data-label="Championship Awards" style="justify-content: flex-start; gap: 20px;">
     <div class="mag-bg-image-container" style="left: 0; right: auto; width: 62%; height: 100%;">
-      <img src="assets/images/team_awards.jpg" alt="Team Awards bg" style="object-position: left center; opacity: 0.6; transition: opacity 0.4s ease;">
+      <picture><source srcset="assets/images/team_awards.webp" type="image/webp"><img loading="lazy" src="assets/images/team_awards.jpg" alt="Team Awards bg" style="object-position: left center; opacity: 0.6; transition: opacity 0.4s ease;"></picture>
       <div style="position: absolute; inset: 0; background: linear-gradient(to left, var(--bg) 0%, var(--bg) 25%, transparent 95%); z-index: 2;"></div>
     </div>
 
@@ -569,7 +569,7 @@
   <!-- ============ SLIDE 7: INDIVIDUAL AWARDS ============ -->
   <section data-label="Individual Awards" style="justify-content: flex-start; gap: 20px;">
     <div class="mag-bg-image-container" style="left: auto; right: 0; width: 62%; height: 100%;">
-      <img src="assets/images/awards.jpg?v=2" alt="Football trophy" style="object-position: center; opacity:0.6; transition:opacity 0.4s ease;">
+      <picture><source srcset="assets/images/awards.webp?v=2" type="image/webp"><img loading="lazy" src="assets/images/awards.jpg?v=2" alt="Football trophy" style="object-position: center; opacity:0.6; transition:opacity 0.4s ease;"></picture>
       <div style="position:absolute; inset:0; background:linear-gradient(to right, var(--bg) 0%, var(--bg) 25%, transparent 95%); z-index:2;"></div>
     </div>
 
@@ -669,7 +669,7 @@
   <!-- ============ SLIDE 8: WORLD CUP EXPERIENCE ============ -->
   <section data-label="Media Coverage" style="justify-content: flex-start; gap: 20px;">
     <div class="mag-bg-image-container" style="left: 0; right: auto; width: 62%; height: 100%;">
-      <img src="assets/images/player_experience.jpg" alt="Experience bg" style="object-position: left center; opacity:0.65; transition:opacity 0.4s ease;">
+      <picture><source srcset="assets/images/player_experience.webp" type="image/webp"><img loading="lazy" src="assets/images/player_experience.jpg" alt="Experience bg" style="object-position: left center; opacity:0.65; transition:opacity 0.4s ease;"></picture>
       <div style="position:absolute; inset:0; background:linear-gradient(to left, var(--bg) 0%, var(--bg) 25%, transparent 95%); z-index:2;"></div>
     </div>
 
@@ -737,7 +737,7 @@
   <section data-label="Live Tracking" style="justify-content: flex-start; gap: 20px;">
     <!-- The crowd IS the fan zone — let it fill the slide, scrim only where the copy sits -->
     <div class="mag-bg-image-container fz-bg" style="left:0; right:0; width:100%; height:100%;">
-      <img src="assets/images/fan_zone.jpg?v=3" alt="Packed stadium crowd" style="object-position: center 38%; opacity: 0.9; transition: opacity 0.4s ease;">
+      <picture><source srcset="assets/images/fan_zone.webp?v=3" type="image/webp"><img loading="lazy" src="assets/images/fan_zone.jpg?v=3" alt="Packed stadium crowd" style="object-position: center 38%; opacity: 0.9; transition: opacity 0.4s ease;"></picture>
       <div class="fz-scrim"></div>
     </div>
 
@@ -996,7 +996,7 @@
   <section data-label="Registration Info" style="justify-content: flex-start; gap: 20px;">
     <div class="reg-brand-showcase" aria-hidden="true">
       <div class="reg-brand-glow"></div>
-      <img src="assets/images/athlora-logo.png" alt="" onerror="this.style.display='none'">
+      <picture><source srcset="assets/images/athlora-logo.webp" type="image/webp"><img loading="lazy" src="assets/images/athlora-logo.png" alt="" onerror="this.style.display='none'"></picture>
     </div>
 
     <div style="display:flex; flex-direction:column; position:relative; z-index:5;" class="reveal">
@@ -1035,7 +1035,7 @@
         <span>Physio &amp; safety team on-site — a qualified physio is present throughout the tournament for player safety.</span>
       </div>
 
-      <div class="surface" style="border-color:var(--orange); padding:26px 32px; text-align:center;">
+      <div id="register-section" class="surface" style="border-color:var(--orange); padding:26px 32px; text-align:center;">
         <div class="card-eyebrow" style="letter-spacing:2px; margin-bottom:18px;">Contact Your Coordinator</div>
 
         <div style="display:flex; justify-content:center; gap:40px; margin-bottom:22px;">
@@ -1050,9 +1050,15 @@
           </a>
         </div>
 
-        <button type="button" onclick="openRegisterModal()" style="display:inline-block; background:var(--orange); color:#000; padding:14px 36px; border-radius:8px; border:none; font-family:inherit; font-weight:800; font-size:16px; cursor:pointer; text-decoration:none; transition:transform 0.2s ease, box-shadow 0.2s ease;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 12px 30px rgba(242,106,30,0.35)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-          Register Now
-        </button>
+        <div style="display:flex; flex-wrap:wrap; gap:12px; justify-content:center;">
+          <a href="https://wa.me/919342188428?text=Hi%2C%20I%27m%20interested%20in%20Athlora%20Junior%20Cup%202026.%20Please%20share%20registration%20details." target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:8px; background:#25D366; color:#0a0a0a; padding:14px 28px; border-radius:8px; font-family:inherit; font-weight:800; font-size:16px; text-decoration:none; transition:transform 0.2s ease, box-shadow 0.2s ease;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 12px 30px rgba(37,211,102,0.35)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.1-.6.1-.2.3-.7.9-.8 1-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.6-1.5-.9-2.1-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1.1 2.7c.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.2-.3-.2-.6-.4zM12 2a10 10 0 0 0-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>
+            WhatsApp Us
+          </a>
+          <button type="button" onclick="openRegisterModal()" style="display:inline-block; background:var(--orange); color:#000; padding:14px 36px; border-radius:8px; border:none; font-family:inherit; font-weight:800; font-size:16px; cursor:pointer; text-decoration:none; transition:transform 0.2s ease, box-shadow 0.2s ease;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 12px 30px rgba(242,106,30,0.35)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+            Register Now
+          </button>
+        </div>
       </div>
     </div>
 
@@ -1143,7 +1149,32 @@
   const REGISTRATION_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSeCiKpLtVaDdFaFj-mQ-QL4dKST8NaqWEGMtn0um9OjgXQmRA/viewform';
 
   function openRegisterModal() {
+    gtag('event', 'register_click', { link_url: REGISTRATION_FORM_URL });
     window.open(REGISTRATION_FORM_URL, '_blank', 'noopener');
+  }
+
+  // Track clicks on any coordinator phone number or WhatsApp link
+  document.addEventListener('click', function (e) {
+    const tel = e.target.closest('a[href^="tel:"]');
+    if (tel) {
+      gtag('event', 'phone_call_click', { phone_number: tel.getAttribute('href').replace('tel:', '') });
+    }
+    const wa = e.target.closest('a[href*="wa.me/"]');
+    if (wa) {
+      gtag('event', 'whatsapp_click');
+    }
+  });
+
+  // Track visitors who scroll far enough to reach the registration section (fires once)
+  const regSection = document.getElementById('register-section');
+  if (regSection) {
+    const regObserver = new IntersectionObserver(function (entries) {
+      if (entries[0].isIntersecting) {
+        gtag('event', 'reached_registration');
+        regObserver.disconnect();
+      }
+    }, { threshold: 0.4 });
+    regObserver.observe(regSection);
   }
 </script>
 
